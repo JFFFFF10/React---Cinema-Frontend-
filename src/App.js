@@ -1,5 +1,5 @@
 import React from "react";
-import LoggedIn from "./Components/LoggedIn/LoggedIn";
+import LoggedIn from "./Components/LoggedIn/LogggedInTest";
 import LoginForm from "./Components/LoginForm/LoginForm";
 
 class App extends React.Component {
