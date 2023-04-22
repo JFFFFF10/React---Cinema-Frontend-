@@ -10,7 +10,6 @@ import LockIcon from '@mui/icons-material/Lock';
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       username: "",
       password: "",
@@ -56,34 +55,36 @@ class LoginForm extends React.Component {
       }
 
       const response = await axios.post(
-        "https://csit-314-cinema-booking-system.vercel.app/login/",
-        {
-          username: username,
-          password: password,
+          "https://csit-314-cinema-booking-system.vercel.app/login/",
+          {
+            username: username,
+            password: password,
+          }
+        );
+      
+        if (response.status === 200) {
+          // Login successful 
+          this.setState({ errorMessages: {} });
+          console.log(response.data.token);
+          localStorage.setItem('token', response.data.token); // Save token to local storage
+          setIsLoggedIn(true);
+        } else {
+          // Login failed
+          this.setState({
+            errorMessages: {
+              password: this.errorMessages.invalidPassword,
+            },
+          });
         }
-      );
-
-      if (response.status === 200) {
-        // Login successful
-        this.setState({ errorMessages: {} });
-        setIsLoggedIn(true);
-      } else {
+      } catch (error) {
         // Login failed
         this.setState({
           errorMessages: {
-            password: this.errorMessages.invalidPassword,
+            username: this.errorMessages.wrongAcc,
           },
         });
-      }
-    } catch (error) {
-      // Login failed
-      this.setState({
-        errorMessages: {
-          username: this.errorMessages.wrongAcc,
-        },
-      });
-      console.error("may ngu");
-    }
+        console.error("may ngu");
+      }    
   }
 
   renderErrorMsg(name) {

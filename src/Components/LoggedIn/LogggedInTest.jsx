@@ -13,6 +13,7 @@ class LoggedIn extends React.Component {
 
 	componentDidMount() {
 		// Make an API request to get the user data
+		console.log(localStorage.getItem("token"));
 		axios
 			.get("https://csit-314-cinema-booking-system.vercel.app/getUser/", {
 				headers: {
@@ -21,6 +22,7 @@ class LoggedIn extends React.Component {
 			})
 			.then((response) => {
 				// Update the user state with the received data
+				console.log(response.data)
 				this.setState({ user: response.data });
 			})
 			.catch((error) => {

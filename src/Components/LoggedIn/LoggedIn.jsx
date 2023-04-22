@@ -11,7 +11,7 @@ class LoggedIn extends React.Component {
         <Card>
           <h1 className="subtitle">You are now logged in!</h1>
           <button className="back_button" onClick={() => setIsLoggedIn(false)}>
-            Go Back
+            Logout
           </button>
         </Card>
       </>
