@@ -7,6 +7,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			isLoggedIn: false,
+			token: null,
 		};
 		this.setIsLoggedIn = this.setIsLoggedIn.bind(this);
 	}
@@ -21,7 +22,7 @@ class App extends React.Component {
 		return (
 			<>
 				{this.state.isLoggedIn ? (
-					<LoggedIn setIsLoggedIn={this.setIsLoggedIn} />
+					<LoggedIn setIsLoggedIn={this.setIsLoggedIn} token = {this.state.token} />
 				) : (
 					<LoginForm setIsLoggedIn={this.setIsLoggedIn} />
 				)}
