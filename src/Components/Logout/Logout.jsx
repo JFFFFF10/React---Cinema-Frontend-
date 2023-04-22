@@ -8,7 +8,7 @@ export const logoutUser = async () => {
 
 		console.log(response.data.message);
 	} catch (error) {
-		console.log(error.response.data);
+		console.log(error);
 	}
 };
 
