@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "cinema-website-ae9ba"
-  }
+    "default": "bsiancinema-6764b",
+    "website": "bsiancinema-6764b"
+  },
+  "targets": {},
+  "etags": {}
 }
