@@ -2,6 +2,7 @@ import React from "react";
 import "./LoggedIn.css";
 import Card from "../Card/Card";
 import axios from "axios";
+import { logoutUser } from '../Logout/Logout'
 
 class LoggedIn extends React.Component {
 	constructor(props) {
@@ -31,15 +32,15 @@ class LoggedIn extends React.Component {
 	}
 
 	render() {
-		const { setIsLoggedIn } = this.props;
+		// const { setIsLoggedIn } = this.props;
 		const { user } = this.state;
 
 		return (
 			<>
 				<Card>
 					<h1 className="subtitle">You are now logged in as {user.role}</h1>
-					<button className="back_button" onClick={() => setIsLoggedIn(false)}>
-						Go Back
+					<button className="back_button" onClick={logoutUser}>
+						Logout
 					</button>
 				</Card>
 			</>
