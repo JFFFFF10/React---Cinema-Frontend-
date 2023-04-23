@@ -3,6 +3,7 @@ import axios from "axios";
 
 import "./CreateUser.css";
 import Card from "../Card/Card";
+
 import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 import CakeIcon from "@mui/icons-material/Cake";
@@ -70,8 +71,6 @@ class CreateUserForm extends React.Component {
 				return;
 			}
 
-			console.log(username, password);
-
 			const response = await axios.post(
 				"https://csit-314-cinema-booking-system.vercel.app/add/",
 				{
@@ -121,29 +120,29 @@ class CreateUserForm extends React.Component {
 
 		return (
 			<Card>
-				<h1 className="special-title">Create User Account</h1>
+				<h1 className="register--title">Create User Account</h1>
 
 				<form onSubmit={this.handleSubmit} class="row g-3">
-					<div className="inputs_container">
+					<div className="register--inputs_container">
 						<div
-							className="input-container-wrapper"
+							className="register--input-container-wrapper"
 							style={{ display: "flex", flexWrap: "wrap" }}
 						>
-							<div className="input-container" style={{ flex: 1 }}>
-								<PersonIcon className="icon" />
+							<div className="register--input_icon_container" style={{ flex: 1 }}>
+								<PersonIcon className="register--icon" />
 								<input
 									type="text"
-									placeholder="Insert your fullname here"
+									placeholder="Full Name"
 									value={fullname}
 									onChange={(e) => this.setState({ fullname: e.target.value })}
 								/>
 							</div>
 
-							<div className="input-container" style={{ flex: 1 }}>
-								<PersonIcon className="icon" />
+							<div className="register--input_icon_container" style={{ flex: 1 }}>
+								<PersonIcon className="register--icon" />
 								<input
 									type="text"
-									placeholder="Insert your username here"
+									placeholder="Username"
 									value={username}
 									onChange={(e) => this.setState({ username: e.target.value })}
 								/>
@@ -153,37 +152,37 @@ class CreateUserForm extends React.Component {
 						</div>
 
 						<div
-							className="input-container-wrapper"
+							className="register--input-container-wrapper"
 							style={{ display: "flex", flexWrap: "wrap" }}
 						>
-							<div className="input-container" style={{ flex: 1 }}>
-								<CakeIcon className="icon" />
+							<div className="register--input_icon_container" style={{ flex: 1 }}>
+								<CakeIcon className="register--icon" />
 								<input
 									type="date"
 									name="birthdate"
-									placeholder="Insert your birthday here"
+									placeholder="Birthday"
 									value={dob}
 									onChange={(e) => this.setState({ dob: e.target.value })}
 								/>
 							</div>
 
-							<div className="input-container" style={{ flex: 1 }}>
-								<EmailIcon className="icon" />
+							<div className="register--input_icon_container" style={{ flex: 1 }}>
+								<EmailIcon className="register--icon" />
 								<input
 									type="email"
 									name="email"
-									placeholder="Insert your email here"
+									placeholder="Email"
 									value={email}
 									onChange={(e) => this.setState({ email: e.target.value })}
 								/>
 							</div>
 						</div>
 
-						<div className="input_icon_container">
-							<LockIcon className="icon" />
+						<div className="register--input_icon_container">
+							<LockIcon className="register--icon" />
 							<input
 								type="password"
-								placeholder="Insert your password here"
+								placeholder="Password"
 								value={password}
 								onChange={(e) => this.setState({ password: e.target.value })}
 							/>
@@ -191,11 +190,11 @@ class CreateUserForm extends React.Component {
 						{this.renderErrorMsg("password")}
 						{this.renderErrorMsg("noPassword")}
 
-						<div className="input_icon_container">
-							<LockIcon className="icon" />
+						<div className="register--input_icon_container">
+							<LockIcon className="register--icon" />
 							<input
 								type="password"
-								placeholder="Confirm your password here"
+								placeholder="Confirm Password"
 								value={confirmPassword}
 								onChange={(e) =>
 									this.setState({ confirmPassword: e.target.value })
@@ -206,18 +205,18 @@ class CreateUserForm extends React.Component {
 						{this.renderErrorMsg("noConfirmPassword")}
 					</div>
 
-					<button type="submit" className="special-login_button">
+					<button type="submit" className="register--register_button">
 						Create Account
 					</button>
 					<div className="special">
-						<span className="special-small">Already have an account?</span>
+						<span className="register--small">Already have an account?</span>
 					</div>
 					<button
 						type="button"
-						className="register_button"
+						className="register--login_button"
 						onClick={onSwitchForm}
 					>
-						Log in now
+						Log In Now!
 					</button>
 				</form>
 			</Card>

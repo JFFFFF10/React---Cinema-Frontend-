@@ -1,19 +1,24 @@
 /* Login Form Title */
-.special-title {
+.register--title {
 	color: black;
 	text-align: center;
-	margin-bottom: 1.7rem;
+	margin-top: 2.7rem;
+	margin-bottom: 1.6rem;
 	font-size: 1.8rem;
 }
 
 /* Login Form Inputs Container */
-.inputs_container {
+.register--inputs_container {
 	display: flex;
 	flex-direction: column;
 }
 
+.register--input-container-wrapper {
+	margin-bottom: -0.2rem;
+}
+
 /* Login Form Input Elements */
-.inputs_container input {
+.register--inputs_container input {
 	width: 90%;
 	margin: 1rem 0.5rem;
 	padding: 0.2rem;
@@ -24,28 +29,31 @@
 	background-color: transparent;
 }
 
-.input_icon_container {
+.register--input_icon_container {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin-bottom: 2.5rem;
+	margin-bottom: 1rem;
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
 	border-bottom: 1px solid black;
 }
 
-.input_icon_container input:focus::placeholder {
+.register--input_icon_container input::placeholder {
+	color: black;
+}
+
+.register--input_icon_container input:focus::placeholder {
 	opacity: 0;
 	transform: translate(-10px, 0);
 	transition: all 0.5s ease-in-out;
 }
 
 /* Login Form Login Button */
-.special-login_button {
+.register--register_button {
 	display: block;
-	margin-top: -1rem;
-	margin-bottom: 1rem;
-	width: 100%;
+	margin: 1.2rem 0.5rem 2rem 0.5rem;
+	width: 98%;
 	padding: 0.55rem 1rem;
 	border-radius: 8px;
 	outline: 0;
@@ -53,29 +61,29 @@
 	font-family: inherit;
 	text-align: center;
 	cursor: pointer;
-	background-color: #ad0b0b;
+	background-color: #004999;
 	color: white;
 	border: 1px solid transparent;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.special-login_button:hover {
-	border: 1px solid #90021f;
-	background-color: #90021f;
+.register--register_button:hover {
+	border: 1px solid #003366;
+	background-color: #003366;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-.special-login_button.special-login_button:active {
-	border: 2px solid #90021f;
-	background-color: #90021f;
+.register--register_button.register--register_button:active {
+	border: 2px solid #004999;
+	background-color: #004999;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4),
 		0 0 0 2px rgba(0, 0, 0, 0.2) inset;
 }
 
-.register_button {
+.register--login_button {
 	display: block;
-	margin: 0.5rem auto;
-	width: 100%;
+	margin: 0.5rem 0.5rem;
+	width: 98%;
 	padding: 0.55rem 1rem;
 	border-radius: 8px;
 	outline: 0;
@@ -90,16 +98,16 @@
 	user-select: none;
 }
 
-.register_button:hover {
-	border: 1px solid #004999;
-	background-color: #004999;
+.register--login_button:hover {
+	border: 1px solid #90021f;
+	background-color: #90021f;
 	color: white;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-.register_button.register_button:active {
-	border: 1px solid #004999;
-	background-color: #004999;
+.register--login_button.register--login_button:active {
+	border: 1px solid #90021f;
+	background-color: #90021f;
 	color: white;
 	box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2),
 		0 0 0 2px rgba(0, 0, 0, 0.2) inset;
@@ -120,7 +128,7 @@
 	cursor: pointer;
 }
 
-.special-small {
+.register--small {
 	display: flex;
 	justify-content: center;
 	color: #222222;
@@ -130,7 +138,7 @@
 	cursor: pointer;
 }
 
-.icon {
+.register--icon {
 	color: black;
 	margin-left: 1.5rem;
 	margin-right: 0.5rem;
