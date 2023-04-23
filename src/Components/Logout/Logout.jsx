@@ -13,8 +13,10 @@ export const logoutUser = async () => {
 		  );
 
 		console.log(response.data.message);
+		alert("Log Out Successful!");
 	} catch (error) {
 		console.log(error.response.data);
+		alert("Log Out Unsuccessful! :(");
 	}
 };
 
