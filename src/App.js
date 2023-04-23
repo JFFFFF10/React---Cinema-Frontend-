@@ -1,7 +1,7 @@
 import React from "react";
-import LoggedIn from "./Components/LoggedIn/LogggedInTest";
-import LoginForm from "./Components/LoginForm/LoginForm";
+import LoggedIn from "./Components/LoggedIn/LogggedIn";
 import AuthPage from "./Components/LoginForm/AuthPage";
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);

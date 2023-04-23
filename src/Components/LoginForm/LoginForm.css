@@ -1,20 +1,26 @@
 /* Login Form Title */
-.title {
+.login--title {
 	color: black;
 	text-align: center;
-	margin-top: 1.5rem;
-	margin-bottom: 1.7rem;
-	font-size: 1.8rem;
+	margin-top: 3rem;
+	margin-bottom: 1.9rem;
+	font-size: 2.5rem;
+	font-family: "Roboto", sans-serif;
+	/*
+	font-weight: 900;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	-webkit-text-stroke: 1.5px black;*/
 }
 
 /* Login Form Inputs Container */
-.inputs_container {
+.login--inputs_container {
 	display: flex;
 	flex-direction: column;
+	margin: auto 1rem;
 }
 
 /* Login Form Input Elements */
-.inputs_container input {
+.login--inputs_container input {
 	width: 95%;
 	margin: 1rem 0.5rem;
 	padding: 0.2rem;
@@ -23,28 +29,34 @@
 	outline: 0;
 	border: 0;
 	background-color: transparent;
+	color: black;
 }
 
-.input_icon_container {
+.login--input_icon_container {
 	display: flex;
 	align-items: center;
 	margin-bottom: 2.5rem;
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
-	border-bottom: 1px solid black;
+	border-bottom: 2px solid black;
 }
 
-.input_icon_container input:focus::placeholder {
+.login--input_icon_container input::placeholder {
+	color: black;
+}
+
+.login--input_icon_container input:focus::placeholder {
 	opacity: 0;
 	transform: translate(-10px, 0);
 	transition: all 0.5s ease-in-out;
 }
 
 /* Login Form Login Button */
-.login_button {
+.login--login_button {
 	display: block;
-	margin: 0.5rem auto;
+	margin: 1rem auto;
 	width: 100%;
+	height: 10%;
 	padding: 0.55rem 1rem;
 	border-radius: 8px;
 	outline: 0;
@@ -54,26 +66,27 @@
 	cursor: pointer;
 	background-color: #ad0b0b;
 	color: white;
-	border: 1px solid transparent;
+	border: 2px solid black;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.login_button:hover {
-	border: 1px solid #90021f;
+.login--login_button:hover {
+	border: 2px solid #ad0b0b;
 	background-color: #90021f;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-.login_button.login_button:active {
+.login--login_button.login--login_button:active {
 	border: 2px solid #90021f;
 	background-color: #90021f;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4),
 		0 0 0 2px rgba(0, 0, 0, 0.2) inset;
 }
 
-.register_button {
+.login--register_button {
 	display: block;
 	margin: 0.5rem auto;
+	margin-bottom: 2.9rem;
 	width: 100%;
 	padding: 0.55rem 1rem;
 	border-radius: 8px;
@@ -84,19 +97,19 @@
 	cursor: pointer;
 	background-color: rgba(0, 0, 0, 0.2);
 	color: black;
-	border: 1px solid black;
+	border: 2px solid black;
 	box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.15);
 	user-select: none;
 }
 
-.register_button:hover {
-	border: 1px solid #004999;
+.login--register_button:hover {
+	border: 2px solid #004999;
 	background-color: #004999;
 	color: white;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-.register_button.register_button:active {
+.login--register_button.login--register_button:active {
 	border: 1px solid #004999;
 	background-color: #004999;
 	color: white;
@@ -109,21 +122,26 @@
 	justify-content: center;
 }
 
-.small {
+.login--small {
 	display: inline-block;
-	color: #222222;
+	color: black;
 	text-align: center;
 	text-decoration: none;
 	font-size: 0.7rem;
-	margin-top: 2.5rem;
+	margin-top: 2rem;
 	cursor: pointer;
 }
 
-.icon {
+.login--subtitle {
+	font-size: 0.75rem;
+	margin-left: 1.5rem;
+}
+
+.login--icon {
 	color: black;
 	margin-left: 1.5rem;
 	margin-right: 0.5rem;
-	font-size: 1.3rem;
+	font-size: 2rem;
 }
 
 .error_msg {
@@ -133,7 +151,7 @@
 	text-align: center;
 }
 
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 700px) {
 	.inputs_container input {
 		width: 100%;
 	}

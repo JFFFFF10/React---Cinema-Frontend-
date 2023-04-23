@@ -101,12 +101,12 @@ class LoginForm extends React.Component {
 
 		return (
 			<Card>
-				<h1 className="title">User Login</h1>
+				<h1 className="login--title">User Login</h1>
 
 				<form onSubmit={this.handleSubmit}>
-					<div className="inputs_container">
-						<div className="input_icon_container">
-							<PersonIcon className="icon" />
+					<div className="login--inputs_container">
+						<div className="login--input_icon_container">
+							<PersonIcon className="login--icon" />
 							<input
 								type="text"
 								placeholder="Insert your username here"
@@ -117,8 +117,8 @@ class LoginForm extends React.Component {
 						{this.renderErrorMsg("username")}
 						{this.renderErrorMsg("noUsername")}
 
-						<div className="input_icon_container">
-							<LockIcon className="icon" />
+						<div className="login--input_icon_container">
+							<LockIcon className="login--icon" />
 							<input
 								type="password"
 								placeholder="Insert your password here"
@@ -130,19 +130,20 @@ class LoginForm extends React.Component {
 						{this.renderErrorMsg("noPassword")}
 					</div>
 
-					<button type="submit" className="login_button">
+					<button type="submit" className="login--login_button">
 						Log In
 					</button>
 					<div className="link_container">
-						<span className="small">Not a Member?</span>
+						<span className="login--small">Not a Member?</span>
 					</div>
 					<button
 						type="button"
-						className="register_button"
+						className="login--register_button"
 						onClick={onSwitchForm}
 					>
 						Create User Account
 					</button>
+					<span className="login--subtitle"> 2023 Bsian Entertainment™</span>
 				</form>
 			</Card>
 		);
