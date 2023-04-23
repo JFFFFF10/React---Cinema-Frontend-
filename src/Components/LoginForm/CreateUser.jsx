@@ -64,11 +64,13 @@ class CreateUserForm extends React.Component {
 
 		try {
 			const { username, password, email } = this.state;
-			const { setIsLoggedIn } = this.props;
+			//const { setIsLoggedIn } = this.props;
 
 			if (!this.validateForm()) {
 				return;
 			}
+
+			console.log(username, password);
 
 			const response = await axios.post(
 				"https://csit-314-cinema-booking-system.vercel.app/add/",
@@ -82,9 +84,9 @@ class CreateUserForm extends React.Component {
 			if (response.status === 200) {
 				// Account created successfully
 				this.setState({ errorMessages: {} });
-				console.log(response.data.token);
+				console.log("ngon");
 				localStorage.setItem("token", response.data.token); // Save token to local storage
-				setIsLoggedIn(true);
+				//setIsLoggedIn(true);
 			} else {
 				// Account creation failed
 				this.setState({
