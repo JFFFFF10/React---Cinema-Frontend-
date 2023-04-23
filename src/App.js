@@ -1,7 +1,7 @@
 import React from "react";
 import LoggedIn from "./Components/LoggedIn/LogggedInTest";
 import LoginForm from "./Components/LoginForm/LoginForm";
-
+import AuthPage from "./Components/LoginForm/AuthPage";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -20,15 +20,16 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<>
-				{this.state.isLoggedIn ? (
-					<LoggedIn setIsLoggedIn={this.setIsLoggedIn} token = {this.state.token} />
-				) : (
-					<LoginForm setIsLoggedIn={this.setIsLoggedIn} />
-				)}
-			</>
+		  <>
+			{this.state.isLoggedIn ? (
+			  <LoggedIn setIsLoggedIn={this.setIsLoggedIn} token={this.state.token} />
+			) : (
+			  <AuthPage setIsLoggedIn={this.setIsLoggedIn} token={this.state.token} />
+			)}
+		  </>
 		);
-	}
+	  }
+	  
 }
 
 export default App;

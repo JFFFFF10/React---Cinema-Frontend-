@@ -1,13 +1,13 @@
 .card {
-  width: 520px;
-  height: 585px;
-  border-radius: 1.7rem;
+  width: 550px;
+  height: 600px;
+  border-radius: 1rem;
   padding: 2.5rem;
-  padding-left: 4.5rem;
-  padding-right: 4.5rem;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
   backdrop-filter: blur(14px);
   background-color: white;
-  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.5);
 
   position: absolute;
   top: 50%;
