@@ -104,7 +104,7 @@ class LoginForm extends React.Component {
 
         <form onSubmit={this.handleSubmit}>
           <div className="inputs_container">
-            <div className="input_title">USERNAME</div>
+            
             <div className="input_icon_container">
               <PersonIcon className="icon" />
               <input
@@ -117,7 +117,6 @@ class LoginForm extends React.Component {
             {this.renderErrorMsg("username")}
             {this.renderErrorMsg("noUsername")}
 
-            <div className="input_title">PASSWORD</div>
             <div className="input_icon_container">
               <LockIcon className="icon" />
               <input
