@@ -1,9 +1,9 @@
-import React, { useState } from "react"
-import Homes from "../Components/homes/Homes"
-import Upcoming from "../Components/upcoming/Upcoming"
-import { latest, recommended, upcome } from "../dummyData"
-import Header from "../Components/header/Header";
-import Footer from "../Components/footer/Footer";
+import React, { useState } from "react";
+import Homes from "../components/homes/Homes";
+import Upcoming from "../components/upcoming/Upcoming";
+import { latest, recommended, upcome } from "../dummyData";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 import "./HomePage.css";
 
 const HomePage = () => {

@@ -4,6 +4,7 @@ import Card from "../Card/Card";
 import axios from "axios";
 import LogoutUser from "../Logout/Logout";
 import { Link } from "react-router-dom";
+import UserAdminPage from "../../UserAdminPage/UserAdminPage";
 
 class LoggedIn extends React.Component {
 	constructor(props) {
@@ -38,27 +39,24 @@ class LoggedIn extends React.Component {
 	}
 
 	render() {
-		// const { setIsLoggedIn } = this.props;
 		const { user } = this.state;
-
-		// if (user.role === "useradmin") {
-		// 	// Redirect to useradmin page
-		// 	<Link to="/UserAdminPage">Test</Link>
-		// }
 
 		return (
 			<>
-				<Card>
-					<h1 className="subtitle">You are now logged in as {user.role}</h1>
+				{user.role === "UserAdmin" ? (
+					<UserAdminPage />
+				) : (
+					<Card>
+						<h1 className="subtitle">You are now logged in as {user.role}</h1>
 						<Link to="/">
 							<button className="back_button" onClick={this.handleLogoutClick}>
 								Log Out
 							</button>
-						</Link>	
-				</Card>
+						</Link>
+					</Card>
+				)}
 			</>
 		);
 	}
 }
-
 export default LoggedIn;
