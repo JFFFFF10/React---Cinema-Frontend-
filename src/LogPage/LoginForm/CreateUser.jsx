@@ -162,7 +162,7 @@ class CreateUserForm extends React.Component {
 			<Card>
 				<h1 className="register--title">Create User Account</h1>
 
-				<form onSubmit={this.handleSubmit} className="row g-3">
+				<form onSubmit={this.handleSubmit}>
 					<div className="register--inputs_container">
 						<div
 							className="register--input-container-wrapper"
