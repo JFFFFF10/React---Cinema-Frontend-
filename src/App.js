@@ -1,6 +1,5 @@
-import "./BsianHomePage/App.css";
-import HomePage from "./BsianHomePage/home/HomePage";
-import AuthPage from "./Components/LoginForm/LoginPage";
+import HomePage from "./BsianHomePage/HomePage/HomePage";
+import AuthPage from "./LogPage/LoginForm/LoginPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

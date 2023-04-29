@@ -3,7 +3,7 @@ import "./LoggedIn.css";
 import Card from "../Card/Card";
 import axios from "axios";
 import LogoutUser from "../Logout/Logout";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class LoggedIn extends React.Component {
 	constructor(props) {

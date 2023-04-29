@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	const [Mobile, setMobile] = useState(false);
@@ -37,9 +37,11 @@ const Header = () => {
 					<div className="account flexSB">
 						<FontAwesomeIcon icon={faSearch} />
 						<FontAwesomeIcon icon={faUser} />
-						<button className="logInButton">
-						<Link to="/login">Log In</Link>
-						</button>
+						<Link to="/login">
+							<button className="logInButton">
+								Log In
+							</button>
+						</Link>
 					</div>
 				</div>
 			</header>
