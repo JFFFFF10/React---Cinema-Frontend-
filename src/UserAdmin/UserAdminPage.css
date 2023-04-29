@@ -10,7 +10,7 @@ body {
   font-weight: 100;
 } */
 
-.BigTable {
+.uapage--BigTable {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -18,7 +18,7 @@ body {
   flex-wrap: wrap;
 }
 
-.container {
+.uapage--container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -81,7 +81,7 @@ tbody td:hover:before {
   background-color: #555;
 }
 
-.searchBar {
+.uapage--searchBar {
   width: 300px;
   height: 30px;
   padding: 5px;
@@ -109,12 +109,12 @@ tbody td:hover:before {
   }
 }
 
-.searchBar:focus {
+.uapage--searchBar:focus {
   outline: none;
   border: 2px solid red;
 }
 
-.searchBar::placeholder {
+.uapage--searchBar::placeholder {
   color: #ccc;
 }
 
