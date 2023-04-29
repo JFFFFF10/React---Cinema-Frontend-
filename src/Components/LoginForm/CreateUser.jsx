@@ -25,20 +25,34 @@ class CreateUserForm extends React.Component {
 
 		this.errorMessages = {
 			invalidUsername: "Invalid username",
-			invalidPassword: "Invalid password",
+			invalidPassword: "At least one letter, one number and 8 characters long",
 			noUsername: "Username is required",
 			noPassword: "Password is required",
 			noConfirmPassword: "Confirm password is required",
+			noEmail: "Email is required",
 			passwordMismatch: "Passwords do not match",
 			usernameExists: "Username already exists",
+			invalidFullname:
+				"Fullname cannot be empty and must not contain numbers or special characters",
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	validateForm() {
-		const { username, password, confirmPassword } = this.state;
+		const { username, password, confirmPassword, fullname, email } = this.state;
 		const errors = {};
+
+		if (
+			!fullname ||
+			fullname.match(/[0-9~`!@#$%^&*()_+={}[\]|\\:;"'<,>.?/-]/)
+		) {
+			errors.fullname = this.errorMessages.invalidFullname;
+		}
+
+		if (!email) {
+			errors.email = this.errorMessages.noEmail;
+		}
 
 		if (!username) {
 			errors.username = this.errorMessages.noUsername;
@@ -46,6 +60,11 @@ class CreateUserForm extends React.Component {
 
 		if (!password) {
 			errors.password = this.errorMessages.noPassword;
+		} else if (
+			!password ||
+			!password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
+		) {
+			errors.password = this.errorMessages.invalidPassword;
 		}
 
 		if (!confirmPassword) {
@@ -64,14 +83,13 @@ class CreateUserForm extends React.Component {
 		e.preventDefault();
 
 		try {
-			const { username, password, email } = this.state;
-			//const { setIsLoggedIn } = this.props;
+			const { username, password, email, fullname, dob } = this.state;
 
 			if (!this.validateForm()) {
 				return;
 			}
 
-			const response = await axios.post(
+			const response1 = await axios.post(
 				"https://csit-314-cinema-booking-system.vercel.app/add/",
 				{
 					username: username,
@@ -80,12 +98,34 @@ class CreateUserForm extends React.Component {
 				}
 			);
 
-			if (response.status === 200) {
+			if (response1.status === 200) {
 				// Account created successfully
 				this.setState({ errorMessages: {} });
-				console.log("ngon");
-				localStorage.setItem("token", response.data.token); // Save token to local storage
-				//setIsLoggedIn(true);
+				console.log("Account ngon");
+				localStorage.setItem("token", response1.data.token); // Save token to local storage
+
+				const response2 = await axios.post(
+					"https://csit-314-cinema-booking-system.vercel.app/createProfile/",
+					{
+						username: username,
+						name: fullname,
+						date_of_birth: dob,
+					}
+				);
+
+				if (response2.status === 201) {
+					// Profile created successfully
+					this.setState({ errorMessages: {} });
+					localStorage.setItem("token", response2.data.token); // Save token to local storage
+					console.log("Profile ngon");
+				} else {
+					// Profile creation failed
+					this.setState({
+						errorMessages: {
+							username: this.errorMessages.usernameExists,
+						},
+					});
+				}
 			} else {
 				// Account creation failed
 				this.setState({
@@ -95,7 +135,7 @@ class CreateUserForm extends React.Component {
 				});
 			}
 		} catch (error) {
-			// Account creation failed
+			// Account or profile creation failed
 			this.setState({
 				errorMessages: {
 					username: this.errorMessages.usernameExists,
@@ -122,13 +162,16 @@ class CreateUserForm extends React.Component {
 			<Card>
 				<h1 className="register--title">Create User Account</h1>
 
-				<form onSubmit={this.handleSubmit} class="row g-3">
+				<form onSubmit={this.handleSubmit} className="row g-3">
 					<div className="register--inputs_container">
 						<div
 							className="register--input-container-wrapper"
 							style={{ display: "flex", flexWrap: "wrap" }}
 						>
-							<div className="register--input_icon_container" style={{ flex: 1 }}>
+							<div
+								className="register--input_icon_container"
+								style={{ flex: 1 }}
+							>
 								<PersonIcon className="register--icon" />
 								<input
 									type="text"
@@ -138,7 +181,10 @@ class CreateUserForm extends React.Component {
 								/>
 							</div>
 
-							<div className="register--input_icon_container" style={{ flex: 1 }}>
+							<div
+								className="register--input_icon_container"
+								style={{ flex: 1 }}
+							>
 								<PersonIcon className="register--icon" />
 								<input
 									type="text"
@@ -149,13 +195,18 @@ class CreateUserForm extends React.Component {
 							</div>
 							{this.renderErrorMsg("username")}
 							{this.renderErrorMsg("noUsername")}
+							{this.renderErrorMsg("fullname")}
+							{this.renderErrorMsg("invalidFullname")}
 						</div>
 
 						<div
 							className="register--input-container-wrapper"
 							style={{ display: "flex", flexWrap: "wrap" }}
 						>
-							<div className="register--input_icon_container" style={{ flex: 1 }}>
+							<div
+								className="register--input_icon_container"
+								style={{ flex: 1 }}
+							>
 								<CakeIcon className="register--icon" />
 								<input
 									type="date"
@@ -166,7 +217,10 @@ class CreateUserForm extends React.Component {
 								/>
 							</div>
 
-							<div className="register--input_icon_container" style={{ flex: 1 }}>
+							<div
+								className="register--input_icon_container"
+								style={{ flex: 1 }}
+							>
 								<EmailIcon className="register--icon" />
 								<input
 									type="email"

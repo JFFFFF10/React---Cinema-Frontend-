@@ -5,7 +5,6 @@ import "./LoginForm.css";
 import Card from "../Card/Card";
 import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
-//import CreateUser from "./CreateUser";
 
 class LoginForm extends React.Component {
 	constructor(props) {

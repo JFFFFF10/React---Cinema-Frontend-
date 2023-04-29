@@ -2,7 +2,7 @@ import React from "react";
 import "./LoggedIn.css";
 import Card from "../Card/Card";
 import axios from "axios";
-import { logoutUser } from '../Logout/Logout'
+import LogoutUser from "../Logout/Logout";
 
 class LoggedIn extends React.Component {
 	constructor(props) {
@@ -11,6 +11,11 @@ class LoggedIn extends React.Component {
 			user: {},
 		};
 	}
+
+	handleLogoutClick = () => {
+		const logout = new LogoutUser();
+		logout.logoutUser();
+	};
 
 	componentDidMount() {
 		// Make an API request to get the user data
@@ -23,7 +28,7 @@ class LoggedIn extends React.Component {
 			})
 			.then((response) => {
 				// Update the user state with the received data
-				console.log(response.data)
+				console.log(response.data);
 				this.setState({ user: response.data });
 			})
 			.catch((error) => {
@@ -39,7 +44,7 @@ class LoggedIn extends React.Component {
 			<>
 				<Card>
 					<h1 className="subtitle">You are now logged in as {user.role}</h1>
-					<button className="back_button" onClick={logoutUser}>
+					<button className="back_button" onClick={this.handleLogoutClick}>
 						Log Out
 					</button>
 				</Card>
