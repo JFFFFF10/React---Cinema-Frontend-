@@ -3,6 +3,7 @@ import "./LoggedIn.css";
 import Card from "../Card/Card";
 import axios from "axios";
 import LogoutUser from "../Logout/Logout";
+import { NavLink, Link } from "react-router-dom";
 
 class LoggedIn extends React.Component {
 	constructor(props) {
@@ -39,6 +40,11 @@ class LoggedIn extends React.Component {
 	render() {
 		// const { setIsLoggedIn } = this.props;
 		const { user } = this.state;
+
+		// if (user.role === "useradmin") {
+		// 	// Redirect to useradmin page
+		// 	<Link to="/UserAdminPage">Test</Link>
+		// }
 
 		return (
 			<>

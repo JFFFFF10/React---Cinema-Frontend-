@@ -1,0 +1,140 @@
+[
+    {
+        "username": "test",
+        "email": "test@gmail.com",
+        "is_active": true,
+        "role": "UserAdmin"
+    },
+    {
+        "username": "mongadmin",
+        "email": "mong@bsian.com",
+        "is_active": true,
+        "role": "UserAdmin"
+    },
+    {
+        "username": "customer1",
+        "email": "new@email.com",
+        "is_active": false,
+        "role": "Customer"
+    },
+    {
+        "username": "manager1",
+        "email": "manager1@bsian.com",
+        "is_active": true,
+        "role": "CinemaManager"
+    },
+    {
+        "username": "owner1",
+        "email": "owner1@bsian.com",
+        "is_active": true,
+        "role": "CinemaOwner"
+    },
+    {
+        "username": "admin1",
+        "email": "admin1@bsian.com",
+        "is_active": true,
+        "role": "UserAdmin"
+    },
+    {
+        "username": "useradmin1",
+        "email": "useradmin1@bsian.com",
+        "is_active": true,
+        "role": "UserAdmin"
+    },
+    {
+        "username": "keith",
+        "email": "tired@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "mongadmin123",
+        "email": "mon322g@bsian.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "testmanager",
+        "email": "testmanager@bsian.com",
+        "is_active": true,
+        "role": "CinemaManager"
+    },
+    {
+        "username": "testadmin",
+        "email": "testadmin@bsian.com",
+        "is_active": true,
+        "role": "UserAdmin"
+    },
+    {
+        "username": "bohao",
+        "email": "test@gmail.com",
+        "is_active": true,
+        "role": null
+    },
+    {
+        "username": "ditmedat",
+        "email": "dmmdat@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "test1234",
+        "email": "test1234@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "customer2",
+        "email": null,
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "rwer3",
+        "email": "AZoomCar@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "dgret45",
+        "email": "fs343242@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "ffsdf342",
+        "email": "esda32@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "liulukyh",
+        "email": "fdsfs@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "gjrthreg",
+        "email": "erfewrw@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "ftewt4ry",
+        "email": "fweger455@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "fete35235",
+        "email": "dsfsdgreg4@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    },
+    {
+        "username": "gdfgert3",
+        "email": "csr3@gmail.com",
+        "is_active": true,
+        "role": "Customer"
+    }
+]
