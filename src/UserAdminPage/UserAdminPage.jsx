@@ -55,7 +55,7 @@ function UserAdminPage() {
 			<input
 				type="text"
 				placeholder="Search"
-				className="searchBar"
+				className="uapage--searchBar"
 				value={searchText}
 				onChange={handleSearch}
 			></input>
