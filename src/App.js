@@ -1,35 +1,23 @@
-import React from "react";
-import LoggedIn from "./Components/LoggedIn/LogggedIn";
-import AuthPage from "./Components/LoginForm/AuthPage";
+import "./BsianHomePage/App.css";
+import HomePage from "./BsianHomePage/home/HomePage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SinglePage from "./BsianHomePage/components/watch/SinglePage";
+import Header from "./BsianHomePage/components/header/Header";
+import Footer from "./BsianHomePage/components/footer/Footer";
 
-class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			isLoggedIn: false,
-			token: null,
-		};
-		this.setIsLoggedIn = this.setIsLoggedIn.bind(this);
-	}
-
-	setIsLoggedIn(value) {
-		this.setState({
-			isLoggedIn: value,
-		});
-	}
-
-	render() {
-		return (
-		  <>
-			{this.state.isLoggedIn ? (
-			  <LoggedIn setIsLoggedIn={this.setIsLoggedIn} token={this.state.token} />
-			) : (
-			  <AuthPage setIsLoggedIn={this.setIsLoggedIn} token={this.state.token} />
-			)}
-		  </>
-		);
-	  }
-	  
+function App() {
+	return (
+		<>
+			<Router>
+				<Header />
+				<Routes>
+					<Route path="/" element={<HomePage />} />
+					<Route path="/singlepage/:id" element={<SinglePage />} />
+				</Routes>
+				<Footer />
+			</Router>
+		</>
+	);
 }
 
 export default App;
