@@ -27,7 +27,7 @@ const SamplePrevArrow = (props) => {
 		</div>
 	);
 };
-const Upcomming = ({ items, title }) => {
+const Upcoming = ({ items, title }) => {
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -71,4 +71,4 @@ const Upcomming = ({ items, title }) => {
 	);
 };
 
-export default Upcomming;
+export default Upcoming;
