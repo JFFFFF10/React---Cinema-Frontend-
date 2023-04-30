@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Roboto:wght@300;400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Roboto:wght@300;400;900&display=swap");
 
 .loginPage {
 	margin: 0;
@@ -12,8 +12,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-family: "Roboto", sans-serif;
 }
-
 
 * {
 	margin: 0;
@@ -21,6 +21,13 @@
 	box-sizing: border-box;
 }
 
+/* Use the font */
 code {
-	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Bruno Ace", "Roboto", "Montserrat", "Helvetica Neue", Helvetica,
+		Arial, sans-serif;
+}
+
+/* Set fallback fonts */
+body {
+	font-family: "Roboto", sans-serif;
 }
