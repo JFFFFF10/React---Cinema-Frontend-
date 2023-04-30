@@ -67,15 +67,15 @@ function UserAdminPage() {
   } = useTable({ columns, data: filteredData });
 
   return (
-    <div className="uapage--BigTable">
+    <div className="userAdmin--BigTable">
       <input
         type="text"
         placeholder="Search"
-        className="uapage--searchBar"
+        className="userAdmin--searchBar"
         value={searchText}
         onChange={handleSearch}
       ></input>
-      <div className="uapage--container">
+      <div className="userAdmin--container">
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (

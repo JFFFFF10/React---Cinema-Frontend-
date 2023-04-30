@@ -8,7 +8,6 @@ import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 import CakeIcon from "@mui/icons-material/Cake";
 import EmailIcon from "@mui/icons-material/Email";
-//import Login from "./LoginForm";
 
 class CreateUserForm extends React.Component {
 	constructor(props) {
@@ -160,16 +159,16 @@ class CreateUserForm extends React.Component {
 
 		return (
 			<Card>
-				<h1 className="register--title">Create User Account</h1>
+				<h1 className="createUser">Create User Account</h1>
 
 				<form onSubmit={this.handleSubmit}>
-					<div className="register--inputs_container">
+					<div className="createUser_container_input">
 						<div
-							className="register--input-container-wrapper"
+							className="createUser-container-wrapper"
 							style={{ display: "flex", flexWrap: "wrap" }}
 						>
 							<div
-								className="register--input_icon_container"
+								className="createUser_icon_container"
 								style={{ flex: 1 }}
 							>
 								<PersonIcon className="register--icon" />
@@ -182,7 +181,7 @@ class CreateUserForm extends React.Component {
 							</div>
 
 							<div
-								className="register--input_icon_container"
+								className="createUser_icon_container"
 								style={{ flex: 1 }}
 							>
 								<PersonIcon className="register--icon" />
@@ -200,11 +199,11 @@ class CreateUserForm extends React.Component {
 						</div>
 
 						<div
-							className="register--input-container-wrapper"
+							className="createUser-container-wrapper"
 							style={{ display: "flex", flexWrap: "wrap" }}
 						>
 							<div
-								className="register--input_icon_container"
+								className="createUser_icon_container"
 								style={{ flex: 1 }}
 							>
 								<CakeIcon className="register--icon" />
@@ -218,7 +217,7 @@ class CreateUserForm extends React.Component {
 							</div>
 
 							<div
-								className="register--input_icon_container"
+								className="createUser_icon_container"
 								style={{ flex: 1 }}
 							>
 								<EmailIcon className="register--icon" />
@@ -232,7 +231,7 @@ class CreateUserForm extends React.Component {
 							</div>
 						</div>
 
-						<div className="register--input_icon_container">
+						<div className="createUser_icon_container">
 							<LockIcon className="register--icon" />
 							<input
 								type="password"
@@ -244,7 +243,7 @@ class CreateUserForm extends React.Component {
 						{this.renderErrorMsg("password")}
 						{this.renderErrorMsg("noPassword")}
 
-						<div className="register--input_icon_container">
+						<div className="createUser_icon_container">
 							<LockIcon className="register--icon" />
 							<input
 								type="password"

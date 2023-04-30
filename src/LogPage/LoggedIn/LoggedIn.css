@@ -1,11 +1,11 @@
-.subtitle {
+.LoggedIn--subtitle {
   color: black;
   text-align: center;
   margin-bottom: 1rem;
   margin-top: 50%;
 }
 
-.back_button {
+.LoggedIn--back_button {
   display: block;
   margin: 3rem auto 1rem auto;
   width: 55%;
@@ -20,7 +20,7 @@
   border: 2px solid transparent;
 }
 
-.back_button:hover {
+.LoggedIn--back_button:hover {
   border: 2px solid grey;
   background-color: transparent;
 }

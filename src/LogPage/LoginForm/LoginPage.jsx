@@ -21,7 +21,7 @@ class LoginPage extends React.Component {
 
 	render() {
 		return (
-			<div className="login-page">
+			<div className="loginPage">
 				{this.state.isLoggedIn ? (
 					<LoggedIn
 						setIsLoggedIn={this.setIsLoggedIn}

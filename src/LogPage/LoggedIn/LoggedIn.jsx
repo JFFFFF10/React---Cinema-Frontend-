@@ -53,9 +53,9 @@ class LoggedIn extends React.Component {
 		return (
 			<>
 				<Card>
-					<h1 className="subtitle">You are now logged in as {user.role}</h1>
+					<h1 className="LoggedIn--subtitle">You are now logged in as {user.role}</h1>
 					<Link to="/">
-						<button className="back_button" onClick={this.handleLogoutClick}>
+						<button className="LoggedIn--back_button" onClick={this.handleLogoutClick}>
 							Log Out
 						</button>
 					</Link>

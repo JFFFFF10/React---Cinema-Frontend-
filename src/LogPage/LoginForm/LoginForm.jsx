@@ -101,12 +101,12 @@ class LoginForm extends React.Component {
 
 		return (
 			<Card>
-				<h1 className="login--title">User Login</h1>
+				<h1 className="loginForm">User Login</h1>
 
 				<form onSubmit={this.handleSubmit}>
-					<div className="login--inputs_container">
-						<div className="login--input_icon_container">
-							<PersonIcon className="login--icon" />
+					<div className="loginForms_container">
+						<div className="loginForm_icon_container">
+							<PersonIcon className="loginForm--icon" />
 							<input
 								type="text"
 								placeholder="Insert your username here"
@@ -117,8 +117,8 @@ class LoginForm extends React.Component {
 						{this.renderErrorMsg("username")}
 						{this.renderErrorMsg("noUsername")}
 
-						<div className="login--input_icon_container">
-							<LockIcon className="login--icon" />
+						<div className="loginForm_icon_container">
+							<LockIcon className="loginForm--icon" />
 							<input
 								type="password"
 								placeholder="Insert your password here"
@@ -130,20 +130,20 @@ class LoginForm extends React.Component {
 						{this.renderErrorMsg("noPassword")}
 					</div>
 
-					<button type="submit" className="login--login_button">
+					<button type="submit" className="loginForm--login_button">
 						Log In
 					</button>
 					<div className="link_container">
-						<span className="login--small">Not a Member?</span>
+						<span className="loginForm--small">Not a Member?</span>
 					</div>
 					<button
 						type="button"
-						className="login--register_button"
+						className="loginForm--register_button"
 						onClick={onSwitchForm}
 					>
 						Create User Account
 					</button>
-					<span className="login--subtitle"> 2023 Bsian Entertainment™</span>
+					<span className="loginForm--subtitle"> 2023 Bsian Entertainment™</span>
 				</form>
 			</Card>
 		);

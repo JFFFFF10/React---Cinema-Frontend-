@@ -10,7 +10,7 @@ body {
   font-weight: 100;
 }
 
-.uapage--BigTable {
+.userAdmin--BigTable {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -18,7 +18,7 @@ body {
   flex-wrap: wrap;
 }
 
-.uapage--container {
+.userAdmin--container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -82,7 +82,7 @@ tbody td:hover:before {
   background-color: #555;
 }
 
-.uapage--searchBar {
+.userAdmin--searchBar {
   width: 300px;
   height: 40px;
   padding: 5px;
@@ -110,37 +110,37 @@ tbody td:hover:before {
   }
 }
 
-.uapage--searchBar:focus {
+.userAdmin--searchBar:focus {
   outline: none;
   border: 2px solid red;
 }
 
-.uapage--searchBar::placeholder {
+.userAdmin--searchBar::placeholder {
   color: #ccc;
 }
 
 
 @media (max-height: 700px) {
-  .uapage--container {
+  .userAdmin--container {
     height: 300px;
   }
 }
 
 @media (max-height: 500px) {
-  .uapage--searchBar {
+  .userAdmin--searchBar {
     display: none;
   }
 }
 
 @media (max-width: 767px) {
-  .uapage--container {
+  .userAdmin--container {
     max-height: 300px;
   }
   table {
     width: 100%;
     height: 100%;
   }
-  .uapage--searchBar {
+  .userAdmin--searchBar {
     width: 50%;
     margin-bottom: 10px;
   }
