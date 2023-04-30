@@ -2,6 +2,7 @@ import * as React from "react";
 import { useTable } from "react-table";
 import { useState, useEffect } from "react";
 import "./UserAdminPage.css"; // import CSS file inside the component
+import UAPopup from "./popup/UAPopup";
 
 function UserAdminPage() {
   const [data, setData] = useState([]);
@@ -10,7 +11,20 @@ function UserAdminPage() {
       {
         Header: "Username",
         accessor: "username",
-      },
+        Cell: ({ value, row }) => (
+          <a
+            href="#"
+            onClick={() => {
+              setSelectedUser(row.original);
+              setOpenPopup(true);
+            }}
+            className="userAdmin--username"
+            style={{ color: "lightblue", textDecoration: "underline" }}
+          >
+            {value}
+          </a>
+        ),      
+      },      
       {
         Header: "Email",
         accessor: "email",
@@ -35,6 +49,8 @@ function UserAdminPage() {
   );
 
   const [searchText, setSearchText] = useState("");
+  const [openPopup, setOpenPopup] = useState(false);  
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const handleSearch = (e) => {
     setSearchText(e.target.value);
@@ -67,14 +83,23 @@ function UserAdminPage() {
   } = useTable({ columns, data: filteredData });
 
   return (
+    <>
     <div className="userAdmin--BigTable">
-      <input
-        type="text"
-        placeholder="Search"
-        className="userAdmin--searchBar"
-        value={searchText}
-        onChange={handleSearch}
-      ></input>
+
+    <div className="userAdmin--toolbar">
+      <div className="userAdmin--searchContainer">
+        <input
+          type="text"
+          placeholder="Search"
+          className="userAdmin--searchBar"
+          value={searchText}
+          onChange={handleSearch}
+        />
+      </div>
+      <button className="userAdmin--adduserButton" onClick={() => console.log("Add user clicked")}>Add User +</button>
+    </div>
+
+
       <div className="userAdmin--container">
         <table {...getTableProps()}>
           <thead>
@@ -118,6 +143,8 @@ function UserAdminPage() {
         </table>
       </div>
     </div>
+    <UAPopup open={openPopup} onClose={() => setOpenPopup(false)} user={selectedUser} />
+    </>
   );
 }
 
