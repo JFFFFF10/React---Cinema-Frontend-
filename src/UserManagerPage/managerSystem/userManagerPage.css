@@ -1,0 +1,166 @@
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font: normal normal normal 1rem/1.6 -apple-system, BlinkMacSystemFont,
+		Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+}
+body {
+	color: #ffffff;
+}
+
+.userManagerPage--container {
+	max-width: 1000px;
+	padding: 0 1rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.userManagerPage--small-container {
+	max-width: 1200px;
+	padding: 0 1rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.userManagerPage--form * {
+	color: white;
+}
+
+.userManagerPage--text-center {
+	text-align: right;
+}
+
+/**
+ * Buttons
+ */
+.userManagerPage--left,
+a.userManagerPage--left {
+	display: inline-block;
+	border: 1px solid #0366ee;
+	border-radius: 4px;
+	background: #0366ee;
+	color: #ffffff;
+	font-weight: 600;
+	font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica,
+		Arial, sans-serif;
+	font-size: 1rem;
+	text-transform: none;
+	padding: 0.75rem 1.25rem;
+	margin: 0 0 0.5rem 0;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	line-height: 1;
+}
+
+.userManagerPage--right,
+a.userManagerPage--right {
+	background: transparent;
+	border: 1px solid #cdcdcd;
+	color: #ffffff;
+	font-weight: 600;
+	font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica,
+		Arial, sans-serif;
+	font-size: 1rem;
+	text-transform: none;
+	padding: 0.75rem 1.25rem;
+	margin: 0 0 0.5rem 0;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	line-height: 1;
+}
+
+.userManagerPage--right:hover,
+a.userManagerPage--right:hover,
+.userManagerPage--left:hover,
+a.userManagerPage--left:hover,
+.round-button:hover {
+	border: 1px solid #0250bc;
+	background: #0250bc;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.round-button,
+a.round-button {
+	border: 1px solid #0366ee;
+	border-radius: 40px;
+	background: #0366ee;
+	color: #ffffff;
+	font-weight: 600;
+	font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica,
+		Arial, sans-serif;
+	font-size: 1rem;
+	text-transform: none;
+	padding: 0.75rem 1.25rem;
+	vertical-align: middle;
+	text-align: center;
+	float: right;
+	cursor: pointer;
+	text-decoration: none;
+	line-height: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+/**
+ * Forms
+ */
+form.userManagerPage--form [type="date"],
+form.userManagerPage--form [type="number"],
+form.userManagerPage--form [type="text"],
+form.userManagerPage--form [type="time"],
+form.userManagerPage--form select,
+form.userManagerPage--form textarea {
+	display: block;
+	border: 1px solid #dedede;
+	border-radius: 4px;
+	padding: 0.75rem;
+	outline: none;
+	background: transparent;
+	margin-bottom: 0.5rem;
+	font-size: 1rem;
+	width: 100%;
+	max-width: 100%;
+	line-height: 1;
+}
+
+table.striped-table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	max-width: 100%;
+}
+
+table.striped-table thead th {
+	border-bottom: 2px solid #ffffff;
+}
+
+table.striped-table td {
+	border-bottom: 1px solid #ffffff;
+}
+
+table.striped-table th,
+table.striped-table td {
+	text-align: left;
+	padding: 0.5rem;
+}
+
+.striped-table tr:nth-child(odd) {
+	background-color: #000000;
+}
+
+.userManagerPage--contain-table {
+	overflow-x: auto;
+}
+
+@media (min-width: 600px) {
+	.userManagerPage--contain-table {
+		width: 100%;
+	}
+}

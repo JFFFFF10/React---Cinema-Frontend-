@@ -27,32 +27,32 @@ body {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-table {
+.userAdmin--table {
   width: 800px;
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-th,
-td {
+.userAdmin--table th,
+.userAdmin--table td {
   height: 40px;
   padding: 12px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
-th {
+.userAdmin--table th {
   text-align: center;
 }
-thead th {
+.userAdmin--table thead th {
   background-color: #ad0b0b;
 }
-tbody tr:hover {
+.userAdmin--table tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-tbody td {
+.userAdmin--table tbody td {
   position: relative;
 }
-tbody td:hover:before {
+.userAdmin--table tbody td:hover:before {
   content: "";
   position: absolute;
   left: 0;

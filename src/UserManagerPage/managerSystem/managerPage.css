@@ -1,0 +1,45 @@
+nav.userManager-nav  {
+	color: #ffffff;
+	display: flex;
+	justify-content: space-between;
+	float: right;
+	margin-right: 80px;
+}
+
+nav.userManager-nav ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav.userManager-nav ul li {
+	margin-right: 10px;
+}
+
+nav.userManager-nav ul li a {
+	text-decoration: none;
+	transition: color 0.2s ease-in-out;
+	border: 1px solid #0366ee;
+	border-radius: 40px;
+	background: #0366ee;
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 1rem;
+	text-transform: none;
+	padding: 0.75rem 1.25rem;
+	margin: 0 0 0.5rem 0;
+	vertical-align: middle;
+	text-align: center;
+	float: right;
+	cursor: pointer;
+	text-decoration: none;
+	line-height: 1;
+}
+
+nav.userManager-nav ul li a:hover {
+	border: 1px solid #0250bc;
+	background: #0250bc;
+	color: #ffffff;
+	text-decoration: none;
+}
