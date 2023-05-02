@@ -35,10 +35,10 @@ const Header = () => {
 						</button>
 					</nav>
 					<div className="account flexSB">
-						<FontAwesomeIcon icon={faSearch} />
-						<FontAwesomeIcon icon={faUser} />
+						<button className="account-icons"><FontAwesomeIcon icon={faSearch} /></button>
+						<button className="account-icons"><FontAwesomeIcon icon={faUser} /></button>
 						<Link to="/login">
-							<button className="logInButton">Log In</button>
+							<button className="homepage--logInButton">Log In</button>
 						</Link>
 					</div>
 				</div>
