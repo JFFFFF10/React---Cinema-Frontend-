@@ -18,7 +18,6 @@ class LogoutUser extends React.Component {
 
 			console.log(response.data.message);
 			alert("Log Out Successful!");
-			return <Navigate to="/" />;
 		} catch (error) {
 			console.log(error);
 			console.log(localStorage.getItem("token"));

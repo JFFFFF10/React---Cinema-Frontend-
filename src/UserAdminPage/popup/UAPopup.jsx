@@ -30,7 +30,7 @@ const UAPopup = ({ open, onClose, user }) => {
     }
 
     // Check for valid email format
-    const emailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]$/;
+    const emailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+$/;
     if (emailInput.value && !emailRegex.test(emailInput.value)) {
       alert("Please enter a valid email address.");
       emailInput.value="";
