@@ -83,7 +83,7 @@ class LoginForm extends React.Component {
 					username: this.errorMessages.wrongAcc,
 				},
 			});
-			console.error("may ngu");
+			console.error("Login failed");
 		}
 	}
 
