@@ -1,23 +1,22 @@
 import React, { Component } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 import Header from "./Header";
 import MovieList from "./movieInfoList";
 import MovieAdd from "./movieInfoAdd";
-import MovieEdit from "./movieInfoEdit";import { movieData } from "../data/movieData";
-
+import MovieEdit from "./movieInfoEdit";
+//import { movieData } from "../data/movieData";
 
 class MovieInfo extends Component {
 	constructor(props) {
 		super(props);
-		
 		this.state = {
-			movies: movieData,
+			movies: [],
 			selectedmovie: null,
 			isAdding: false,
-			isEditing: false
+			isEditing: false,
 		};
-		
 		this.handleEdit = this.handleEdit.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 		this.setIsAdding = this.setIsAdding.bind(this);
@@ -25,43 +24,84 @@ class MovieInfo extends Component {
 		this.setmovies = this.setmovies.bind(this);
 	}
 
-	handleEdit(id) {
-		const { movies } = this.state;
-		const [movie] = movies.filter((movie) => movie.id === id);
+	componentDidMount() {
+		axios.get("https://csit-314-cinema-booking-system.vercel.app/view/")
+		  .then((response) => {
+			this.setState({
+			  movies: response.data,
+			});
+		  })
+		  .catch((error) => {
+			console.log(error);
+		  });
+	  }
+	  
 
-		this.setState({
-			selectedmovie: movie,
-			isEditing: true
-		});
-	}
+	handleEdit = (movie) => {
+		if (
+			window.confirm(`Are you sure you want to update ${movie.movie_title}?`)
+		) {
+			fetch(
+				`https://csit-314-cinema-booking-system.vercel.app/updateMov/${movie.movie_title}`,
+				{
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(movie),
+				}
+			)
+				.then((res) => res.json())
+				.then((data) => {
+					console.log(data);
+					this.props.handleEdit(movie.id);
+				})
+				.catch((err) => console.log(err));
+		}
+	};
 
-	handleDelete(id) {
-		const { movies } = this.state;
+	handleDelete(movie) {
+		axios
+			.delete(
+				`https://csit-314-cinema-booking-system.vercel.app/delMov/${movie.movie_title}`
+			)
+			.then((response) => {
+				if (response.status === 200) {
+					const { movies } = this.state;
+					const [movie] = movies.filter((movie) => movie.movie === movie);
 
-		Swal.fire({
-			icon: "warning",
-			title: "Are you sure?",
-			text: "You won't be able to revert this!",
-			showCancelButton: true,
-			confirmButtonText: "Yes, delete it!",
-			cancelButtonText: "No, cancel!",
-		}).then((result) => {
-			if (result.value) {
-				const [movie] = movies.filter((movie) => movie.id === id);
+					this.setState({
+						movies: movies.filter((movie) => movie.movie !== movie),
+					});
+
+					Swal.fire({
+						icon: "success",
+						title: "Deleted!",
+						text: `${movie.movie_title}'s data has been deleted.`,
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				} else {
+					Swal.fire({
+						icon: "error",
+						title: "Error!",
+						text: "An error occurred while deleting the movie data.",
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				}
+			})
+			.catch((error) => {
+				console.log(error);
 
 				Swal.fire({
-					icon: "success",
-					title: "Deleted!",
-					text: `${movie.movie_title}'s data has been deleted.`,
+					icon: "error",
+					title: "Error!",
+					text: "An error occurred while deleting the movie data.",
 					showConfirmButton: false,
 					timer: 1500,
 				});
-
-				this.setState({
-					movies: movies.filter((movie) => movie.id !== id)
-				});
-			}
-		});
+			});
 	}
 
 	setIsAdding(isAdding) {
@@ -109,7 +149,6 @@ class MovieInfo extends Component {
 						setIsEditing={this.setIsEditing}
 					/>
 				)}
-				
 			</div>
 		);
 	}

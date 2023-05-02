@@ -1,11 +1,51 @@
 import React from "react";
 
 class MovieList extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			searchText: "",
+		};
+	}
+
+	handleSearchChange = (event) => {
+		this.setState({ searchText: event.target.value });
+	};
+
+	handleDelete = (movie) => {
+		if (window.confirm(`Are you sure you want to delete ${movie.movie_title}?`)) {
+			fetch(`https://csit-314-cinema-booking-system.vercel.app/delMov/${movie.movie_title}`, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					console.log(data);
+					this.props.handleDelete(movie.movie_title);
+				})
+				.catch((err) => console.log(err));
+		}
+	};
+
 	render() {
-		const { movies, handleEdit, handleDelete } = this.props;
+		const { movies, handleEdit } = this.props;
+		const { searchText } = this.state;
+
+		// Filter movies based on search text
+		const filteredMovies = movies.filter((movie) =>
+			movie.movie_title.toLowerCase().includes(searchText.toLowerCase())
+		);
 
 		return (
 			<div className="userManagerPage--contain-table">
+				<div className="userManager--searchContainer">
+					<input
+						type="text"
+						placeholder="Search movies"
+						className="userManager--searchBar"
+						value={searchText}
+						onChange={this.handleSearchChange}
+					/>
+				</div>
 				<table className="striped-table">
 					<thead>
 						<tr>
@@ -23,9 +63,9 @@ class MovieList extends React.Component {
 						</tr>
 					</thead>
 					<tbody>
-						{movies.length > 0 ? (
-							movies.map((movie, i) => (
-								<tr key={movie.id} className="userManagerPage--table">
+						{filteredMovies.length > 0 ? (
+							filteredMovies.map((movie, i) => (
+								<tr key={i} className="userManagerPage--table">
 									<td>{i + 1}</td>
 									<td>{movie.movie_title}</td>
 									<td>{movie.genre}</td>
@@ -36,7 +76,7 @@ class MovieList extends React.Component {
 									<td>{movie.movie_description} </td>
 									<td className="text-right">
 										<button
-											onClick={() => handleEdit(movie.id)}
+											onClick={() => handleEdit(movie)}
 											className="userManagerPage--right"
 										>
 											Edit
@@ -44,7 +84,7 @@ class MovieList extends React.Component {
 									</td>
 									<td className="text-left">
 										<button
-											onClick={() => handleDelete(movie.id)}
+											onClick={() => this.handleDelete(movie)}
 											className="userManagerPage--right"
 										>
 											Delete

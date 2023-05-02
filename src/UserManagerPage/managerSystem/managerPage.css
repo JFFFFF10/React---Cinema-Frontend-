@@ -1,9 +1,8 @@
-nav.userManager-nav  {
+nav.userManager-nav {
 	color: #ffffff;
 	display: flex;
 	justify-content: space-between;
 	float: right;
-	margin-right: 80px;
 }
 
 nav.userManager-nav ul {
