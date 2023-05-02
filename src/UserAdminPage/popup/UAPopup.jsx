@@ -23,11 +23,30 @@ const UAPopup = ({ open, onClose, user }) => {
     const passwordInput = document.getElementById("password-input");
     const confirmPasswordInput = document.getElementById("confirm-password-input");
   
+    // Check for empty fields
     if (!emailInput.value && !passwordInput.value && !confirmPasswordInput.value) {
       alert("Please enter new email and/or password.");
       return;
     }
-  
+
+    // Check for valid email format
+    const emailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+$/;
+    if (emailInput.value && !emailRegex.test(emailInput.value)) {
+      alert("Please enter a valid email address.");
+      emailInput.value="";
+      return;
+    }
+
+    // Check for valid password format
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (passwordInput.value && !passwordRegex.test(passwordInput.value)) {
+      alert("Please enter a password that is at least 8 characters long and contains at least one letter and one number.");
+      passwordInput.value = "";
+      confirmPasswordInput.value = "";
+      return;
+    }
+
+    // Check that password and confirm password match
     if (passwordInput.value !== confirmPasswordInput.value) {
       alert("Passwords do not match.");
       return;
@@ -112,7 +131,6 @@ const UAPopup = ({ open, onClose, user }) => {
     }
   };
     
-  
   const handleReactivate = async () => {
     if (!user) {
       console.log("User object is undefined");
