@@ -35,6 +35,8 @@
     position: fixed;
     top: 8px;
     right: 8px;
+    color: black;
+    font-weight: bolder;
 }
 
 .userAdmin--content {
@@ -45,6 +47,7 @@
     text-align: left;
     margin-top: 1rem;
     padding: 1rem 2rem;
+    color: black;
 }
 
 .userAdmin--content input {
@@ -67,6 +70,7 @@
 .userAdmin--question {
     text-align: center;
     margin: auto -2rem;
+    color: black;
 }
 
 .userAdmin--btnContainer {
@@ -87,11 +91,32 @@
     border-radius: 10px;
 }
 
+.userAdmin--btnPrimary:hover {
+    background-color: rgb(40, 223, 40);
+}
+
+.userAdmin--btnPrimary:active {
+    background-color: rgb(40, 223, 40);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4),
+		0 0 0 2px rgba(0, 0, 0, 0.2) inset;
+}
+
 .userAdmin--btnOutline {
     /* background-color: #a76a99; */
     background-color: rgb(182, 28, 28);
     color: white;
     border-radius: 10px;
+}
+
+.userAdmin--btnOutline:hover {
+    /* background-color: #a76a99; */
+    background-color: rgb(230, 38, 38);
+}
+
+.userAdmin--btnOutline:active {
+    background-color: rgb(230, 38, 38);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4),
+		0 0 0 2px rgba(0, 0, 0, 0.2) inset;
 }
 
 .userAdmin--bold {

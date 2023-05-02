@@ -17,7 +17,7 @@ class LogoutUser extends React.Component {
 			console.log(response.data.message);
 			alert("Log Out Successful!");
 		} catch (error) {
-			console.log(error.response.data);
+			console.log(error);
 			alert("Log Out Unsuccessful! :(");
 		}
 	}

@@ -22,37 +22,38 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  max-height: 500px;
+  max-height: 490px;
   overflow-y: scroll;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  border-radius: 10px;
 }
-.userAdmin--table {
+.userAdmin--container table {
   width: 800px;
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-.userAdmin--table th,
-.userAdmin--table td {
+.userAdmin--container th,
+.userAdmin--container td {
   height: 40px;
   padding: 12px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
-.userAdmin--table th {
+.userAdmin--container th {
   text-align: center;
 }
-.userAdmin--table thead th {
+.userAdmin--container thead th {
   background-color: #ad0b0b;
 }
-.userAdmin--table tbody tr:hover {
+.userAdmin--container tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.userAdmin--table tbody td {
+.userAdmin--container tbody td {
   position: relative;
 }
-.userAdmin--table tbody td:hover:before {
+.userAdmin--container tbody td:hover:before {
   content: "";
   position: absolute;
   left: 0;
