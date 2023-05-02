@@ -1,22 +1,12 @@
-/* Modal Button */
-.popupButton {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    padding: 12px 24px;
-}
-
 /* Modal */
-.overlay {
+.userAdmin--overlay {
     /* background-color: rgba(0, 0, 0, 0.5); */
     position: fixed;
     width: 30%;
     height: 30%;
 }
 
-.popupContainer {
+.userAdmin--popupContainer {
     max-width: 600px;
     width: 100%;
     position: fixed;
@@ -30,83 +20,96 @@
     z-index: 9999;
 }
 
-img {
+.userAdmin--overlay img {
     width: 250px;
     object-fit: cover;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 }
 
-.popupRight {
+.userAdmin--popupRight {
     width: 100%;
 }
 
-.closeBtn {
+.userAdmin--closeBtn {
     position: fixed;
     top: 8px;
     right: 8px;
 }
 
-.content {
+.userAdmin--content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     text-align: left;
     margin-top: 1rem;
     padding: 1rem 2rem;
 }
-.question {
-    text-align: center;
-    margin-left: -2rem;
-    margin-right: -2rem;
+
+.userAdmin--content input {
+    margin-top: 0.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.btnContainer {
+.userAdmin--content input:focus{
+    background-color: grey;
+    color: white;
+}
+
+.userAdmin--question {
+    text-align: center;
+    margin: auto -2rem;
+}
+
+.userAdmin--btnContainer {
     display: flex;
     padding: 1rem 1rem;
 }
-.btnContainer button {
+.userAdmin--btnContainer button {
     width: 100%;
     margin: .5rem;
     padding: 16px 0;
     /* border: none; */
-    border: 1px solid rgb(141, 32, 32);
     /* color: #ffffff; */
 }
 
-.btnPrimary {
-    background-color: rgb(141, 32, 32);
+.userAdmin--btnPrimary {
+    background-color: rgb(19, 163, 19);
+    color: black;
+    border-radius: 10px;
+}
+
+.userAdmin--btnOutline {
+    /* background-color: #a76a99; */
+    background-color: rgb(182, 28, 28);
     color: white;
     border-radius: 10px;
 }
 
-.btnOutline {
-    /* background-color: #a76a99; */
-    background-color: white;
-    color: rgb(141, 32, 32);
-    border-radius: 10px;
-}
-
-.bold {
+.userAdmin--bold {
     font-weight: 600;
 }
 
 @media screen and (max-width: 500px) {
-.popupContainer {
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    transform: none;
-    width: 100%;
-    height: 100vh;
-}
-img {
-    width: 100%;
-    max-height: 70vh;
-    object-fit: cover;
-}
-
-.heading {
-    margin: 1rem;
-}
+    .userAdmin--popupContainer {
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        height: 100vh;
+    }
+    .userAdmin--overlay img {
+        width: 100%;
+        max-height: 70vh;
+        object-fit: cover;
+    }
 }

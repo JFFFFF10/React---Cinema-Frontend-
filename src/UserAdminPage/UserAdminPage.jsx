@@ -12,19 +12,18 @@ function UserAdminPage() {
         Header: "Username",
         accessor: "username",
         Cell: ({ value, row }) => (
-          <a
-            href="#"
+          <button
             onClick={() => {
               setSelectedUser(row.original);
               setOpenPopup(true);
             }}
             className="userAdmin--username"
-            style={{ color: "lightblue", textDecoration: "underline" }}
+            style={{ color: "lightblue", textDecoration: "underline", background: "none", border: "none", padding: 0, cursor: "pointer" }}
           >
             {value}
-          </a>
-        ),      
-      },      
+          </button>
+        ),
+      },            
       {
         Header: "Email",
         accessor: "email",
@@ -68,7 +67,7 @@ function UserAdminPage() {
   );
 
   // Add empty objects to filteredData until it has a length of 9
-  while (filteredData.length < 9) {
+  while (filteredData.length < 10) {
     filteredData.push({});
   }
 
@@ -119,7 +118,7 @@ function UserAdminPage() {
                     No data available.
                   </td>
                 </tr>
-                {[...Array(8)].map((_, index) => (
+                {[...Array(9)].map((_, index) => (
                   <tr key={index}>
                     <td colSpan={columns.length}>&nbsp;</td>
                   </tr>
