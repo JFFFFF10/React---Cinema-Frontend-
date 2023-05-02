@@ -14,7 +14,6 @@ const HomePage = () => {
     <>
       <Header />
       <Homes />
-      
       <Upcoming items={items} title='Upcoming Movies' />
       <Upcoming items={item} title='Latest Movies' />
       <Upcoming items={rec} title='Recommended Movies' />

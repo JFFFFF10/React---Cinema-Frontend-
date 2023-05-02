@@ -7,10 +7,11 @@ header {
   z-index: 999;
 }
 .logo img {
-  width: 150px;
-  margin-top: 20px;
+  width: 15vh;
+  margin-top: 10%;
   margin-right: 30px;
 }
+
 header a {
   color: #fff;
   margin-left: 30px;
@@ -24,7 +25,7 @@ header i {
   border: 2px solid #fff;
   margin: 0 10px;
 }
-header button {
+header .logInButton {
   border-radius: 10px;
   font-size: 15px;
   font-weight: bold;
@@ -67,24 +68,25 @@ header ul li a:hover::after {
 .account {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: right;
 }
-.logInButton {
-  background: #e50813;
-  outline: none;
-  border: none;
-  color: #fff;
-  padding: 12px 40px;
-  font-weight: 500;
-  font-size: 17px;
-  margin-left: 1rem;
+.homepage--logInButton {
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 .logInButton:hover {
   background-color: white;
   color: red;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
-
+.account-icons {
+  background-color: transparent;
+  width: 1rem;
+}
 
 @media only screen and (max-width: 768px) {
   header nav .flexSB {
