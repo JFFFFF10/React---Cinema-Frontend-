@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 class LogoutUser extends React.Component {
 	async logoutUser() {
@@ -9,15 +10,18 @@ class LogoutUser extends React.Component {
 				{},
 				{
 					headers: {
-						Authorization: `Token ${localStorage.getItem("token")}`,
+						'Content-Type': 'application/json',
+						'Authorization': `Token ${localStorage.getItem("token")}`,
 					},
 				}
 			);
 
 			console.log(response.data.message);
 			alert("Log Out Successful!");
+			return <Navigate to="/" />;
 		} catch (error) {
 			console.log(error);
+			console.log(localStorage.getItem("token"));
 			alert("Log Out Unsuccessful! :(");
 		}
 	}

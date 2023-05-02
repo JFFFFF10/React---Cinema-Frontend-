@@ -22,7 +22,6 @@ class LoggedIn extends React.Component {
 
 	componentDidMount() {
 		// Make an API request to get the user data
-		console.log(localStorage.getItem("token"));
 		axios
 			.get("https://csit-314-cinema-booking-system.vercel.app/getUser/", {
 				headers: {

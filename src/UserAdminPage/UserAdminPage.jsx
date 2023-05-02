@@ -2,7 +2,9 @@ import * as React from "react";
 import { useTable } from "react-table";
 import { useState, useEffect } from "react";
 import "./UserAdminPage.css"; // import CSS file inside the component
+import LogoutUser from "../LogPage/Logout/Logout";
 import UAPopup from "./popup/UAPopup";
+import { Link } from "react-router-dom";
 
 function UserAdminPage() {
 	const [data, setData] = useState([]);
@@ -51,6 +53,11 @@ function UserAdminPage() {
 	const [openPopup, setOpenPopup] = useState(false);
 	const [selectedUser, setSelectedUser] = useState(null);
 
+  const handleLogoutClick = () => {
+		const logout = new LogoutUser();
+		logout.logoutUser();
+	};
+
 	const handleSearch = (e) => {
 		setSearchText(e.target.value);
 	};
@@ -94,7 +101,9 @@ function UserAdminPage() {
               onChange={handleSearch}
             />
           </div>
-          <button className="userAdmin--adduserButton" onClick={() => console.log("Add user clicked")}>Add User +</button>
+          <Link to="/">
+            <button className="userAdmin--adduserButton" onClick={handleLogoutClick}>Log Out</button>
+          </Link>
         </div>
 
         <div className="userAdmin--container">
