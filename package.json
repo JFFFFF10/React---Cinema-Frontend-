@@ -22,6 +22,7 @@
     "react-table": "^7.8.0",
     "read-scripts": "^1.1.0",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.7.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

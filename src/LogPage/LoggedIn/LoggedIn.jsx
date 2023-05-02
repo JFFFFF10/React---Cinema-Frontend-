@@ -11,6 +11,7 @@ class LoggedIn extends React.Component {
 		this.state = {
 			user: {},
 			redirectToUserAdminPage: false, // Add new state to track if should redirect to UserAdminPage
+			redirectToUserManagerPage: false,
 		};
 	}
 
@@ -37,6 +38,9 @@ class LoggedIn extends React.Component {
 				if (response.data.role === "UserAdmin") {
 					this.setState({ redirectToUserAdminPage: true });
 				}
+				if (response.data.role === "CinemaManager") {
+					this.setState({ redirectToUserManagerPage: true });
+				}
 			})
 			.catch((error) => {
 				console.log(error);
@@ -44,18 +48,27 @@ class LoggedIn extends React.Component {
 	}
 
 	render() {
-		const { user, redirectToUserAdminPage } = this.state;
+		const { user, redirectToUserAdminPage, redirectToUserManagerPage } =
+			this.state;
 
 		if (redirectToUserAdminPage) {
 			return <Navigate to="/UserAdminPage" />;
+		}
+		if (redirectToUserManagerPage) {
+			return <Navigate to="/MovieInfo" />;
 		}
 
 		return (
 			<>
 				<Card>
-					<h1 className="LoggedIn--subtitle">You are now logged in as {user.role}</h1>
+					<h1 className="LoggedIn--subtitle">
+						You are now logged in as {user.role}
+					</h1>
 					<Link to="/">
-						<button className="LoggedIn--back_button" onClick={this.handleLogoutClick}>
+						<button
+							className="LoggedIn--back_button"
+							onClick={this.handleLogoutClick}
+						>
 							Log Out
 						</button>
 					</Link>

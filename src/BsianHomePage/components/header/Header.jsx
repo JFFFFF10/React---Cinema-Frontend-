@@ -38,9 +38,7 @@ const Header = () => {
 						<FontAwesomeIcon icon={faSearch} />
 						<FontAwesomeIcon icon={faUser} />
 						<Link to="/login">
-							<button className="logInButton">
-								Log In
-							</button>
+							<button className="logInButton">Log In</button>
 						</Link>
 					</div>
 				</div>
