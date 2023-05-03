@@ -1,10 +1,12 @@
 import React from "react";
+import axios from "axios";
 
 class MovieList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchText: "",
+			movie_title: "",
 		};
 	}
 
@@ -12,17 +14,30 @@ class MovieList extends React.Component {
 		this.setState({ searchText: event.target.value });
 	};
 
-	handleDelete = (movie) => {
-		if (window.confirm(`Are you sure you want to delete ${movie.movie_title}?`)) {
-			fetch(`https://csit-314-cinema-booking-system.vercel.app/delMov/${movie.movie_title}`, {
-				method: "DELETE",
-			})
-				.then((res) => res.json())
-				.then((data) => {
-					console.log(data);
-					this.props.handleDelete(movie.movie_title);
-				})
-				.catch((err) => console.log(err));
+	handleDelete = async () => {
+		const token = localStorage.getItem("token");
+
+		const { movie_title } = this.state;
+
+		try {
+			const response = await axios.delete(
+				`https://csit-314-cinema-booking-system.vercel.app/delMov/`,
+				{ movie_title: movie_title },
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Token ${token}`,
+					},
+				}
+			);
+
+			if (response.status === 200) {
+				// Movie added successfully
+				console.log("Movie delete successfully.");
+			}
+		} catch (error) {
+			console.log(token);
+			throw new Error("An error occurred while deleting the movie.");
 		}
 	};
 

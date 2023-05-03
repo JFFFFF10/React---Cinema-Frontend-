@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 class MovieAdd extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			// id: "",
 			movie_title: "",
 			genre: "",
 			duration: "",
 			release_date: "",
 			cast: "",
+			director: "",
+			movie_description: "",
 		};
 		this.textInput = React.createRef();
 	}
@@ -18,11 +22,31 @@ class MovieAdd extends Component {
 		this.textInput.current.focus();
 	}
 
-	handleAdd = (e) => {
-		e.preventDefault();
-		const { movie_title, genre, duration, release_date, cast } = this.state;
+	handleInputChange = (event) => {
+		const { name, value } = event.target;
+		this.setState({ [name]: value });
+	};
 
-		if (!movie_title || !genre || !duration || !release_date || !cast) {
+	handleCancel = () => {
+		this.props.setIsAdding(false);
+	};
+
+	handleAdd = async (e) => {
+		const token = localStorage.getItem("token");
+
+		e.preventDefault();
+		const {
+			//id,
+			movie_title,
+			genre,
+			duration,
+			release_date,
+			cast,
+			director,
+			movie_description,
+		} = this.state;
+
+		if (!id || !movie_title || !genre || !duration || !release_date || !cast) {
 			return Swal.fire({
 				icon: "error",
 				title: "Error!",
@@ -31,43 +55,78 @@ class MovieAdd extends Component {
 			});
 		}
 
-		const id = this.props.movies.length + 1;
-		const newMovie = {
+		try {
+			const response = await axios.post(
+				"https://csit-314-cinema-booking-system.vercel.app/addMov/",
+				{
+					//id: id,
+					movie_title: movie_title,
+					genre: genre,
+					duration: duration,
+					release_date: release_date,
+					cast: cast,
+					director: director,
+					movie_description: movie_description,
+				},
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Token ${token}`,
+					},
+				}
+			);
+
+			Swal.fire({
+				icon: "success",
+				title: "Added!",
+				text: `${movie_title} 's data has been Added.`,
+				showConfirmButton: false,
+				timer: 1500,
+			});
+
+			this.setState({
+				//id: "",
+				movie_title: "",
+				genre: "",
+				duration: "",
+				release_date: "",
+				cast: "",
+				director: "",
+				movie_description: "",
+			});
+			if (response.status === 200) {
+				// Movie added successfully
+				console.log("Movie added successfully.");
+			}
+		} catch (error) {
+			console.error("wtf?");
+		}
+	};
+
+	render() {
+		const {
 			id,
 			movie_title,
 			genre,
 			duration,
 			release_date,
 			cast,
-		};
-		const movies = [...this.props.movies, newMovie];
-		this.props.setmovies(movies);
-		this.props.setIsAdding(false);
-
-		Swal.fire({
-			icon: "success",
-			title: "Added!",
-			text: `${movie_title} 's data has been Added.`,
-			showConfirmButton: false,
-			timer: 1500,
-		});
-
-		this.setState({
-			movie_title: "",
-			genre: "",
-			duration: "",
-			release_date: "",
-			cast: "",
-		});
-	};
-
-	render() {
-		const { movie_title, genre, duration, release_date, cast } = this.state;
-		const { setIsAdding } = this.props;
+			director,
+			movie_description,
+		} = this.state;
 
 		return (
 			<div className="userManagerPage--small-container">
 				<form onSubmit={this.handleAdd} className="userManagerPage--form">
+					{/* <label htmlFor="id">ID</label>
+					<input
+						id="id"
+						type="text"
+						ref={this.textInput}
+						name="id"
+						value={id}
+						onChange={this.handleInputChange}
+					/> */}
 					<h1>Add Movie</h1>
 					<label htmlFor="movie_title">New Movie</label>
 					<input
@@ -76,39 +135,61 @@ class MovieAdd extends Component {
 						ref={this.textInput}
 						name="movie_title"
 						value={movie_title}
-						onChange={(e) => this.setState({ movie_title: e.target.value })}
+						onChange={this.handleInputChange}
 					/>
 					<label htmlFor="genre">Genre</label>
 					<input
 						id="genre"
 						type="text"
+						ref={this.textInput}
 						name="genre"
 						value={genre}
-						onChange={(e) => this.setState({ genre: e.target.value })}
+						onChange={this.handleInputChange}
 					/>
 					<label htmlFor="duration">Duration</label>
 					<input
 						id="duration"
-						type="time"
+						type="text"
+						ref={this.textInput}
 						name="duration"
 						value={duration}
-						onChange={(e) => this.setState({ duration: e.target.value })}
+						onChange={this.handleInputChange}
 					/>
 					<label htmlFor="release_date">Release Date</label>
 					<input
 						id="release_date"
 						type="date"
+						ref={this.textInput}
 						name="release_date"
 						value={release_date}
-						onChange={(e) => this.setState({ release_date: e.target.value })}
+						onChange={this.handleInputChange}
 					/>
 					<label htmlFor="cast">Cast</label>
 					<input
 						id="cast"
 						type="text"
+						ref={this.textInput}
 						name="cast"
 						value={cast}
-						onChange={(e) => this.setState({ cast: e.target.value })}
+						onChange={this.handleInputChange}
+					/>
+					<label htmlFor="director">Director</label>
+					<input
+						id="director"
+						type="text"
+						ref={this.textInput}
+						name="director"
+						value={director}
+						onChange={this.handleInputChange}
+					/>
+					<label htmlFor="movie_description">Movie Description</label>
+					<input
+						id="movie_description"
+						type="text"
+						ref={this.textInput}
+						name="movie_description"
+						value={movie_description}
+						onChange={this.handleInputChange}
 					/>
 					<div style={{ marginTop: "30px" }}>
 						<input
@@ -121,7 +202,7 @@ class MovieAdd extends Component {
 							className="userManagerPage--right"
 							type="button"
 							value="Cancel"
-							onClick={() => setIsAdding(false)}
+							onClick={this.handleCancel}
 						/>
 					</div>
 				</form>

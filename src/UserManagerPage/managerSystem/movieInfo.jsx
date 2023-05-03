@@ -6,7 +6,6 @@ import Header from "./Header";
 import MovieList from "./movieInfoList";
 import MovieAdd from "./movieInfoAdd";
 import MovieEdit from "./movieInfoEdit";
-//import { movieData } from "../data/movieData";
 
 class MovieInfo extends Component {
 	constructor(props) {
@@ -25,17 +24,17 @@ class MovieInfo extends Component {
 	}
 
 	componentDidMount() {
-		axios.get("https://csit-314-cinema-booking-system.vercel.app/view/")
-		  .then((response) => {
-			this.setState({
-			  movies: response.data,
+		axios
+			.get("https://csit-314-cinema-booking-system.vercel.app/view/")
+			.then((response) => {
+				this.setState({
+					movies: response.data,
+				});
+			})
+			.catch((error) => {
+				console.log(error);
 			});
-		  })
-		  .catch((error) => {
-			console.log(error);
-		  });
-	  }
-	  
+	}
 
 	handleEdit = (movie) => {
 		if (
@@ -68,10 +67,12 @@ class MovieInfo extends Component {
 			.then((response) => {
 				if (response.status === 200) {
 					const { movies } = this.state;
-					const [movie] = movies.filter((movie) => movie.movie === movie);
+					const filteredMovies = movies.filter(
+						(movieObj) => movieObj.movie_title !== movie.movie_title
+					);
 
 					this.setState({
-						movies: movies.filter((movie) => movie.movie !== movie),
+						movies: filteredMovies,
 					});
 
 					Swal.fire({
