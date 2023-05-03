@@ -14,15 +14,13 @@ class MovieList extends React.Component {
 		this.setState({ searchText: event.target.value });
 	};
 
-	handleDelete = async () => {
+	handleDelete = async (movie_title) => {
 		const token = localStorage.getItem("token");
 
-		const { movie_title } = this.state;
-
 		try {
-			const response = await axios.delete(
+			const response = await axios.post(
 				`https://csit-314-cinema-booking-system.vercel.app/delMov/`,
-				{ movie_title: movie_title },
+				{ movie_title: movie_title.movie_title },
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -36,7 +34,7 @@ class MovieList extends React.Component {
 				console.log("Movie delete successfully.");
 			}
 		} catch (error) {
-			console.log(token);
+			console.log(movie_title.movie_title);
 			throw new Error("An error occurred while deleting the movie.");
 		}
 	};

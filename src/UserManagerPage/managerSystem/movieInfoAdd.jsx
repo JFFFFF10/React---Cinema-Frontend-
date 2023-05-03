@@ -6,7 +6,6 @@ class MovieAdd extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			id: "",
 			movie_title: "",
 			genre: "",
 			duration: "",
@@ -36,7 +35,6 @@ class MovieAdd extends Component {
 
 		e.preventDefault();
 		const {
-			id,
 			movie_title,
 			genre,
 			duration,
@@ -46,7 +44,7 @@ class MovieAdd extends Component {
 			movie_description,
 		} = this.state;
 
-		if (!id || !movie_title || !genre || !duration || !release_date || !cast) {
+		if (!movie_title || !genre || !duration || !release_date || !cast) {
 			return Swal.fire({
 				icon: "error",
 				title: "Error!",
@@ -59,7 +57,6 @@ class MovieAdd extends Component {
 			const response = await axios.post(
 				"https://csit-314-cinema-booking-system.vercel.app/addMov/",
 				{
-					id: id,
 					movie_title: movie_title,
 					genre: genre,
 					duration: duration,
@@ -85,7 +82,6 @@ class MovieAdd extends Component {
 			});
 
 			this.setState({
-				id: "",
 				movie_title: "",
 				genre: "",
 				duration: "",
@@ -105,7 +101,6 @@ class MovieAdd extends Component {
 
 	render() {
 		const {
-			id,
 			movie_title,
 			genre,
 			duration,
