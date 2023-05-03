@@ -2,8 +2,8 @@ import HomePage from "./BsianHomePage/HomePage/HomePage";
 import AuthPage from "./LogPage/LoginForm/LoginPage";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import UserAdminPage from "./UserAdminPage/UserAdminPage";
-import MovieInfo from './UserManagerPage/managerSystem/movieInfo';
-import RoomBooking from "./UserManagerPage/managerSystem/roomBooking";
+import MovieInfo from './CinemaManagerPage/managerSystem/movieInfo';
+import RoomBooking from "./CinemaManagerPage/managerSystem/roomBooking";
 
 function App() {
   return (

@@ -6,14 +6,12 @@ import RoomBookingList from "./roomBookingList";
 import RoomBookingAdd from "./roomBookingAdd";
 import RoomBookingEdit from "./roomBookingEdit";
 
-import { cinemaRoomData } from "../data/cinemaRoomData";
-
 class RoomBooking extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			movies: cinemaRoomData,
+			movies: "",
 			selectedmovie: null,
 			isAdding: false,
 			isEditing: false,
