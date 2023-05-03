@@ -6,7 +6,7 @@ class MovieAdd extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			// id: "",
+			id: "",
 			movie_title: "",
 			genre: "",
 			duration: "",
@@ -36,7 +36,7 @@ class MovieAdd extends Component {
 
 		e.preventDefault();
 		const {
-			//id,
+			id,
 			movie_title,
 			genre,
 			duration,
@@ -59,7 +59,7 @@ class MovieAdd extends Component {
 			const response = await axios.post(
 				"https://csit-314-cinema-booking-system.vercel.app/addMov/",
 				{
-					//id: id,
+					id: id,
 					movie_title: movie_title,
 					genre: genre,
 					duration: duration,
@@ -85,7 +85,7 @@ class MovieAdd extends Component {
 			});
 
 			this.setState({
-				//id: "",
+				id: "",
 				movie_title: "",
 				genre: "",
 				duration: "",
