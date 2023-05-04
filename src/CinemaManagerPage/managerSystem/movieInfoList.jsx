@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 class MovieList extends React.Component {
 	constructor(props) {
@@ -28,6 +29,14 @@ class MovieList extends React.Component {
 					},
 				}
 			);
+
+			Swal.fire({
+				icon: "success",
+				title: "Deleted!",
+				text: `${movie_title.movie_title} 's data has been Deleted.`,
+				showConfirmButton: false,
+				timer: 1500,
+			});
 
 			if (response.status === 200) {
 				// Movie added successfully
@@ -92,7 +101,7 @@ class MovieList extends React.Component {
 											onClick={() => handleEdit(movie)}
 											className="userManagerPage--right"
 										>
-											Edit
+											Update
 										</button>
 									</td>
 									<td className="text-left">

@@ -27,7 +27,9 @@ class MovieAdd extends Component {
 	};
 
 	handleCancel = () => {
+		window.location.reload();
 		this.props.setIsAdding(false);
+		
 	};
 
 	handleAdd = async (e) => {
@@ -44,7 +46,15 @@ class MovieAdd extends Component {
 			movie_description,
 		} = this.state;
 
-		if (!movie_title || !genre || !duration || !release_date || !cast) {
+		if (
+			!movie_title ||
+			!genre ||
+			!duration ||
+			!release_date ||
+			!cast ||
+			!director ||
+			!movie_description
+		) {
 			return Swal.fire({
 				icon: "error",
 				title: "Error!",
@@ -76,7 +86,7 @@ class MovieAdd extends Component {
 			Swal.fire({
 				icon: "success",
 				title: "Added!",
-				text: `${movie_title} 's data has been Added.`,
+				text: `Movie data has been Added.`,
 				showConfirmButton: false,
 				timer: 1500,
 			});
@@ -113,15 +123,6 @@ class MovieAdd extends Component {
 		return (
 			<div className="userManagerPage--small-container">
 				<form onSubmit={this.handleAdd} className="userManagerPage--form">
-					{/* <label htmlFor="id">ID</label>
-					<input
-						id="id"
-						type="text"
-						ref={this.textInput}
-						name="id"
-						value={id}
-						onChange={this.handleInputChange}
-					/> */}
 					<h1>Add Movie</h1>
 					<label htmlFor="movie_title">New Movie</label>
 					<input

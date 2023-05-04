@@ -36,27 +36,14 @@ class MovieInfo extends Component {
 			});
 	}
 
-	handleEdit = (movie) => {
-		if (
-			window.confirm(`Are you sure you want to update ${movie.movie_title}?`)
-		) {
-			fetch(
-				`https://csit-314-cinema-booking-system.vercel.app/updateMov/${movie.movie_title}`,
-				{
-					method: "PUT",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(movie),
-				}
-			)
-				.then((res) => res.json())
-				.then((data) => {
-					console.log(data);
-					this.props.handleEdit(movie.id);
-				})
-				.catch((err) => console.log(err));
-		}
+	handleEdit(id) {
+		const { movies } = this.state;
+		const [movie] = movies.filter((movie) => movie.id === id);
+
+		this.setState({
+			selectedmovie: movie,
+			isEditing: true,
+		});
 	};
 
 	handleDelete(movie) {
