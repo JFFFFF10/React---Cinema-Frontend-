@@ -19,7 +19,7 @@ class MovieEdit extends Component {
 		};
 	}
 
-	handleSubmit = async (e) => {
+	handleUpdate = async (e) => {
 		const token = localStorage.getItem("token");
 		e.preventDefault();
 		const { setIsEditing } = this.props;
@@ -47,10 +47,10 @@ class MovieEdit extends Component {
 
 			Swal.fire({
 				icon: "success",
-				title: "Added!",
+				title: "Updated!",
 				text: `${this.state.movie_title} data has been updated.`,
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 3000,
 			});
 			window.location.reload();
 			console.log(response.data);
@@ -74,7 +74,7 @@ class MovieEdit extends Component {
 
 		return (
 			<div className="userManagerPage--small-container">
-				<form onSubmit={this.handleSubmit} className="userManagerPage--form">
+				<form onSubmit={this.handleUpdate} className="userManagerPage--form">
 					<h1>Update movie</h1>
 					<label htmlFor="movie_title">Movie</label>
 					<input
@@ -85,6 +85,7 @@ class MovieEdit extends Component {
 						onChange={(event) =>
 							this.setState({ movie_title: event.target.value })
 						}
+						disabled
 					/>
 					<label htmlFor="genre">Genre</label>
 					<input
@@ -133,11 +134,13 @@ class MovieEdit extends Component {
 						}
 					/>
 					<label htmlFor="movie_description">Movie Description</label>
-					<input
+					<textarea
 						id="movie_description"
 						type="text"
 						name="movie_description"
 						value={movie_description}
+						rows="5"
+						cols="50"
 						onChange={(event) =>
 							this.setState({ movie_description: event.target.value })
 						}

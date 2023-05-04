@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Swal from "sweetalert2";
 import axios from "axios";
 
 import Header from "./Header";
@@ -10,6 +9,7 @@ import MovieEdit from "./movieInfoEdit";
 class MovieInfo extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			movies: [],
 			selectedmovie: null,
@@ -17,7 +17,6 @@ class MovieInfo extends Component {
 			isEditing: false,
 		};
 		this.handleEdit = this.handleEdit.bind(this);
-		this.handleDelete = this.handleDelete.bind(this);
 		this.setIsAdding = this.setIsAdding.bind(this);
 		this.setIsEditing = this.setIsEditing.bind(this);
 		this.setmovies = this.setmovies.bind(this);
@@ -36,60 +35,11 @@ class MovieInfo extends Component {
 			});
 	}
 
-	handleEdit(id) {
-		const { movies } = this.state;
-		const [movie] = movies.filter((movie) => movie.id === id);
-
+	handleEdit(movie) {
 		this.setState({
 			selectedmovie: movie,
 			isEditing: true,
 		});
-	};
-
-	handleDelete(movie) {
-		axios
-			.delete(
-				`https://csit-314-cinema-booking-system.vercel.app/delMov/${movie.movie_title}`
-			)
-			.then((response) => {
-				if (response.status === 200) {
-					const { movies } = this.state;
-					const filteredMovies = movies.filter(
-						(movieObj) => movieObj.movie_title !== movie.movie_title
-					);
-
-					this.setState({
-						movies: filteredMovies,
-					});
-
-					Swal.fire({
-						icon: "success",
-						title: "Deleted!",
-						text: `${movie.movie_title}'s data has been deleted.`,
-						showConfirmButton: false,
-						timer: 1500,
-					});
-				} else {
-					Swal.fire({
-						icon: "error",
-						title: "Error!",
-						text: "An error occurred while deleting the movie data.",
-						showConfirmButton: false,
-						timer: 1500,
-					});
-				}
-			})
-			.catch((error) => {
-				console.log(error);
-
-				Swal.fire({
-					icon: "error",
-					title: "Error!",
-					text: "An error occurred while deleting the movie data.",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			});
 	}
 
 	setIsAdding(isAdding) {

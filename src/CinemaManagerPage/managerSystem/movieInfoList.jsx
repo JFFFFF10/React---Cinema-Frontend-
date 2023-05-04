@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import MovieEdit from "./movieInfoEdit";
 
 class MovieList extends React.Component {
 	constructor(props) {
@@ -35,7 +36,7 @@ class MovieList extends React.Component {
 				title: "Deleted!",
 				text: `${movie_title.movie_title} 's data has been Deleted.`,
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 3000,
 			});
 
 			if (response.status === 200) {

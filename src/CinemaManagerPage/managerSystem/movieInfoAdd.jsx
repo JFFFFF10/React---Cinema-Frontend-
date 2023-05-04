@@ -29,7 +29,6 @@ class MovieAdd extends Component {
 	handleCancel = () => {
 		window.location.reload();
 		this.props.setIsAdding(false);
-		
 	};
 
 	handleAdd = async (e) => {
@@ -88,7 +87,7 @@ class MovieAdd extends Component {
 				title: "Added!",
 				text: `Movie data has been Added.`,
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 3000,
 			});
 
 			this.setState({
@@ -179,12 +178,14 @@ class MovieAdd extends Component {
 						onChange={this.handleInputChange}
 					/>
 					<label htmlFor="movie_description">Movie Description</label>
-					<input
+					<textarea
 						id="movie_description"
 						type="text"
 						ref={this.textInput}
 						name="movie_description"
 						value={movie_description}
+						rows="5"
+						cols="50"
 						onChange={this.handleInputChange}
 					/>
 					<div style={{ marginTop: "30px" }}>
