@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import "./LoginForm.css";
 import Card from "../Card/Card";
@@ -100,52 +101,57 @@ class LoginForm extends React.Component {
 		const { onSwitchForm } = this.props;
 
 		return (
-			<Card>
-				<h1 className="loginForm">User Login</h1>
+			<>
+			<div className="LoginForm-wholeLoginPage">
+				<Link to="/" className="loginForm--home_button">Go Back Home</Link>
+				<Card>
+					<h1 className="loginForm">User Login</h1>
 
-				<form onSubmit={this.handleSubmit}>
-					<div className="loginForms_container">
-						<div className="loginForm_icon_container">
-							<PersonIcon className="loginForm--icon" />
-							<input
-								type="text"
-								placeholder="Insert your username here"
-								value={username}
-								onChange={(e) => this.setState({ username: e.target.value })}
-							/>
+					<form onSubmit={this.handleSubmit}>
+						<div className="loginForms_container">
+							<div className="loginForm_icon_container">
+								<PersonIcon className="loginForm--icon" />
+								<input
+									type="text"
+									placeholder="Insert your username here"
+									value={username}
+									onChange={(e) => this.setState({ username: e.target.value })}
+								/>
+							</div>
+							{this.renderErrorMsg("username")}
+							{this.renderErrorMsg("noUsername")}
+
+							<div className="loginForm_icon_container">
+								<LockIcon className="loginForm--icon" />
+								<input
+									type="password"
+									placeholder="Insert your password here"
+									value={password}
+									onChange={(e) => this.setState({ password: e.target.value })}
+								/>
+							</div>
+							{this.renderErrorMsg("password")}
+							{this.renderErrorMsg("noPassword")}
 						</div>
-						{this.renderErrorMsg("username")}
-						{this.renderErrorMsg("noUsername")}
 
-						<div className="loginForm_icon_container">
-							<LockIcon className="loginForm--icon" />
-							<input
-								type="password"
-								placeholder="Insert your password here"
-								value={password}
-								onChange={(e) => this.setState({ password: e.target.value })}
-							/>
+						<button type="submit" className="loginForm--login_button">
+							Log In
+						</button>
+						<div className="link_container">
+							<span className="loginForm--small">Not a Member?</span>
 						</div>
-						{this.renderErrorMsg("password")}
-						{this.renderErrorMsg("noPassword")}
-					</div>
-
-					<button type="submit" className="loginForm--login_button">
-						Log In
-					</button>
-					<div className="link_container">
-						<span className="loginForm--small">Not a Member?</span>
-					</div>
-					<button
-						type="button"
-						className="loginForm--register_button"
-						onClick={onSwitchForm}
-					>
-						Create User Account
-					</button>
-					<span className="loginForm--subtitle"> 2023 Bsian Entertainment™</span>
-				</form>
-			</Card>
+						<button
+							type="button"
+							className="loginForm--register_button"
+							onClick={onSwitchForm}
+						>
+							Create User Account
+						</button>
+						<span className="loginForm--subtitle"> 2023 Bsian Entertainment™</span>
+					</form>
+				</Card>
+			</div>
+			</>
 		);
 	}
 }
