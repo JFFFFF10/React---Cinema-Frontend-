@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "./UserAdminPage.css"; // import CSS file inside the component
 import LogoutUser from "../LogPage/Logout/Logout";
 import UAPopup from "./popup/UAPopup";
+import UAPopupAdd from "./popup/UAPopupAdd";
 import { Link } from "react-router-dom";
 
 function UserAdminPage() {
@@ -58,6 +59,7 @@ function UserAdminPage() {
 
 	const [searchText, setSearchText] = useState("");
 	const [openPopup, setOpenPopup] = useState(false);
+	const [openPopupAdd, setOpenPopupAdd] = useState(false);
 	const [selectedUser, setSelectedUser] = useState(null);
 
 	const handleLogoutClick = () => {
@@ -105,9 +107,15 @@ function UserAdminPage() {
 							onChange={handleSearch}
 						/>
 					</div>
+					<button
+							className="userAdmin--adduserButton"
+							onClick={() => setOpenPopupAdd(true)}
+						>
+							Add New +
+					</button>
 					<Link to="/">
 						<button
-							className="userAdmin--adduserButton"
+							className="userAdmin--logOutButton"
 							onClick={handleLogoutClick}
 						>
 							Log Out
@@ -167,6 +175,10 @@ function UserAdminPage() {
 				open={openPopup}
 				onClose={() => setOpenPopup(false)}
 				user={selectedUser}
+			/>
+			<UAPopupAdd
+				open={openPopupAdd}
+				onClose={() => setOpenPopupAdd(false)}
 			/>
 		</>
 	);

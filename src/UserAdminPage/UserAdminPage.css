@@ -97,6 +97,24 @@ body {
 
 .userAdmin--adduserButton {
   border-radius: 10px;
+  height: 32px;
+  width: 100px;
+  size: 0.8rem;
+  margin-right: 2rem;
+  padding: 0;
+  background-color: #004999;
+
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+}
+
+.userAdmin--adduserButton:hover {
+  background-color: white;
+  color: #004999;
+}
+
+.userAdmin--logOutButton {
+  border-radius: 10px;
   height: 30px;
   width: 100px;
   size: 0.8rem;
@@ -106,7 +124,7 @@ body {
   animation-duration: 0.5s;
 }
 
-.userAdmin--adduserButton:hover {
+.userAdmin--logOutButton:hover {
   background-color: white;
   color: red;
   border: 2px solid red;
