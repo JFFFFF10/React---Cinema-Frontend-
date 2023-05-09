@@ -11,8 +11,7 @@ const HomeCard = ({ item: { id, cover, name, rating, time, desc, starring, genre
         <div className='content flex'>
           <div className='details row'>
             <h1>{name}</h1>
-            <div className='rating flex'>
-              <span>GP</span>
+            <div className='time flex'>
               <label>{time}</label>
             </div>
             <p className="description">{desc}</p>
@@ -30,9 +29,11 @@ const HomeCard = ({ item: { id, cover, name, rating, time, desc, starring, genre
                 {tags}
               </h4>
             </div>
-            <button className='primary-btn'>
-              <i className='fas fa-play'></i> BOOK NOW
-            </button>
+            <Link to={`/movie/${id}`}>
+              <button className='primary-btn'>
+                <i className='fas fa-play'></i> BOOK NOW
+              </button>
+            </Link>
           </div>
           {/* <div className='palyButton row'>
             <Link to={`/movie/${name}`}>

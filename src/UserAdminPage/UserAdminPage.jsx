@@ -65,19 +65,24 @@ function UserAdminPage() {
 	const handleLogoutClick = () => {
 		const logout = new LogoutUser();
 		logout.logoutUser();
+		localStorage.removeItem("token");
 	};
 
 	const handleSearch = (e) => {
 		setSearchText(e.target.value);
 	};
 
-	useEffect(() => {
+	function fetchData() {
 		fetch("https://csit-314-cinema-booking-system.vercel.app/")
-			.then((response) => response.json())
-			.then((data) => setData(data))
-			.catch((error) => console.error(error));
+		  .then((response) => response.json())
+		  .then((data) => setData(data))
+		  .catch((error) => console.error(error));
+	  }
+	  
+	useEffect(() => {
+	fetchData();
 	}, []);
-
+	  
 	const filteredData = data.filter((item) =>
 		item.username.toLowerCase().includes(searchText.toLowerCase())
 	);
