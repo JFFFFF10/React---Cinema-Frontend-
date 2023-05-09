@@ -32,6 +32,7 @@ const SinglePage = () => {
               </div>
             </div>
           </section>
+          
           <Upcomming items={rec} title='Recommended Movies' />
         </>
       ) : (
