@@ -1,0 +1,55 @@
+.movieSessionPage--content {
+    min-height: 90vh;
+}
+
+.movieSessionPage--content {
+    min-height: 90vh;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .movieSessionPage--content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .movieSessionPage--content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .movieSessionPage--content th,
+  .movieSessionPage--content td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    color: black;
+  }
+  
+  .movieSessionPage--content th {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: bold;
+  }
+  
+  .movieSessionPage--content tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .movieSessionPage--content tbody tr:hover {
+    background-color: #e6e6e6;
+  }
+  
+  .movieSessionPage--content a {
+    color: red;
+    font-size: 1.2rem;
+  }
+  
+  .movieSessionPage--content a:hover {
+    color: red;
+    text-decoration: underline;
+  }
+  

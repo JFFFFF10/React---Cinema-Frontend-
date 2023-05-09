@@ -6,6 +6,7 @@ import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
 import MovieInfo from './CinemaManagerPage/managerSystem/movieInfo';
 import RoomBooking from "./CinemaManagerPage/managerSystem/roomBooking";
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";
+import MovieSessionPage from "./BsianHomePage/MovieSessionPage/MovieSessionPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/MovieInfo" element={<MovieInfo />} />
         <Route path="/RoomBooking" element={<RoomBooking />} />
         <Route path="/movie/:id" element={<SinglePage />} />
+        <Route path="/movie-sessions/:movie_title" element={<MovieSessionPage />} />
       </Routes>
     </Router>
   );

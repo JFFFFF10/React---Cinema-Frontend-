@@ -1,25 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+
 import Homes from "../components/homes/Homes";
 import Upcoming from "../components/upcoming/Upcoming";
-import { latest, recommended, upcome } from "../dummyData";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "./HomePage.css";
 
 const HomePage = () => {
-  const [items, setItems] = useState(upcome)
-  const [item, setItem] = useState(latest)
-  const [rec, setRec] = useState(recommended)
+  const [nowShowing, setNowShowing] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
+
+  useEffect(() => {
+    const fetchNowShowingData = async () => {
+      try {
+        const response = await axios.get('https://csit-314-cinema-booking-system.vercel.app/viewNowShowing/');
+        setNowShowing(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchNowShowingData();
+  }, []);
+
+  useEffect(() => {
+    const fetchUpcomingData = async () => {
+      try {
+        const response = await axios.get('https://csit-314-cinema-booking-system.vercel.app/viewUpcoming/');
+        setUpcoming(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchUpcomingData();
+  }, []);
+
   return (
     <>
       <Header />
       <Homes />
-      <Upcoming items={items} title='Upcoming Movies' />
-      <Upcoming items={item} title='Latest Movies' />
-      <Upcoming items={rec} title='Recommended Movies' />
+      <Upcoming items={nowShowing} title='Now Showing Movies' />
+      <Upcoming items={upcoming} title='Upcoming Movies' />
       <Footer />
     </>
   )
 }
 
-export default HomePage
+export default HomePage;
