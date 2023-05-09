@@ -4,7 +4,7 @@
 }
 
 .moviesPage--searchBar {
-  margin: 1vh auto 6vh auto;
+  margin: 0.5vh auto 2vh auto;
   width: 40vw;
   border: 2px solid black;
 }
@@ -17,6 +17,37 @@
   font-size: 16px;
   border: 2px solid black;
   border-radius: 5px;
+}
+
+.moviesPage--tabs {
+  display: flex;
+  flex-direction: row;
+
+  width: 40vw;
+  margin: auto auto 5vh auto;
+}
+
+.moviesPage--tab {
+  flex-basis: 100%;
+  text-align: center;
+
+  padding: 5px 20px;
+  font-size: 0.8rem;
+
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.moviesPage--tab.active {
+  background-color: red;
+  color: white;
+}
+
+.moviesPage--tab:not(.active):hover {
+  background-color: rgb(142, 226, 147);
 }
 
 .moviesPage--posters-container {

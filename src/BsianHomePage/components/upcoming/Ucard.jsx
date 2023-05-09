@@ -1,20 +1,20 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const Ucard = ({ item: { id, cover, name, time } }) => {
+const Ucard = ({ item: { movie_title, featureIMG, genre } }) => {
   return (
     <>
       <div className='MovieBox'>
         <div className='img'>
-          <img src={cover} alt='' />
+          <img src={featureIMG} alt='' />
         </div>
         <div className='text'>
-          <h3>{name}</h3>
-          <span>{time}</span> <br />
-          <Link to={`/movie/${name}`}>
-          <button className='primary-btn'>
-            <i className='fa fa-play'></i> BOOK NOW
-          </button>
+          <h3>{movie_title}</h3>
+          <span>{genre}</span> <br />
+          <Link to={`/movie-sessions/${encodeURIComponent(movie_title)}`}>
+            <button className='primary-btn'>
+              <i className='fa fa-play'></i> BOOK NOW
+            </button>
           </Link>
         </div>
       </div>

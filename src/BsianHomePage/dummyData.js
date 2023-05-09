@@ -5,7 +5,7 @@ export const homeData = [
     rating: 4.7,
     time: "3hr : 1mins",
     desc: "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
-    starring: "Robert Downey Jr., Chris EvansMark, Ruffalo",
+    starring: "Robert Downey Jr., Chris Evans, Mark Ruffalo",
     genres: "Action",
     tags: "Action, Adventures, Fantasy, Superheroes",
     cover: "../images/home1.jpg",

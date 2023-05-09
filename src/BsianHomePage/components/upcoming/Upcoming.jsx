@@ -7,6 +7,10 @@ import "slick-carousel/slick/slick-theme.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
+const handleViewAllClick = () => {
+	window.scrollTo(0, 0);
+};
+
 const SampleNextArrow = (props) => {
 	const { onClick } = props;
 	return (
@@ -52,13 +56,13 @@ const Upcoming = ({ items, title }) => {
 				<div className="container">
 					<div className="heading flexSB">
 						<h1>{title}</h1>
-						<Link to="/">View All</Link>
+						<Link to="/MoviesPage" onClick={handleViewAllClick}>View All</Link>
 					</div>
 					<div className="content">
 						<Slider {...settings}>
 							{items.map((item) => {
 								return (
-									<div key={item.id}>
+									<div key={item.movie_title}>
 										<Ucard item={item} />
 									</div>
 								);
