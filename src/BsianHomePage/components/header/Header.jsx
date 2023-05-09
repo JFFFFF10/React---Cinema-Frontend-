@@ -22,7 +22,7 @@ const Header = () => {
           <nav className="flexSB">
             <Link to={"/"}>
               <div className="logo">
-                <img src="./images/logo.png" alt="" />
+                <img src="/images/logo.png" alt="Logo" />
               </div>
             </Link>
             <ul
