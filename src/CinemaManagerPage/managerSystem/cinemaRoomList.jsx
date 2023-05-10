@@ -2,12 +2,12 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class MovieList extends React.Component {
+class RoomBookingList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchText: "",
-			movie_title: "",
+			name: "",
 		};
 	}
 
@@ -15,13 +15,13 @@ class MovieList extends React.Component {
 		this.setState({ searchText: event.target.value });
 	};
 
-	handleDelete = async (movie_title) => {
+	handleDelete = async (name) => {
 		const token = localStorage.getItem("token");
 
 		try {
 			const response = await axios.post(
-				`https://csit-314-cinema-booking-system.vercel.app/delMov/`,
-				{ movie_title: movie_title.movie_title },
+				`https://csit-314-cinema-booking-system.vercel.app/delCR/`,
+				{ name: name.name },
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -33,30 +33,29 @@ class MovieList extends React.Component {
 			Swal.fire({
 				icon: "success",
 				title: "Deleted!",
-				text: `${movie_title.movie_title} 's data has been Deleted.`,
+				text: `${name.name} has been Deleted.`,
 				showConfirmButton: false,
 				timer: 3000,
 			});
 
 			if (response.status === 200) {
-				// Movie added successfully
-				console.log("Movie delete successfully.");
+				console.log("Cinema room delete successfully.");
 			}
 			window.location.reload();
 			console.log(response.data);
 		} catch (error) {
-			console.log(movie_title.movie_title);
-			throw new Error("An error occurred while deleting the movie.");
+			console.log(name.name);
+			throw new Error("An error occurred while deleting the cinema room.");
 		}
 	};
 
+
 	render() {
-		const { movies, handleEdit } = this.props;
+		const { names, handleEdit } = this.props;
 		const { searchText } = this.state;
 
-		// Filter movies based on search text
-		const filteredMovies = movies.filter((movie) =>
-			movie.movie_title.toLowerCase().includes(searchText.toLowerCase())
+		const filteredCR = names.filter((name) =>
+			name.name.toLowerCase().includes(searchText.toLowerCase())
 		);
 
 		return (
@@ -64,7 +63,7 @@ class MovieList extends React.Component {
 				<div className="userManager--searchContainer">
 					<input
 						type="text"
-						placeholder="Search movies"
+						placeholder="Search room"
 						className="userManager--searchBar"
 						value={searchText}
 						onChange={this.handleSearchChange}
@@ -74,49 +73,23 @@ class MovieList extends React.Component {
 					<thead>
 						<tr>
 							<th>No.</th>
-							<th>Movie Title</th>
-							<th>Genre</th>
-							<th>Duration</th>
-							<th>Release</th>
-							<th>Cast</th>
-							<th>Director</th>
-							<th>Movie_description</th>
-							<th>PosterIMG</th>
-							<th>FeatureIMG</th>
+							<th>Cinema Room</th>
+							<th>Capacity</th>
 							<th colSpan={2} className="userManagerPage--text-center">
 								Actions
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						{filteredMovies.length > 0 ? (
-							filteredMovies.map((movie, i) => (
+						{filteredCR.length > 0 ? (
+							filteredCR.map((name, i) => (
 								<tr key={i} className="userManagerPage--table">
 									<td>{i + 1}</td>
-									<td>{movie.movie_title}</td>
-									<td>{movie.genre}</td>
-									<td>{movie.duration}</td>
-									<td>{movie.release_date}</td>
-									<td>{movie.cast} </td>
-									<td>{movie.director} </td>
-									<td>{movie.movie_description} </td>
-									<td>
-										<img
-											src={`${movie.posterIMG}`}
-											alt="Poster image"
-											width={100}
-										/>
-									</td>
-									<td>
-										<img
-											src={`${movie.featureIMG}`}
-											alt="Feature image"
-											width={100}
-										/>
-									</td>
+									<td>{name.name}</td>
+									<td>{name.capacity}</td>
 									<td className="text-right">
 										<button
-											onClick={() => handleEdit(movie)}
+											onClick={() => handleEdit(name)}
 											className="userManagerPage--right"
 										>
 											Update
@@ -124,7 +97,7 @@ class MovieList extends React.Component {
 									</td>
 									<td className="text-left">
 										<button
-											onClick={() => this.handleDelete(movie)}
+											onClick={() => this.handleDelete(name)}
 											className="userManagerPage--right"
 										>
 											Delete
@@ -134,7 +107,7 @@ class MovieList extends React.Component {
 							))
 						) : (
 							<tr>
-								<td colSpan={7}>No movies</td>
+								<td colSpan={7}>No cinema room</td>
 							</tr>
 						)}
 					</tbody>
@@ -144,4 +117,4 @@ class MovieList extends React.Component {
 	}
 }
 
-export default MovieList;
+export default RoomBookingList;

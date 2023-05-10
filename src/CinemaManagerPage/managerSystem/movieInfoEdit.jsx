@@ -16,6 +16,8 @@ class MovieEdit extends Component {
 			cast: selectedmovie ? selectedmovie.cast : "",
 			director: selectedmovie ? selectedmovie.director : "",
 			movie_description: selectedmovie ? selectedmovie.movie_description : "",
+			posterIMG: selectedmovie ? selectedmovie.posterIMG : "",
+			featureIMG: selectedmovie ? selectedmovie.featureIMG : "",
 		};
 	}
 
@@ -36,6 +38,8 @@ class MovieEdit extends Component {
 					cast: this.state.cast,
 					director: this.state.director,
 					movie_description: this.state.movie_description,
+					posterIMG: this.state.posterIMG,
+					featureIMG: this.state.featureIMG,
 				},
 				{
 					headers: {
@@ -59,6 +63,69 @@ class MovieEdit extends Component {
 		}
 	};
 
+	getBase64 = (file) => {
+		return new Promise((resolve) => {
+			let fileInfo;
+			let baseURL = "";
+
+			let reader = new FileReader();
+			reader.readAsDataURL(file);
+
+			reader.onload = () => {
+				// Make a fileInfo Object
+				console.log("Called", reader);
+				baseURL = reader.result;
+				//console.log(baseURL);
+				resolve(baseURL);
+			};
+			console.log(fileInfo);
+		});
+	};
+
+	handleFileInputChangeposterIMG = (e) => {
+		console.log(e.target.files[0]);
+		let { file } = this.state;
+		file = e.target.files[0];
+		this.getBase64(file)
+			.then((result) => {
+				file["base64"] = result;
+				console.log("File Is", file);
+				this.setState({
+					posterIMG: result,
+					file,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
+		this.setState({
+			file: e.target.files[0],
+		});
+	};
+
+	handleFileInputChangefeatureIMG = (e) => {
+		console.log(e.target.files[0]);
+		let { file } = this.state;
+		file = e.target.files[0];
+		this.getBase64(file)
+			.then((result) => {
+				file["base64"] = result;
+				console.log("File Is", file);
+				this.setState({
+					featureIMG: result,
+					file,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
+		this.setState({
+			file: e.target.files[0],
+		});
+	};
+
 	render() {
 		const {
 			movie_title,
@@ -68,6 +135,8 @@ class MovieEdit extends Component {
 			cast,
 			director,
 			movie_description,
+			posterIMG,
+			featureIMG,
 		} = this.state;
 
 		const { setIsEditing } = this.props;
@@ -139,10 +208,52 @@ class MovieEdit extends Component {
 						type="text"
 						name="movie_description"
 						value={movie_description}
-						rows="5"
-						cols="50"
+						rows="3"
+						cols="30"
 						onChange={(event) =>
 							this.setState({ movie_description: event.target.value })
+						}
+					/>
+					<label htmlFor="posterIMG">posterIMG</label>
+					<div>
+						<input
+							id="convertion"
+							type="file"
+							name="convertion"
+							onChange={this.handleFileInputChangeposterIMG}
+						/>
+					</div>
+					<textarea
+						id="posterIMG"
+						type="text"
+						ref={this.textInput}
+						name="posterIMG"
+						value={posterIMG}
+						rows="2"
+						cols="50"
+						onChange={(event) =>
+							this.setState({ posterIMG: event.target.value })
+						}
+					/>
+					<label htmlFor="featureIMG">featureIMG</label>
+					<div>
+						<input
+							id="convertion"
+							type="file"
+							name="convertion"
+							onChange={this.handleFileInputChangefeatureIMG}
+						/>
+					</div>
+					<textarea
+						id="featureIMG"
+						type="text"
+						ref={this.textInput}
+						name="featureIMG"
+						value={featureIMG}
+						rows="2"
+						cols="50"
+						onChange={(event) =>
+							this.setState({ featureIMG: event.target.value })
 						}
 					/>
 					<div style={{ marginTop: "30px" }}>

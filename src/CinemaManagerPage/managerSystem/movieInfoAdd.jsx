@@ -13,6 +13,8 @@ class MovieAdd extends Component {
 			cast: "",
 			director: "",
 			movie_description: "",
+			posterIMG: "",
+			featureIMG: "",
 		};
 		this.textInput = React.createRef();
 	}
@@ -31,6 +33,69 @@ class MovieAdd extends Component {
 		this.props.setIsAdding(false);
 	};
 
+	getBase64 = (file) => {
+		return new Promise((resolve) => {
+			let fileInfo;
+			let baseURL = "";
+
+			let reader = new FileReader();
+			reader.readAsDataURL(file);
+
+			reader.onload = () => {
+				// Make a fileInfo Object
+				console.log("Called", reader);
+				baseURL = reader.result;
+				//console.log(baseURL);
+				resolve(baseURL);
+			};
+			console.log(fileInfo);
+		});
+	};
+
+	handleFileInputChangeposterIMG = (e) => {
+		console.log(e.target.files[0]);
+		let { file } = this.state;
+		file = e.target.files[0];
+		this.getBase64(file)
+			.then((result) => {
+				file["base64"] = result;
+				console.log("File Is", file);
+				this.setState({
+					posterIMG: result,
+					file,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
+		this.setState({
+			file: e.target.files[0],
+		});
+	};
+
+	handleFileInputChangefeatureIMG = (e) => {
+		console.log(e.target.files[0]);
+		let { file } = this.state;
+		file = e.target.files[0];
+		this.getBase64(file)
+			.then((result) => {
+				file["base64"] = result;
+				console.log("File Is", file);
+				this.setState({
+					featureIMG: result,
+					file,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
+		this.setState({
+			file: e.target.files[0],
+		});
+	};
+
 	handleAdd = async (e) => {
 		const token = localStorage.getItem("token");
 
@@ -43,6 +108,8 @@ class MovieAdd extends Component {
 			cast,
 			director,
 			movie_description,
+			posterIMG,
+			featureIMG,
 		} = this.state;
 
 		if (
@@ -52,7 +119,9 @@ class MovieAdd extends Component {
 			!release_date ||
 			!cast ||
 			!director ||
-			!movie_description
+			!movie_description ||
+			!posterIMG ||
+			!featureIMG
 		) {
 			return Swal.fire({
 				icon: "error",
@@ -73,6 +142,8 @@ class MovieAdd extends Component {
 					cast: cast,
 					director: director,
 					movie_description: movie_description,
+					posterIMG: posterIMG,
+					featureIMG: featureIMG,
 				},
 				{
 					headers: {
@@ -98,13 +169,16 @@ class MovieAdd extends Component {
 				cast: "",
 				director: "",
 				movie_description: "",
+				posterIMG: "",
+				featureIMG: "",
 			});
 			if (response.status === 200) {
 				// Movie added successfully
 				console.log("Movie added successfully.");
 			}
 		} catch (error) {
-			console.error("wtf?");
+			//console.error("wtf?");
+			console.log(error);
 		}
 	};
 
@@ -117,6 +191,8 @@ class MovieAdd extends Component {
 			cast,
 			director,
 			movie_description,
+			posterIMG,
+			featureIMG,
 		} = this.state;
 
 		return (
@@ -184,7 +260,45 @@ class MovieAdd extends Component {
 						ref={this.textInput}
 						name="movie_description"
 						value={movie_description}
-						rows="5"
+						rows="2"
+						cols="50"
+						onChange={this.handleInputChange}
+					/>
+					<label htmlFor="posterIMG">posterIMG</label>
+					<div>
+						<input
+							id="convertion"
+							type="file"
+							name="convertion"
+							onChange={this.handleFileInputChangeposterIMG}
+						/>
+					</div>
+					<textarea
+						id="posterIMG"
+						type="text"
+						ref={this.textInput}
+						name="posterIMG"
+						value={posterIMG}
+						rows="2"
+						cols="50"
+						onChange={this.handleInputChange}
+					/>
+					<label htmlFor="featureIMG">featureIMG</label>
+					<div>
+						<input
+							id="convertion"
+							type="file"
+							name="convertion"
+							onChange={this.handleFileInputChangefeatureIMG}
+						/>
+					</div>
+					<textarea
+						id="featureIMG"
+						type="text"
+						ref={this.textInput}
+						name="featureIMG"
+						value={featureIMG}
+						rows="2"
 						cols="50"
 						onChange={this.handleInputChange}
 					/>

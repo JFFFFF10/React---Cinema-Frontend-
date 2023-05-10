@@ -44,7 +44,7 @@ class Header extends Component {
 								<Link to="/MovieInfo">MovieInfo</Link>
 							</li>
 							<li>
-								<Link to="/RoomBooking">RoomBooking</Link>
+								<Link to="/CinemaRoom">CinemaRoom</Link>
 							</li>
 						</ul>
 					</nav>
