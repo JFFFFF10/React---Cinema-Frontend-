@@ -1,0 +1,63 @@
+.useradminViewAcc--title {
+    text-align: center;
+    color: white;
+    font-size: 5vh;
+    margin: 5vh auto;
+  }
+  
+  .useradminViewAcc--tableContainer {
+    width: 70vw;
+    margin: 2vh auto auto auto;
+    overflow: auto; /* Enable scrolling for the table container */
+    max-height: 31em; /* Set the maximum height to limit the number of rows */
+  }
+  
+  .useradminViewAcc--table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  
+  .useradminViewAcc--table th,
+  .useradminViewAcc--table td {
+    padding: 1vh;
+    text-align: center;
+  }
+  
+  .useradminViewAcc--table th {
+    background-color: #ad0b0b;
+    color: white;
+    border: 4px solid black;
+  }
+  
+  .useradminViewAcc--table td {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 1vw;
+    color: white;
+    text-align: left; /* Align content to the left */
+    white-space: nowrap; /* Prevent email column from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Show ellipsis (...) for truncated email */
+  }
+  
+  .useradminViewAcc--usernameHead {
+    width: 20%;
+  }
+  
+  .useradminViewAcc--activeHead {
+    width: 15%;
+    text-align: center;
+  }
+  
+  .useradminViewAcc--emailHead {
+    width: 40%; /* Adjust the width as desired */
+    min-width: 150px; /* Set a minimum width for responsiveness */
+  }
+  
+  @media (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    .useradminViewAcc--tableContainer {
+      width: 90vw;
+    }
+  }
+  
