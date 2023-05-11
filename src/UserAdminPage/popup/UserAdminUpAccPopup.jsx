@@ -119,6 +119,12 @@ class UserAdminUpAccPopup extends Component {
         });
       });
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.open !== this.props.open) {
+      this.setState({ isPopupVisible: this.props.open });
+    }
+  }  
   
 
   render() {

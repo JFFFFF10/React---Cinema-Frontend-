@@ -44,7 +44,7 @@ class UserAdminPage extends Component {
 						<button type="button" className="useradminPage--btn">Update Profile</button>
 					</Link>
 
-					<Link to="/ua-delete-account">
+					<Link to="/UserAdminPage/ua-search-account">
 						<button type="button" className="useradminPage--btn">Delete Account</button>
 					</Link>
 
