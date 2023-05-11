@@ -1,0 +1,112 @@
+.useradminSearchAcc--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.useradminSearchAcc--title {
+  font-size: 5vh;
+  color: white;
+  margin: 5vh auto;
+}
+
+.useradminSearchAcc--inputContainer {
+  margin-bottom: 2vh;
+}
+
+.useradminSearchAcc--input {
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 3vh;
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.useradminSearchAcc--input:focus {
+  outline: none;
+  border: 2px solid red;
+}
+
+.useradminSearchAcc--input::placeholder {
+  color: #ccc;
+}
+
+.useradminSearchAcc--button {
+  padding: 5px 10px;
+  height: 5vh;
+  font-size: 3vh;
+  border-radius: 5px;
+  background-color: #ad0b0b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.useradminSearchAcc--button:hover {
+  background-color: #ccc;
+  color: red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.useradminSearchAcc--button:focus {
+  outline: none;
+  border: 2px solid red;
+}
+
+.useradminSearchAcc--button:active {
+  transform: translateY(1px);
+}
+
+
+.useradminSearchAcc--results {
+  margin-top: 2vh;
+}
+
+
+.useradminSearchAcc--resultsTitle {
+  font-size: 18px;
+  color: white;
+  margin-bottom: 2vh;
+}
+
+.useradminSearchAcc--table {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.useradminSearchAcc--table th,
+.useradminSearchAcc--table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.useradminSearchAcc--table th {
+  background-color: red;
+  color: black;
+}
+
+.useradminSearchAcc--table td {
+  background-color: grey;
+  color: white;
+}
+
+.useradminSearchAcc--table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.useradminSearchAcc--table tbody tr:hover td {
+  background-color: #ccc;
+  color: red;
+  transform: scale(1.2);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
