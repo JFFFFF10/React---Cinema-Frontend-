@@ -3,6 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './UserAdminSearchAccPage.css';
 import UserAdminUpAccPopup from './popup/UserAdminUpAccPopup';
+import UAPopup from './popup/UAPopup';
 
 class UserAdminSearchAccPage extends Component {
   constructor(props) {
@@ -11,7 +12,10 @@ class UserAdminSearchAccPage extends Component {
       searchQuery: '',
       searchResults: [],
       selectedUser: null,
-      isPopupOpen: false,
+      isPopupUpOpen: false,
+      isPopupDelOpen: false,
+      contextMenuCoordinates: { x: 0, y: 0 },
+      showContextMenu: false,
     };
   }
 
@@ -49,20 +53,48 @@ class UserAdminSearchAccPage extends Component {
       });
   };
 
-  handleUserClick = (user) => {
-    this.setState({ selectedUser: user, isPopupOpen: true });
+  handleContextMenu = (event, result) => {
+    event.preventDefault();
+    this.setState({
+      contextMenuCoordinates: { x: event.clientX, y: event.clientY },
+      selectedUser: result,
+      showContextMenu: true
+    });
   };
 
-  handleOpenPopup = () => {
-    this.setState({ isPopupOpen: true });
+  hideContextMenu = () => {
+    this.setState({
+      showContextMenu: false,
+    });
+  };
+  componentDidMount() {
+    document.addEventListener('click', this.hideContextMenu);
+  }
+  
+  componentWillUnmount() {
+    document.removeEventListener('click', this.hideContextMenu);
+  }
+  
+
+  handleOpenPopupUp = () => {
+    this.setState({ isPopupUpOpen: true });
   };
 
-  handleClosePopup = () => {
-    this.setState({ isPopupOpen: false });
+  handleClosePopupUp = () => {
+    this.setState({ isPopupUpOpen: false });
   };
 
+  handleOpenPopupDel = () => {
+    this.setState({ isPopupDelOpen: true });
+  };
+
+  handleClosePopupDel = () => {
+    this.setState({ isPopupDelOpen: false });
+  };
+
+  //it shows that 'contextMenuCoordinates' is assigned a value but never used, however, dont delete!!!
   render() {
-    const { searchQuery, searchResults, selectedUser, isPopupOpen } = this.state;
+    const { searchQuery, searchResults, selectedUser, isPopupUpOpen, isPopupDelOpen, contextMenuCoordinates } = this.state;
 
     return (
       <div className="useradminSearchAcc--container">
@@ -95,7 +127,12 @@ class UserAdminSearchAccPage extends Component {
               </thead>
               <tbody>
                 {searchResults.map((result) => (
-                  <tr key={result.id} onClick={() => { this.handleOpenPopup(); this.handleUserClick(result); }}>
+                  <tr
+                    key={result.id}
+                    onContextMenu={(e) => {
+                      this.handleContextMenu(e, result);
+                    }}
+                  >
                     <td>{result.username}</td>
                     <td>{result.email}</td>
                     <td>{result.role}</td>
@@ -108,16 +145,37 @@ class UserAdminSearchAccPage extends Component {
             <p>No results found.</p>
           )}
         </div>
-        {isPopupOpen && (
+        {isPopupUpOpen && (
           <UserAdminUpAccPopup
             selectedUser={selectedUser}
-            onClose={this.handleClosePopup}
-            open={isPopupOpen}
+            onClose={this.handleClosePopupUp}
+            open={isPopupUpOpen}
           />
+        )}
+        {isPopupDelOpen && (
+          <UAPopup
+            selectedUser={selectedUser}
+            onClose={this.handleClosePopupDel}
+            open={isPopupDelOpen}
+          />
+        )}
+        {this.state.showContextMenu && (
+          <div
+            className="useradminSearchAcc--contextMenu"
+            style={{
+              position: 'absolute',
+              zIndex: '1',
+              top: `${this.state.contextMenuCoordinates.y}px`,
+              left: `${this.state.contextMenuCoordinates.x}px`,
+            }}
+          >
+            <button onClick={this.handleOpenPopupUp} className='useradminSearchAcc--updatebtn'>Update Account</button>
+            <button onClick={this.handleOpenPopupDel} className='useradminSearchAcc--deletebtn'>Delete Account</button>
+          </div>
         )}
       </div>
     );
   }
 }
 
-export default UserAdminSearchAccPage
+export default UserAdminSearchAccPage;
