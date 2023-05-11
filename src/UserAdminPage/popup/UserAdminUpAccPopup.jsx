@@ -133,12 +133,12 @@ class UserAdminUpAccPopup extends Component {
     if (!open || !selectedUser) return null;
 
     return (
-      <div onClick={onClose} className={"userAdminUpAcc--overlay"}>
+      <div onClick={onClose} className="userAdminUpAcc--overlay">
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className={"userAdminUpAcc--popupContainer"}
+          className="userAdminUpAcc--popupContainer"
         >
           <img src={popupImg} alt="/" />
           <div className="userAdminUpAcc--popupRight">
