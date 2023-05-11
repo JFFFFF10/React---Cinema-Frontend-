@@ -116,31 +116,33 @@ class UserAdminSearchAccPage extends Component {
             Here are the search results:
           </h2>
           {searchResults.length > 0 ? (
-            <table className="useradminSearchAcc--table">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Active</th>
-                </tr>
-              </thead>
-              <tbody>
-                {searchResults.map((result) => (
-                  <tr
-                    key={result.id}
-                    onContextMenu={(e) => {
-                      this.handleContextMenu(e, result);
-                    }}
-                  >
-                    <td>{result.username}</td>
-                    <td>{result.email}</td>
-                    <td>{result.role}</td>
-                    <td>{result.is_active ? 'Yes' : 'No'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="useradminSearchAcc--tableContainer">
+                <table className="useradminSearchAcc--table">
+                  <thead>
+                      <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Active</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {searchResults.map((result) => (
+                        <tr
+                          key={result.id}
+                          onContextMenu={(e) => {
+                            this.handleContextMenu(e, result);
+                          }}
+                        >
+                          <td>{result.username}</td>
+                          <td>{result.email}</td>
+                          <td>{result.role}</td>
+                          <td>{result.is_active ? 'Yes' : 'No'}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+            </div>
           ) : (
             <p>No results found.</p>
           )}

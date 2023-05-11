@@ -74,6 +74,12 @@
   margin-bottom: 2vh;
 }
 
+.useradminSearchAcc--tableContainer {
+  height: 60vh; /* Adjust this value according to your needs */
+  overflow-y: auto; /* This will make it scroll vertically */
+  margin: 0 auto;
+}
+
 .useradminSearchAcc--table {
   width: 60%;
   border-collapse: collapse;
@@ -104,7 +110,6 @@
 .useradminSearchAcc--table tbody tr:hover td {
   background-color: #ccc;
   color: red;
-  transform: scale(1.2);
   font-size: 1rem;
   cursor: pointer;
 }
