@@ -65,6 +65,7 @@ class CinemaRoomEdit extends Component {
 						name="name"
 						value={name}
 						onChange={(event) => this.setState({ name: event.target.value })}
+						disabled
 					/>
 					<label htmlFor="capacity">Capacity</label>
 					<input

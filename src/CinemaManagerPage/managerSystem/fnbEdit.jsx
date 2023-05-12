@@ -9,6 +9,7 @@ class FNBEdit extends Component {
 		const selectedfnb = this.props.selectedfnb;
 
 		this.state = {
+			id: selectedfnb ? selectedfnb.id : "",
 			menu: selectedfnb ? selectedfnb.menu : "",
 			menu_description: selectedfnb ? selectedfnb.menu_description : "",
 			price: selectedfnb ? selectedfnb.price : "",
@@ -27,6 +28,7 @@ class FNBEdit extends Component {
 			const response = await axios.post(
 				"https://csit-314-cinema-booking-system.vercel.app/updateFnB/",
 				{
+					id: this.state.id,
 					menu: this.state.menu,
 					menu_description: this.state.menu_description,
 					price: this.state.price,
@@ -97,14 +99,24 @@ class FNBEdit extends Component {
 	};
 
 	render() {
-		const { menu, menu_description, price, is_available, menuIMG } = this.state;
+		const { id, menu, menu_description, price, is_available, menuIMG } =
+			this.state;
 
 		const { setIsEditing } = this.props;
 
 		return (
 			<div className="userManagerPage--small-container">
 				<form onSubmit={this.handleUpdate} className="userManagerPage--form">
-					<h1>Update movie</h1>
+					<h1>Update FNB</h1>
+					{/* <label htmlFor="id">Id</label>
+					<input
+						id="id"
+						type="text"
+						name="id"
+						value={id}
+						onChange={(event) => this.setState({ id: event.target.value })}
+						disabled
+					/> */}
 					<label htmlFor="menu">Menu</label>
 					<input
 						id="menu"
@@ -112,7 +124,6 @@ class FNBEdit extends Component {
 						name="menu"
 						value={menu}
 						onChange={(event) => this.setState({ menu: event.target.value })}
-						disabled
 					/>
 					<label htmlFor="menu_description">Menu Description</label>
 					<input
@@ -135,7 +146,7 @@ class FNBEdit extends Component {
 					<label htmlFor="is_available">Is Avaible</label>
 					<input
 						id="is_available"
-						type="date"
+						type="text"
 						name="is_available"
 						value={is_available}
 						onChange={(event) =>

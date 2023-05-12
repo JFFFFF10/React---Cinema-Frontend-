@@ -38,7 +38,6 @@ class MovieList extends React.Component {
 			});
 
 			if (response.status === 200) {
-				// Movie added successfully
 				console.log("Movie delete successfully.");
 			}
 			window.location.reload();
@@ -53,7 +52,6 @@ class MovieList extends React.Component {
 		const { movies, handleEdit } = this.props;
 		const { searchText } = this.state;
 
-		// Filter movies based on search text
 		const filteredMovies = movies.filter((movie) =>
 			movie.movie_title.toLowerCase().includes(searchText.toLowerCase())
 		);

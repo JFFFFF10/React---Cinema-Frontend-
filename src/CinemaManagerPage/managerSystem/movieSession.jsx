@@ -33,7 +33,16 @@ class MovieSession extends Component {
 					},
 				}
 			);
-			this.setState({ names: response.data });
+			const transformedData = response.data.map((item) => {
+				return {
+					id: item.id,
+					movie: `Movie ${item.movie}`,
+					session_date: item.session_date,
+					cinema_room: `Cinema Room ${item.cinema_room}`,
+					session_time: item.session_time,
+				};
+			});
+			this.setState({ names: transformedData });
 		} catch (error) {
 			console.log(error);
 		}
