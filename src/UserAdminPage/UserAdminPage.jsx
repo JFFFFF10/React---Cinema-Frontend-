@@ -16,7 +16,7 @@ class UserAdminPage extends Component {
 						<button type="button" className="useradminPage--btn">View Account</button>
 					</Link>
 
-					<Link to="/ua-view-profile">
+					<Link to="/UserAdminPage/ua-view-profile">
 						<button type="button" className="useradminPage--btn">View Profile</button>
 					</Link>
 
@@ -24,7 +24,7 @@ class UserAdminPage extends Component {
 						<button type="button" className="useradminPage--btn">Search Account</button>
 					</Link>
 
-					<Link to="/ua-search-profile">
+					<Link to="/UserAdminPage/ua-search-profile">
 						<button type="button" className="useradminPage--btn">Search Profile</button>
 					</Link>
 

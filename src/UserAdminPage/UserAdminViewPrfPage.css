@@ -1,0 +1,59 @@
+.useradminViewPrf--title {
+    text-align: center;
+    color: white;
+    font-size: 5vh;
+    margin: 5vh auto;
+  }
+  
+.useradminViewPrf--tableContainer {
+    width: 70vw;
+    margin: 2vh auto auto auto;
+    overflow: auto;
+    max-height: 31em;
+  }
+  
+.useradminViewPrf--table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  
+.useradminViewPrf--table th,
+.useradminViewPrf--table td {
+    padding: 1vh;
+    text-align: center;
+  }
+  
+.useradminViewPrf--table th {
+    background-color: #ad0b0b;
+    color: white;
+    border: 4px solid black;
+  }
+  
+.useradminViewPrf--table td {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 1vw;
+    color: white;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+.useradminViewPrf--usernameHead {
+    width: 30%;
+  }
+  
+.useradminViewPrf--nameHead {
+    width: 35%;
+  }
+
+.useradminViewPrf--dobHead {
+    width: 35%;
+  }
+  
+@media (max-width: 768px) {
+    .useradminViewPrf--tableContainer {
+      width: 90vw;
+    }
+  }

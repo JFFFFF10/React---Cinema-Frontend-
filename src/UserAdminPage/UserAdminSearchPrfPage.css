@@ -1,0 +1,180 @@
+.useradminSearchPrf--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+  }
+  
+  .useradminSearchPrf--title {
+    font-size: 5vh;
+    color: white;
+    margin: 5vh auto;
+  }
+  
+  .useradminSearchPrf--inputContainer {
+    margin-bottom: 2vh;
+  }
+  
+  .useradminSearchPrf--input {
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 3vh;
+    width: 30vw;
+    height: 5vh;
+    border-radius: 5px;
+  }
+  
+  .useradminSearchPrf--input:focus {
+    outline: none;
+    border: 2px solid red;
+  }
+  
+  .useradminSearchPrf--input::placeholder {
+    color: #ccc;
+  }
+  
+  .useradminSearchPrf--button {
+    padding: 5px 10px;
+    height: 5vh;
+    font-size: 3vh;
+    border-radius: 5px;
+    background-color: #ad0b0b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .useradminSearchPrf--button:hover {
+    background-color: #ccc;
+    color: red;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .useradminSearchPrf--button:focus {
+    outline: none;
+    border: 2px solid red;
+  }
+  
+  .useradminSearchPrf--button:active {
+    transform: translateY(1px);
+  }
+  
+  
+  .useradminSearchPrf--results {
+    margin-top: 2vh;
+  }
+  
+  
+  .useradminSearchPrf--resultsTitle {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 2vh;
+  }
+  
+  .useradminSearchPrf--tableContainer {
+    height: 60vh; /* Adjust this value according to your needs */
+    width: auto;
+    overflow-y: auto; /* This will make it scroll vertically */
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .useradminSearchPrf--table {
+    width: fit-content; /* Adjust this value */
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #fff;
+  }
+  
+  .useradminSearchPrf--table th,
+  .useradminSearchPrf--table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .useradminSearchPrf--table th {
+    background-color: red;
+    color: black;
+  }
+  
+  .useradminSearchPrf--table td {
+    background-color: grey;
+    color: white;
+  }
+  
+  .useradminSearchPrf--table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .useradminSearchPrf--table tbody tr:hover td {
+    background-color: #ccc;
+    color: red;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .useradminSearchPrf--contextMenu {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #cccccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 150px; /* You can adjust as needed */
+  }
+  
+  .useradminSearchPrf--updatebtn, .useradminSearchPrf--deletebtn {
+    border: none;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 100%; /* Ensures the button takes the full width of the context menu */
+    border-radius: 5px;
+  
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .useradminSearchPrf--updatebtn {
+    background: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+    box-shadow: 0 4px 15px 0 rgba(23, 198, 113, 0.75);
+  }
+  
+  .useradminSearchPrf--deletebtn {
+    background: linear-gradient(to right, #ef3b36 0%, #A41950 100%);
+    box-shadow: 0 4px 15px 0 rgba(255, 20, 147, 0.75);
+  }
+  
+  .useradminSearchPrf--contextMenu .useradminSearchPrf--updatebtn:hover {
+    background-color: #f0f0f0;
+    color: white;
+    border: 2px solid green;
+  
+    transform: scale(1.05) rotate(-3deg);
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+  }
+  
+  .useradminSearchPrf--contextMenu .useradminSearchPrf--deletebtn:hover {
+    background-color: #f0f0f0;
+    color: white;
+    border: 2px solid rgba(134, 27, 23, 0.822);
+  
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+  }
+  
+  .useradminSearchPrf--contextMenu .useradminSearchPrf--updatebtn:active,
+  .useradminSearchPrf--contextMenu .useradminSearchPrf--deletebtn:active {
+    transform: scale(0.95);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
