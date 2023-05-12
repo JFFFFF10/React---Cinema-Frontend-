@@ -69,6 +69,12 @@ class UserAdminSearchAccPage extends Component {
   };
   componentDidMount() {
     document.addEventListener('click', this.hideContextMenu);
+
+    Swal.fire({
+      icon: 'info',
+      title: 'Note',
+      text: 'You can right click each row to update or delete user accounts',
+    });
   }
   
   componentWillUnmount() {
@@ -123,7 +129,6 @@ class UserAdminSearchAccPage extends Component {
                         <th>Username</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Active</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -137,7 +142,6 @@ class UserAdminSearchAccPage extends Component {
                           <td>{result.username}</td>
                           <td>{result.email}</td>
                           <td>{result.role}</td>
-                          <td>{result.is_active ? 'Yes' : 'No'}</td>
                         </tr>
                       ))}
                   </tbody>

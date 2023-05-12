@@ -80,6 +80,7 @@ class UserAdminDelAccPopup extends Component {
             <div className="userAdminDelAcc--content">
                 <label><h3>Username: {selectedUser.username}</h3></label>
                 <label><h3>Email: {selectedUser.email}</h3></label>
+                <label><h3>Role: {selectedUser.role}</h3></label>
             </div>
             <div className="userAdminDelAcc--btnContainer">
               <button className="userAdminDelAcc--btnPrimary" onClick={this.handleDelete}>

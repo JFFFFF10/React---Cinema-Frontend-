@@ -1,0 +1,74 @@
+.useradminAddPrf--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+  
+.useradminAddPrf--title {
+    font-size: 5vh;
+    color: white;
+    margin: 5vh auto;
+}
+  
+.useradminAddPrf--formContainer {
+    width: 25vw;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4vh 3vw;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+  
+.useradminAddPrf--formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+}
+  
+.useradminAddPrf--formGroup label {
+    margin-bottom: 1vh;
+    color: white;
+    font-size: 2.5vh;
+}
+
+.useradminAddPrf--formGroup input {
+    padding: 1vh;
+    border: 1px solid green;
+    border-radius: 3px;
+    font-size: 2vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: border-color 0.3s ease;
+}
+
+.useradminAddPrf--formGroup input:focus {
+    border-color: red;
+    outline: none;
+}
+  
+.useradminAddPrf--buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+  
+.useradminAddPrf--button {
+    padding: 1.5vh 3vh;
+    background-color: #3eb733;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 2vh;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}
+  
+.useradminAddPrf--button:hover {
+    background-color: #289039;
+}
+  
+.useradminAddPrf--button:active {
+    transform: translateY(2px);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}

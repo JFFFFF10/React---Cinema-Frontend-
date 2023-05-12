@@ -1,6 +1,7 @@
 import HomePage from "./BsianHomePage/HomePage/HomePage";
 import AuthPage from "./LogPage/LoginForm/LoginPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 //User Admin
 import UserAdminPage from "./UserAdminPage/UserAdminPage";
 import UserAdminViewAccPage from "./UserAdminPage/UserAdminViewAccPage";
@@ -8,6 +9,13 @@ import UserAdminSearchAccPage from "./UserAdminPage/UserAdminSearchAccPage";
 import UserAdminAddAccPage from "./UserAdminPage/UserAdminAddAccPage";
 import UserAdminViewPrfPage from "./UserAdminPage/UserAdminViewPrfPage";
 import UserAdminSearchPrfPage from "./UserAdminPage/UserAdminSearchPrfPage";
+import UserAdminAddPrfPage from "./UserAdminPage/UserAdminAddPrfPage";
+
+//Cinema Manager
+import MovieInfoPage from "./CinemaManagerPage/managerSystem/movieInfo";
+import CinemaRoomPage from "./CinemaManagerPage/managerSystem/cinemaRoom";
+import FNBPage from "./CinemaManagerPage/managerSystem/fnb"
+import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession"
 
 //Cinema Manager
 import MovieInfoPage from "./CinemaManagerPage/managerSystem/movieInfo";
@@ -33,6 +41,7 @@ function App() {
 				<Route path="/UserAdminPage/ua-search-account" element={<UserAdminSearchAccPage />} />
 				<Route path="/UserAdminPage/ua-search-profile" element={<UserAdminSearchPrfPage />} />
 				<Route path="/UserAdminPage/ua-add-account" element={<UserAdminAddAccPage />} />
+				<Route path="/UserAdminPage/ua-add-profile" element={<UserAdminAddPrfPage />} />
 
 				<Route path="/MoviesPage" element={<MoviesPage />} />
 				<Route path="/MovieInfoPage" element={<MovieInfoPage />} />

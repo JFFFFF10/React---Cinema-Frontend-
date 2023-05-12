@@ -69,6 +69,12 @@ class UserAdminSearchPrfPage extends Component {
   };
   componentDidMount() {
     document.addEventListener('click', this.hideContextMenu);
+
+    Swal.fire({
+      icon: 'info',
+      title: 'Note',
+      text: 'You can right click each row to update or delete user profiles',
+    });
   }
   
   componentWillUnmount() {
