@@ -14,13 +14,13 @@ class FNBList extends React.Component {
 		this.setState({ searchText: event.target.value });
 	};
 
-	handleDelete = async (menu) => {
+	handleDelete = async (id) => {
 		const token = localStorage.getItem("token");
 
 		try {
 			const response = await axios.post(
 				`https://csit-314-cinema-booking-system.vercel.app/delFnB/`,
-				{ menu: menu.menu },
+				{ id: id.id },
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -32,29 +32,28 @@ class FNBList extends React.Component {
 			Swal.fire({
 				icon: "success",
 				title: "Deleted!",
-				text: `${menu.menu} 's data has been Deleted.`,
+				text: `fnb data has been deleted.`,
 				showConfirmButton: false,
 				timer: 3000,
 			});
 
 			if (response.status === 200) {
-				// fnb added successfully
 				console.log("Fnb delete successfully.");
 			}
 			window.location.reload();
 			console.log(response.data);
 		} catch (error) {
-			console.log(menu.menu);
+			//console.log(id.id);
 			throw new Error("An error occurred while deleting the fnb.");
 		}
 	};
 
 	render() {
-		const { fnbinfos, handleEdit } = this.props;
+		const { fnbs, handleEdit } = this.props;
 		const { searchText } = this.state;
 
-		const filteredfnbinfo = fnbinfos.filter((fnbinfo) =>
-		fnbinfo.menu.toLowerCase().includes(searchText.toLowerCase())
+		const filteredfnbinfo = fnbs.filter((fnb) =>
+		fnb.id.toLowerCase().includes(searchText.toLowerCase())
 		);
 
 		return (
@@ -72,6 +71,7 @@ class FNBList extends React.Component {
 					<thead>
 						<tr>
 							<th>No.</th>
+							{/* <th>ID</th> */}
 							<th>Menu</th>
 							<th>Menu Description</th>
 							<th>Price</th>
@@ -84,17 +84,24 @@ class FNBList extends React.Component {
 					</thead>
 					<tbody>
 						{filteredfnbinfo.length > 0 ? (
-							filteredfnbinfo.map((fnbinfo, i) => (
+							filteredfnbinfo.map((fnb, i) => (
 								<tr key={i} className="userManagerPage--table">
 									<td>{i + 1}</td>
-									<td>{fnbinfo.menu}</td>
-									<td>{fnbinfo.menu_description}</td>
-									<td>{fnbinfo.price}</td>
-									<td>{fnbinfo.is_available}</td>
-									<td>{fnbinfo.menuIMG}</td>
+									{/* <td>{fnb.id}</td> */}
+									<td>{fnb.menu}</td>
+									<td>{fnb.menu_description}</td>
+									<td>{fnb.price}</td>
+									<td>{fnb.is_available}</td>
+									<td>
+										<img
+											src={`${fnb.menuIMG}`}
+											alt="Poster image"
+											width={100}
+										/>
+									</td>
 									<td className="text-right">
 										<button
-											onClick={() => handleEdit(fnbinfo)}
+											onClick={() => handleEdit(fnb)}
 											className="userManagerPage--right"
 										>
 											Update
@@ -102,7 +109,7 @@ class FNBList extends React.Component {
 									</td>
 									<td className="text-left">
 										<button
-											onClick={() => this.handleDelete(fnbinfo)}
+											onClick={() => this.handleDelete(fnb)}
 											className="userManagerPage--right"
 										>
 											Delete

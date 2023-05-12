@@ -52,9 +52,7 @@ class MovieSessionList extends React.Component {
 		const { names, handleEdit } = this.props;
 		const { searchText } = this.state;
 
-		const filteredCR = names.filter((name) =>
-			name.name.toLowerCase().includes(searchText.toLowerCase())
-		);
+		
 
 		return (
 			<div className="userManagerPage--contain-table">
@@ -72,23 +70,26 @@ class MovieSessionList extends React.Component {
 						<tr>
 							<th>No.</th>
 							<th>ID</th>
+							<th>Movie</th>
+							<th>Session Date</th>
 							<th>Cinema Room</th>
-							<th>Capacity</th>
+							<th>Session Time</th>
 							<th colSpan={2} className="userManagerPage--text-center">
 								Actions
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						{filteredCR.length > 0 ? (
-							filteredCR.map((name, i) => (
-								<tr key={i} className="userManagerPage--table">
-									<td>{i + 1}</td>
-									<td>{name.name}</td>
-									<td>{name.capacity}</td>
+								<tr className="userManagerPage--table">
+									
+									<td>{names.id}</td>
+									<td>{`Movie ${names.movie}`}</td>
+									<td>{names.session_date}</td>
+									<td>{`Cinema Room ${names.cinema_room}`}</td>
+									<td>{names.session_time}</td>
 									<td className="text-right">
 										<button
-											onClick={() => handleEdit(name)}
+											onClick={() => handleEdit(names)}
 											className="userManagerPage--right"
 										>
 											Update
@@ -96,19 +97,15 @@ class MovieSessionList extends React.Component {
 									</td>
 									<td className="text-left">
 										<button
-											onClick={() => this.handleDelete(name)}
+											onClick={() => this.handleDelete(names)}
 											className="userManagerPage--right"
 										>
 											Delete
 										</button>
 									</td>
 								</tr>
-							))
-						) : (
-							<tr>
-								<td colSpan={7}>No cinema room</td>
-							</tr>
-						)}
+						 : (
+						)
 					</tbody>
 				</table>
 			</div>

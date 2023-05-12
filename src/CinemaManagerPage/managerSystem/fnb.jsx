@@ -11,15 +11,15 @@ class FNBInfo extends Component {
 		super(props);
 
 		this.state = {
-			fnbinfos: [],
-			selectedfnbinfo: null,
+			fnbs: [],
+			selectedfnb: null,
 			isAdding: false,
 			isEditing: false,
 		};
 		this.handleEdit = this.handleEdit.bind(this);
 		this.setIsAdding = this.setIsAdding.bind(this);
 		this.setIsEditing = this.setIsEditing.bind(this);
-		this.setfnbinfos = this.setfnbinfos.bind(this);
+		this.setfnbs = this.setfnbs.bind(this);
 	}
 
 	componentDidMount() {
@@ -27,7 +27,7 @@ class FNBInfo extends Component {
 			.get("https://csit-314-cinema-booking-system.vercel.app/viewAllFnb/")
 			.then((response) => {
 				this.setState({
-					fnbinfos: response.data,
+					fnbs: response.data,
 				});
 			})
 			.catch((error) => {
@@ -37,7 +37,7 @@ class FNBInfo extends Component {
 
 	handleEdit(fnb) {
 		this.setState({
-			selectedfnbinfo: fnb,
+			selectedfnb: fnb,
 			isEditing: true,
 		});
 	}
@@ -50,12 +50,12 @@ class FNBInfo extends Component {
 		this.setState({ isEditing });
 	}
 
-	setfnbinfos(fnbinfos) {
-		this.setState({ fnbinfos });
+	setfnbs(fnbs) {
+		this.setState({ fnbs });
 	}
 
 	render() {
-		const { fnbinfos, selectedfnbinfo, isAdding, isEditing } = this.state;
+		const { fnbs, selectedfnb, isAdding, isEditing } = this.state;
 
 		return (
 			<div className="userManagerPage--container">
@@ -64,7 +64,7 @@ class FNBInfo extends Component {
 					<>
 						<Header setIsAdding={this.setIsAdding} />
 						<FNBList
-							fnbinfos={fnbinfos}
+							fnbs={fnbs}
 							handleEdit={this.handleEdit}
 							handleDelete={this.handleDelete}
 						/>
@@ -73,17 +73,17 @@ class FNBInfo extends Component {
 				{/* Add */}
 				{isAdding && (
 					<FNBAdd
-						fnbinfos={fnbinfos}
-						setfnbinfos={this.setfnbinfos}
+						fnbs={fnbs}
+						setfnbs={this.setfnbs}
 						setIsAdding={this.setIsAdding}
 					/>
 				)}
 				{/* Edit */}
 				{isEditing && (
 					<FNBEdit
-						fnbinfos={fnbinfos}
-						selectedfnbinfo={selectedfnbinfo}
-						setfnbinfos={this.setfnbinfos}
+						fnbs={fnbs}
+						selectedfnb={selectedfnb}
+						setfnbs={this.setfnbs}
 						setIsEditing={this.setIsEditing}
 					/>
 				)}
