@@ -2,12 +2,12 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class RoomBookingList extends React.Component {
+class FNBList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchText: "",
-			roomName: "",
+			menu: "",
 		};
 	}
 
@@ -15,13 +15,13 @@ class RoomBookingList extends React.Component {
 		this.setState({ searchText: event.target.value });
 	};
 
-	handleDelete = async (name) => {
+	handleDelete = async (menu) => {
 		const token = localStorage.getItem("token");
 
 		try {
 			const response = await axios.post(
-				`https://csit-314-cinema-booking-system.vercel.app/delCR/`,
-				{ name: name.name },
+				`https://csit-314-cinema-booking-system.vercel.app/delFnB/`,
+				{ menu: menu.menu },
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -33,37 +33,40 @@ class RoomBookingList extends React.Component {
 			Swal.fire({
 				icon: "success",
 				title: "Deleted!",
-				text: `${name.name} has been Deleted.`,
+				text: `${menu.menu} 's data has been Deleted.`,
 				showConfirmButton: false,
 				timer: 3000,
 			});
 
 			if (response.status === 200) {
-				console.log("Cinema room delete successfully.");
+				// fnb added successfully
+				console.log("fnb delete successfully.");
 			}
 			window.location.reload();
 			console.log(response.data);
 		} catch (error) {
-			console.log(name.name);
-			throw new Error("An error occurred while deleting the cinema room.");
+			console.log(menu.menu);
+			throw new Error("An error occurred while deleting the fnb.");
 		}
 	};
 
-
 	render() {
-		const { names, handleEdit } = this.props;
+		const { fnbinfo, handleEdit } = this.props;
 		const { searchText } = this.state;
 
-		const filteredCR = names.filter((name) =>
-			name.name.toLowerCase().includes(searchText.toLowerCase())
-		);
+		// Filter fnbs based on search text
+		const filteredfnbinfo = fnbinfo
+			? fnbinfo.filter((fnb) =>
+					fnb.menu.toLowerCase().includes(searchText.toLowerCase())
+			  )
+			: [];
 
 		return (
 			<div className="userManagerPage--contain-table">
 				<div className="userManager--searchContainer">
 					<input
 						type="text"
-						placeholder="Search room"
+						placeholder="Search fnb"
 						className="userManager--searchBar"
 						value={searchText}
 						onChange={this.handleSearchChange}
@@ -73,24 +76,29 @@ class RoomBookingList extends React.Component {
 					<thead>
 						<tr>
 							<th>No.</th>
-							<th>ID</th>
-							<th>Cinema Room</th>
-							<th>Capacity</th>
+							<th>Menu</th>
+							<th>Menu Description</th>
+							<th>Price</th>
+							<th>Is Avaibale</th>
+							<th>Image</th>
 							<th colSpan={2} className="userManagerPage--text-center">
 								Actions
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						{filteredCR.length > 0 ? (
-							filteredCR.map((name, i) => (
+						{filteredfnbinfo.length > 0 ? (
+							filteredfnbinfo.map((fnb, i) => (
 								<tr key={i} className="userManagerPage--table">
 									<td>{i + 1}</td>
-									<td>{name.name}</td>
-									<td>{name.capacity}</td>
+									<td>{fnb.menu}</td>
+									<td>{fnb.menu_description}</td>
+									<td>{fnb.price}</td>
+									<td>{fnb.is_available}</td>
+									<td>{fnb.menuIMG}</td>
 									<td className="text-right">
 										<button
-											onClick={() => handleEdit(name)}
+											onClick={() => handleEdit(fnb)}
 											className="userManagerPage--right"
 										>
 											Update
@@ -98,7 +106,7 @@ class RoomBookingList extends React.Component {
 									</td>
 									<td className="text-left">
 										<button
-											onClick={() => this.handleDelete(name)}
+											onClick={() => this.handleDelete(fnb)}
 											className="userManagerPage--right"
 										>
 											Delete
@@ -108,7 +116,7 @@ class RoomBookingList extends React.Component {
 							))
 						) : (
 							<tr>
-								<td colSpan={7}>No cinema room</td>
+								<td colSpan={7}>No fnb</td>
 							</tr>
 						)}
 					</tbody>
@@ -118,4 +126,4 @@ class RoomBookingList extends React.Component {
 	}
 }
 
-export default RoomBookingList;
+export default FNBList;

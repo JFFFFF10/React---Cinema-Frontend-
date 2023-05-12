@@ -24,7 +24,7 @@ class MovieInfo extends Component {
 
 	componentDidMount() {
 		axios
-			.get("https://csit-314-cinema-booking-system.vercel.app/view/")
+			.get("https://csit-314-cinema-booking-system.vercel.app/viewMov/")
 			.then((response) => {
 				this.setState({
 					movies: response.data,

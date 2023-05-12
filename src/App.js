@@ -11,8 +11,9 @@ import UserAdminSearchPrfPage from "./UserAdminPage/UserAdminSearchPrfPage";
 
 //Movies
 import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
-import MovieInfo from "./CinemaManagerPage/managerSystem/movieInfo";
-import CinemaRoom from "./CinemaManagerPage/managerSystem/cinemaRoom";
+import MovieInfoPage from "./CinemaManagerPage/managerSystem/movieInfo";
+import CinemaRoomPage from "./CinemaManagerPage/managerSystem/cinemaRoom";
+import FNBPage from "./CinemaManagerPage/managerSystem/fnb"
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";
 import MovieSessionPage from "./BsianHomePage/MovieSessionPage/MovieSessionPage";
 
@@ -31,8 +32,9 @@ function App() {
 				<Route path="/UserAdminPage/ua-add-account" element={<UserAdminAddAccPage />} />
 
 				<Route path="/MoviesPage" element={<MoviesPage />} />
-				<Route path="/MovieInfo" element={<MovieInfo />} />
-				<Route path="/CinemaRoom" element={<CinemaRoom />} />
+				<Route path="/MovieInfoPage" element={<MovieInfoPage />} />
+				<Route path="/CinemaRoomPage" element={<CinemaRoomPage />} />
+				<Route path="/FNBPage" element={<FNBPage />} />
 				<Route path="/movie/:id" element={<SinglePage />} />
 
 				<Route

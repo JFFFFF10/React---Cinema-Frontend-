@@ -2,30 +2,30 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Header from "./Header";
-import CinemaRoomList from "./cinemaRoomList";
-import CinemaRoomAdd from "./cinemaRoomAdd";
-import CinemaRoomEdit from "./cinemaRoomEdit";
+import FNBList from "./fnbList";
+import FNBAdd from "./fnbAdd";
+import FNBEdit from "./fnbEdit";
 
-class CinemaRoom extends Component {
+class FNBInfo extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			names: [],
-			selectedname: null,
+			fnbinfo: [],
+			selectedfnbinfo: null,
 			isAdding: false,
 			isEditing: false,
 		};
 		this.handleEdit = this.handleEdit.bind(this);
 		this.setIsAdding = this.setIsAdding.bind(this);
 		this.setIsEditing = this.setIsEditing.bind(this);
-		this.setnames = this.setnames.bind(this);
+		this.setfnbinfos = this.setfnbinfos.bind(this);
 	}
 
 	async componentDidMount() {
 		try {
 			const response = await axios.get(
-				"https://csit-314-cinema-booking-system.vercel.app/viewAllCR/",
+				"https://csit-314-cinema-booking-system.vercel.app/viewAllFnb/",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -39,9 +39,9 @@ class CinemaRoom extends Component {
 		}
 	}
 
-	handleEdit(name) {
+	handleEdit(fnb) {
 		this.setState({
-			selectedname: name,
+			selectedfnbinfo: fnb,
 			isEditing: true,
 		});
 	}
@@ -54,12 +54,12 @@ class CinemaRoom extends Component {
 		this.setState({ isEditing });
 	}
 
-	setnames(names) {
-		this.setState({ names });
+	setfnbinfos(fnbinfos) {
+		this.setState({ fnbinfos });
 	}
 
 	render() {
-		const { names, selectedname, isAdding, isEditing } = this.state;
+		const { fnbinfos, selectedfnbinfo, isAdding, isEditing } = this.state;
 
 		return (
 			<div className="userManagerPage--container">
@@ -67,8 +67,8 @@ class CinemaRoom extends Component {
 				{!isAdding && !isEditing && (
 					<>
 						<Header setIsAdding={this.setIsAdding} />
-						<CinemaRoomList
-							names={names}
+						<FNBList
+							fnbinfos={fnbinfos}
 							handleEdit={this.handleEdit}
 							handleDelete={this.handleDelete}
 						/>
@@ -76,18 +76,18 @@ class CinemaRoom extends Component {
 				)}
 				{/* Add */}
 				{isAdding && (
-					<CinemaRoomAdd
-						names={names}
-						setnames={this.setnames}
+					<FNBAdd
+						fnbinfos={fnbinfos}
+						setfnbinfos={this.setfnbinfos}
 						setIsAdding={this.setIsAdding}
 					/>
 				)}
 				{/* Edit */}
-				{isEditing && selectedname && (
-					<CinemaRoomEdit
-						names={names}
-						selectedname={selectedname}
-						setnames={this.setnames}
+				{isEditing && (
+					<FNBEdit
+						fnbinfos={fnbinfos}
+						selectedfnbinfo={selectedfnbinfo}
+						setfnbinfos={this.setfnbinfos}
 						setIsEditing={this.setIsEditing}
 					/>
 				)}
@@ -96,4 +96,4 @@ class CinemaRoom extends Component {
 	}
 }
 
-export default CinemaRoom;
+export default FNBInfo;
