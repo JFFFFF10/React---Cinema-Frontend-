@@ -11,7 +11,7 @@ class FNBInfo extends Component {
 		super(props);
 
 		this.state = {
-			fnbinfo: [],
+			fnbinfos: [],
 			selectedfnbinfo: null,
 			isAdding: false,
 			isEditing: false,
@@ -22,21 +22,17 @@ class FNBInfo extends Component {
 		this.setfnbinfos = this.setfnbinfos.bind(this);
 	}
 
-	async componentDidMount() {
-		try {
-			const response = await axios.get(
-				"https://csit-314-cinema-booking-system.vercel.app/viewAllFnb/",
-				{
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Token ${localStorage.getItem("token")}`,
-					},
-				}
-			);
-			this.setState({ names: response.data });
-		} catch (error) {
-			console.log(error);
-		}
+	componentDidMount() {
+		axios
+			.get("https://csit-314-cinema-booking-system.vercel.app/viewAllFnb/")
+			.then((response) => {
+				this.setState({
+					fnbinfos: response.data,
+				});
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	}
 
 	handleEdit(fnb) {

@@ -7,7 +7,6 @@ class RoomBookingList extends React.Component {
 		super(props);
 		this.state = {
 			searchText: "",
-			roomName: "",
 		};
 	}
 
@@ -73,7 +72,6 @@ class RoomBookingList extends React.Component {
 					<thead>
 						<tr>
 							<th>No.</th>
-							<th>ID</th>
 							<th>Cinema Room</th>
 							<th>Capacity</th>
 							<th colSpan={2} className="userManagerPage--text-center">

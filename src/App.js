@@ -9,11 +9,14 @@ import UserAdminAddAccPage from "./UserAdminPage/UserAdminAddAccPage";
 import UserAdminViewPrfPage from "./UserAdminPage/UserAdminViewPrfPage";
 import UserAdminSearchPrfPage from "./UserAdminPage/UserAdminSearchPrfPage";
 
-//Movies
-import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
+//Cinema Manager
 import MovieInfoPage from "./CinemaManagerPage/managerSystem/movieInfo";
 import CinemaRoomPage from "./CinemaManagerPage/managerSystem/cinemaRoom";
 import FNBPage from "./CinemaManagerPage/managerSystem/fnb"
+import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession"
+
+//Movies
+import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";
 import MovieSessionPage from "./BsianHomePage/MovieSessionPage/MovieSessionPage";
 
@@ -35,6 +38,10 @@ function App() {
 				<Route path="/MovieInfoPage" element={<MovieInfoPage />} />
 				<Route path="/CinemaRoomPage" element={<CinemaRoomPage />} />
 				<Route path="/FNBPage" element={<FNBPage />} />
+				<Route path="/MovieSessionInfoPage" element={<MovieSessionInfoPage />} />
+
+
+
 				<Route path="/movie/:id" element={<SinglePage />} />
 
 				<Route

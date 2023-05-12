@@ -7,7 +7,6 @@ class MovieList extends React.Component {
 		super(props);
 		this.state = {
 			searchText: "",
-			movie_title: "",
 		};
 	}
 
