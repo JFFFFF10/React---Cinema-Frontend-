@@ -6,6 +6,8 @@ import UserAdminPage from "./UserAdminPage/UserAdminPage";
 import UserAdminViewAccPage from "./UserAdminPage/UserAdminViewAccPage";
 import UserAdminSearchAccPage from "./UserAdminPage/UserAdminSearchAccPage";
 import UserAdminAddAccPage from "./UserAdminPage/UserAdminAddAccPage";
+import UserAdminViewPrfPage from "./UserAdminPage/UserAdminViewPrfPage";
+import UserAdminSearchPrfPage from "./UserAdminPage/UserAdminSearchPrfPage";
 
 //Movies
 import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
@@ -23,7 +25,9 @@ function App() {
 
 				<Route path="/UserAdminPage" element={<UserAdminPage />} />
 				<Route path="/UserAdminPage/ua-view-account" element={<UserAdminViewAccPage />} />
+				<Route path="/UserAdminPage/ua-view-profile" element={<UserAdminViewPrfPage />} />
 				<Route path="/UserAdminPage/ua-search-account" element={<UserAdminSearchAccPage />} />
+				<Route path="/UserAdminPage/ua-search-profile" element={<UserAdminSearchPrfPage />} />
 				<Route path="/UserAdminPage/ua-add-account" element={<UserAdminAddAccPage />} />
 
 				<Route path="/MoviesPage" element={<MoviesPage />} />
