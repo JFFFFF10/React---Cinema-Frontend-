@@ -41,10 +41,16 @@ class Header extends Component {
 					<nav className="userManager-nav">
 						<ul>
 							<li>
-								<Link to="/MovieInfo">MovieInfo</Link>
+								<Link to="/MovieInfoPage">MovieInfo</Link>
 							</li>
 							<li>
-								<Link to="/CinemaRoom">CinemaRoom</Link>
+								<Link to="/CinemaRoomPage">CinemaRoom</Link>
+							</li>
+							<li>
+								<Link to="/FNBPage">FNB</Link>
+							</li>
+							<li>
+								<Link to="/MovieSessionInfoPage">MovieSession</Link>
 							</li>
 						</ul>
 					</nav>

@@ -2,32 +2,32 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Header from "./Header";
-import MovieList from "./movieInfoList";
-import MovieAdd from "./movieInfoAdd";
-import MovieEdit from "./movieInfoEdit";
+import FNBList from "./fnbList";
+import FNBAdd from "./fnbAdd";
+import FNBEdit from "./fnbEdit";
 
-class MovieInfo extends Component {
+class FNBInfo extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			movies: [],
-			selectedmovie: null,
+			fnbinfos: [],
+			selectedfnbinfo: null,
 			isAdding: false,
 			isEditing: false,
 		};
 		this.handleEdit = this.handleEdit.bind(this);
 		this.setIsAdding = this.setIsAdding.bind(this);
 		this.setIsEditing = this.setIsEditing.bind(this);
-		this.setmovies = this.setmovies.bind(this);
+		this.setfnbinfos = this.setfnbinfos.bind(this);
 	}
 
 	componentDidMount() {
 		axios
-			.get("https://csit-314-cinema-booking-system.vercel.app/viewMov/")
+			.get("https://csit-314-cinema-booking-system.vercel.app/viewAllFnb/")
 			.then((response) => {
 				this.setState({
-					movies: response.data,
+					fnbinfos: response.data,
 				});
 			})
 			.catch((error) => {
@@ -35,9 +35,9 @@ class MovieInfo extends Component {
 			});
 	}
 
-	handleEdit(movie) {
+	handleEdit(fnb) {
 		this.setState({
-			selectedmovie: movie,
+			selectedfnbinfo: fnb,
 			isEditing: true,
 		});
 	}
@@ -50,12 +50,12 @@ class MovieInfo extends Component {
 		this.setState({ isEditing });
 	}
 
-	setmovies(movies) {
-		this.setState({ movies });
+	setfnbinfos(fnbinfos) {
+		this.setState({ fnbinfos });
 	}
 
 	render() {
-		const { movies, selectedmovie, isAdding, isEditing } = this.state;
+		const { fnbinfos, selectedfnbinfo, isAdding, isEditing } = this.state;
 
 		return (
 			<div className="userManagerPage--container">
@@ -63,8 +63,8 @@ class MovieInfo extends Component {
 				{!isAdding && !isEditing && (
 					<>
 						<Header setIsAdding={this.setIsAdding} />
-						<MovieList
-							movies={movies}
+						<FNBList
+							fnbinfos={fnbinfos}
 							handleEdit={this.handleEdit}
 							handleDelete={this.handleDelete}
 						/>
@@ -72,18 +72,18 @@ class MovieInfo extends Component {
 				)}
 				{/* Add */}
 				{isAdding && (
-					<MovieAdd
-						movies={movies}
-						setmovies={this.setmovies}
+					<FNBAdd
+						fnbinfos={fnbinfos}
+						setfnbinfos={this.setfnbinfos}
 						setIsAdding={this.setIsAdding}
 					/>
 				)}
 				{/* Edit */}
 				{isEditing && (
-					<MovieEdit
-						movies={movies}
-						selectedmovie={selectedmovie}
-						setmovies={this.setmovies}
+					<FNBEdit
+						fnbinfos={fnbinfos}
+						selectedfnbinfo={selectedfnbinfo}
+						setfnbinfos={this.setfnbinfos}
 						setIsEditing={this.setIsEditing}
 					/>
 				)}
@@ -92,4 +92,4 @@ class MovieInfo extends Component {
 	}
 }
 
-export default MovieInfo;
+export default FNBInfo;

@@ -54,7 +54,7 @@ class LoggedIn extends React.Component {
 			return <Navigate to="/UserAdminPage" />;
 		}
 		if (redirectToUserManagerPage) {
-			return <Navigate to="/MovieInfo" />;
+			return <Navigate to="/MovieInfoPage" />;
 		}
 
 		return (

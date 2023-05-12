@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Header from "./Header";
-import CinemaRoomList from "./cinemaRoomList";
-import CinemaRoomAdd from "./cinemaRoomAdd";
-import CinemaRoomEdit from "./cinemaRoomEdit";
+import MovieSessionList from "./movieSessionList";
+import MovieSessionAdd from "./movieSessionAdd";
+import MovieSessionEdit from "./movieSessionEdit";
 
-class CinemaRoom extends Component {
+class MovieSession extends Component {
 	constructor(props) {
 		super(props);
 
@@ -25,7 +25,7 @@ class CinemaRoom extends Component {
 	async componentDidMount() {
 		try {
 			const response = await axios.get(
-				"https://csit-314-cinema-booking-system.vercel.app/viewAllCR/",
+				"https://csit-314-cinema-booking-system.vercel.app/viewAllMS/",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -67,7 +67,7 @@ class CinemaRoom extends Component {
 				{!isAdding && !isEditing && (
 					<>
 						<Header setIsAdding={this.setIsAdding} />
-						<CinemaRoomList
+						<MovieSessionList
 							names={names}
 							handleEdit={this.handleEdit}
 							handleDelete={this.handleDelete}
@@ -76,7 +76,7 @@ class CinemaRoom extends Component {
 				)}
 				{/* Add */}
 				{isAdding && (
-					<CinemaRoomAdd
+					<MovieSessionAdd
 						names={names}
 						setnames={this.setnames}
 						setIsAdding={this.setIsAdding}
@@ -84,7 +84,7 @@ class CinemaRoom extends Component {
 				)}
 				{/* Edit */}
 				{isEditing && selectedname && (
-					<CinemaRoomEdit
+					<MovieSessionEdit
 						names={names}
 						selectedname={selectedname}
 						setnames={this.setnames}
@@ -96,4 +96,4 @@ class CinemaRoom extends Component {
 	}
 }
 
-export default CinemaRoom;
+export default MovieSession;

@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class MovieList extends React.Component {
+class FNBList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -14,13 +14,13 @@ class MovieList extends React.Component {
 		this.setState({ searchText: event.target.value });
 	};
 
-	handleDelete = async (movie_title) => {
+	handleDelete = async (menu) => {
 		const token = localStorage.getItem("token");
 
 		try {
 			const response = await axios.post(
-				`https://csit-314-cinema-booking-system.vercel.app/delMov/`,
-				{ movie_title: movie_title.movie_title },
+				`https://csit-314-cinema-booking-system.vercel.app/delFnB/`,
+				{ menu: menu.menu },
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -32,30 +32,29 @@ class MovieList extends React.Component {
 			Swal.fire({
 				icon: "success",
 				title: "Deleted!",
-				text: `${movie_title.movie_title} 's data has been Deleted.`,
+				text: `${menu.menu} 's data has been Deleted.`,
 				showConfirmButton: false,
 				timer: 3000,
 			});
 
 			if (response.status === 200) {
-				// Movie added successfully
-				console.log("Movie delete successfully.");
+				// fnb added successfully
+				console.log("Fnb delete successfully.");
 			}
 			window.location.reload();
 			console.log(response.data);
 		} catch (error) {
-			console.log(movie_title.movie_title);
-			throw new Error("An error occurred while deleting the movie.");
+			console.log(menu.menu);
+			throw new Error("An error occurred while deleting the fnb.");
 		}
 	};
 
 	render() {
-		const { movies, handleEdit } = this.props;
+		const { fnbinfos, handleEdit } = this.props;
 		const { searchText } = this.state;
 
-		// Filter movies based on search text
-		const filteredMovies = movies.filter((movie) =>
-			movie.movie_title.toLowerCase().includes(searchText.toLowerCase())
+		const filteredfnbinfo = fnbinfos.filter((fnbinfo) =>
+		fnbinfo.menu.toLowerCase().includes(searchText.toLowerCase())
 		);
 
 		return (
@@ -63,7 +62,7 @@ class MovieList extends React.Component {
 				<div className="userManager--searchContainer">
 					<input
 						type="text"
-						placeholder="Search movies"
+						placeholder="Search fnb"
 						className="userManager--searchBar"
 						value={searchText}
 						onChange={this.handleSearchChange}
@@ -73,49 +72,29 @@ class MovieList extends React.Component {
 					<thead>
 						<tr>
 							<th>No.</th>
-							<th>Movie Title</th>
-							<th>Genre</th>
-							<th>Duration</th>
-							<th>Release</th>
-							<th>Cast</th>
-							<th>Director</th>
-							<th>Movie_description</th>
-							<th>PosterIMG</th>
-							<th>FeatureIMG</th>
+							<th>Menu</th>
+							<th>Menu Description</th>
+							<th>Price</th>
+							<th>Is Avaibale</th>
+							<th>Image</th>
 							<th colSpan={2} className="userManagerPage--text-center">
 								Actions
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						{filteredMovies.length > 0 ? (
-							filteredMovies.map((movie, i) => (
+						{filteredfnbinfo.length > 0 ? (
+							filteredfnbinfo.map((fnbinfo, i) => (
 								<tr key={i} className="userManagerPage--table">
 									<td>{i + 1}</td>
-									<td>{movie.movie_title}</td>
-									<td>{movie.genre}</td>
-									<td>{movie.duration}</td>
-									<td>{movie.release_date}</td>
-									<td>{movie.cast} </td>
-									<td>{movie.director} </td>
-									<td>{movie.movie_description} </td>
-									<td>
-										<img
-											src={`${movie.posterIMG}`}
-											alt="Poster image"
-											width={100}
-										/>
-									</td>
-									<td>
-										<img
-											src={`${movie.featureIMG}`}
-											alt="Feature image"
-											width={100}
-										/>
-									</td>
+									<td>{fnbinfo.menu}</td>
+									<td>{fnbinfo.menu_description}</td>
+									<td>{fnbinfo.price}</td>
+									<td>{fnbinfo.is_available}</td>
+									<td>{fnbinfo.menuIMG}</td>
 									<td className="text-right">
 										<button
-											onClick={() => handleEdit(movie)}
+											onClick={() => handleEdit(fnbinfo)}
 											className="userManagerPage--right"
 										>
 											Update
@@ -123,7 +102,7 @@ class MovieList extends React.Component {
 									</td>
 									<td className="text-left">
 										<button
-											onClick={() => this.handleDelete(movie)}
+											onClick={() => this.handleDelete(fnbinfo)}
 											className="userManagerPage--right"
 										>
 											Delete
@@ -133,7 +112,7 @@ class MovieList extends React.Component {
 							))
 						) : (
 							<tr>
-								<td colSpan={7}>No movies</td>
+								<td colSpan={7}>No fnb</td>
 							</tr>
 						)}
 					</tbody>
@@ -143,4 +122,4 @@ class MovieList extends React.Component {
 	}
 }
 
-export default MovieList;
+export default FNBList;
