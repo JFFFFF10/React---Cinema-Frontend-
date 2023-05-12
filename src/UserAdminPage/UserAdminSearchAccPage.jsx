@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './UserAdminSearchAccPage.css';
 import UserAdminUpAccPopup from './popup/UserAdminUpAccPopup';
-import UAPopup from './popup/UAPopup';
+import UserAdminDelAccPopup from './popup/UserAdminDelAccPopup';
 
 class UserAdminSearchAccPage extends Component {
   constructor(props) {
@@ -155,7 +155,7 @@ class UserAdminSearchAccPage extends Component {
           />
         )}
         {isPopupDelOpen && (
-          <UAPopup
+          <UserAdminDelAccPopup
             selectedUser={selectedUser}
             onClose={this.handleClosePopupDel}
             open={isPopupDelOpen}
