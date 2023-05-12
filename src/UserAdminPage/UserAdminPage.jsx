@@ -32,7 +32,7 @@ class UserAdminPage extends Component {
 						<button type="button" className="useradminPage--btn">Add Account</button>
 					</Link>
 
-					<Link to="/ua-add-profile">
+					<Link to="/UserAdminPage/ua-add-profile">
 						<button type="button" className="useradminPage--btn">Add Profile</button>
 					</Link>
 
@@ -40,7 +40,7 @@ class UserAdminPage extends Component {
 						<button type="button" className="useradminPage--btn">Update Account</button>
 					</Link>
 
-					<Link to="/ua-update-profile">
+					<Link to="/UserAdminPage/ua-search-profile">
 						<button type="button" className="useradminPage--btn">Update Profile</button>
 					</Link>
 
@@ -48,7 +48,7 @@ class UserAdminPage extends Component {
 						<button type="button" className="useradminPage--btn">Delete Account</button>
 					</Link>
 
-					<Link to="/ua-delete-profile">
+					<Link to="/UserAdminPage/ua-search-profile">
 						<button type="button" className="useradminPage--btn">Delete Profile</button>
 					</Link>
 				</div>

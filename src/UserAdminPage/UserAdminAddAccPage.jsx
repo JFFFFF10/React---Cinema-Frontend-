@@ -18,7 +18,7 @@ class UserAdminAddAccPage extends Component {
         this.setState({ [event.target.name]: event.target.value });
     };
 
-    handleFormSubmit = (event) => {
+    handleAdd = (event) => {
         event.preventDefault();
 
         const { username, email, password, confirmPassword } = this.state;
@@ -89,7 +89,7 @@ class UserAdminAddAccPage extends Component {
         return (
         <div className="useradminAddAcc--container">
             <h1 className="useradminAddAcc--title">User Admin: Add Account</h1>
-            <form onSubmit={this.handleFormSubmit} className="useradminAddAcc--formContainer">
+            <form onSubmit={this.handleAdd} className="useradminAddAcc--formContainer">
                 <div className="useradminAddAcc--formGroup">
                     <label htmlFor="username">Username:</label>
                     <input
