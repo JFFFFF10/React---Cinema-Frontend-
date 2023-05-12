@@ -16,7 +16,7 @@ const MoviesPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://csit-314-cinema-booking-system.vercel.app/view/');
+        const response = await axios.get('https://csit-314-cinema-booking-system.vercel.app/viewMov/');
         setMovieList(response.data);
       } catch (error) {
         console.error(error);

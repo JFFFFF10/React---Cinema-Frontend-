@@ -17,12 +17,6 @@ import CinemaRoomPage from "./CinemaManagerPage/managerSystem/cinemaRoom";
 import FNBPage from "./CinemaManagerPage/managerSystem/fnb"
 import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession"
 
-//Cinema Manager
-import MovieInfoPage from "./CinemaManagerPage/managerSystem/movieInfo";
-import CinemaRoomPage from "./CinemaManagerPage/managerSystem/cinemaRoom";
-import FNBPage from "./CinemaManagerPage/managerSystem/fnb"
-import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession"
-
 //Movies
 import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";

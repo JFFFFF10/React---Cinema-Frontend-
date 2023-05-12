@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "./MovieSessionPage.css";
+import { alignProperty } from "@mui/material/styles/cssUtils";
 
 const timeHeaders = [
   "08:30", "11:30", "14:00", "16:30", "17:50", "18:40", "19:30", "20:40", "21:10"
@@ -49,40 +50,47 @@ const MovieSessionPage = () => {
     <>
       <Header />
       <div className="movieSessionPage--content">
-        <h2>Movie Sessions for {decodeURIComponent(movie_title)}</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              {timeHeaders.map((time) => (
-                <th key={time}>{time}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {groupedSessions.map(([date, sessions]) => (
-              <tr key={date}>
-                <td>{date}</td>
-                {timeHeaders.map((time) => {
-                  const session = sessions.find((s) => s.session_time === time);
-                  return (
-                    <td key={`${date}-${time}`}>
-                      {session ? (
-                        <a href={`/booking/${session.id}`}>{session.session_time}</a>
-                      ) : (
-                        "-"
-                      )}
-                    </td>
-                  );
-                })}
+        <h2>Movie Sessions for <u>{decodeURIComponent(movie_title)}</u></h2>
+        {groupedSessions.length > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                {timeHeaders.map((time) => (
+                  <th key={time}>{time}</th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {groupedSessions.map(([date, sessions]) => (
+                <tr key={date}>
+                  <td>{date}</td>
+                  {timeHeaders.map((time) => {
+                    const session = sessions.find((s) => s.session_time === time);
+                    return (
+                      <td key={`${date}-${time}`}>
+                        {session ? (
+                          <a href={`/booking/${session.id}`}>{session.session_time}</a>
+                        ) : (
+                          "-"
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p className="centered-message">
+            Sorry, we don't have movie sessions for this film yet.
+          </p>
+        )}
       </div>
       <Footer />
     </>
   );
+  
 };
 
 export default MovieSessionPage;
