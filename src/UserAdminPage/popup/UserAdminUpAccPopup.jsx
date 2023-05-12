@@ -118,14 +118,7 @@ class UserAdminUpAccPopup extends Component {
           zIndex: 9999, // Set a higher z-index value
         });
       });
-  };
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.open !== this.props.open) {
-      this.setState({ isPopupVisible: this.props.open });
-    }
-  }  
-  
+  }; 
 
   render() {
     const { open, onClose, selectedUser } = this.props;
