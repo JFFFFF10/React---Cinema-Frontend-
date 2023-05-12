@@ -5,7 +5,6 @@ import axios from "axios";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "./MovieSessionPage.css";
-import { alignProperty } from "@mui/material/styles/cssUtils";
 
 const timeHeaders = [
   "08:30", "11:30", "14:00", "16:30", "17:50", "18:40", "19:30", "20:40", "21:10"
