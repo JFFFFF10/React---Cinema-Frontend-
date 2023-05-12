@@ -49,7 +49,6 @@ class RoomBookingList extends React.Component {
 		}
 	};
 
-
 	render() {
 		const { names, handleEdit } = this.props;
 		const { searchText } = this.state;

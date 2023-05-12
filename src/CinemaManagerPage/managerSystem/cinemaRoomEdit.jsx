@@ -6,11 +6,11 @@ class CinemaRoomEdit extends Component {
 	constructor(props) {
 		super(props);
 
-		const selectedname = this.props.selectedname;
+		const selectedmovie = this.props.selectedmovie;
 
 		this.state = {
-			name: selectedname ? selectedname.name : "",
-			capacity: selectedname ? selectedname.capacity : "",
+			name: selectedmovie ? selectedmovie.name : "",
+			capacity: selectedmovie ? selectedmovie.capacity : "",
 		};
 	}
 
@@ -22,7 +22,7 @@ class CinemaRoomEdit extends Component {
 
 		try {
 			const response = await axios.post(
-				"https://csit-314-cinema-booking-system.vercel.app/updateCR/",
+				"https://csit-314-cinema-booking-system.vercel.app/updateMov/",
 				{
 					name: this.state.name,
 					capacity: this.state.capacity,
@@ -58,18 +58,21 @@ class CinemaRoomEdit extends Component {
 			<div className="userManagerPage--small-container">
 				<form onSubmit={this.handleUpdate} className="userManagerPage--form">
 					<h1>Update Cinema Room</h1>
-					<label htmlFor="name">Cinema Room</label>
+					{/* <label htmlFor="name">Cinema Room</label>
 					<input
 						id="name"
 						type="text"
 						name="name"
 						value={name}
-						onChange={(event) => this.setState({ name: event.target.value })}
-					/>
+						onChange={(event) =>
+							this.setState({ name: event.target.value })
+						}
+						disabled
+					/> */}
 					<label htmlFor="capacity">Capacity</label>
 					<input
 						id="capacity"
-						type="number"
+						type="text"
 						name="capacity"
 						value={capacity}
 						onChange={(event) =>

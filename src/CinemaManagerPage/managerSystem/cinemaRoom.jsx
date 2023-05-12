@@ -22,17 +22,21 @@ class CinemaRoom extends Component {
 		this.setnames = this.setnames.bind(this);
 	}
 
-	componentDidMount() {
-		axios
-			.get("https://csit-314-cinema-booking-system.vercel.app/viewAllCR/")
-			.then((response) => {
-				this.setState({
-					names: response.data,
-				});
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+	async componentDidMount() {
+		try {
+			const response = await axios.get(
+				"https://csit-314-cinema-booking-system.vercel.app/viewAllCR/",
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Token ${localStorage.getItem("token")}`,
+					},
+				}
+			);
+			this.setState({ names: response.data });
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	handleEdit(name) {
