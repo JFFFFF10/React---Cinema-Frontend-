@@ -1,0 +1,74 @@
+.movieDetailPage--content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2vh;
+    background-color: #1c1c1c;
+    border-radius: 1vh;
+    box-shadow: 0 1vh 2vh rgba(0,0,0,0.19), 0 0.6vh 0.6vh rgba(0,0,0,0.23);
+    margin: 2vh 7vw;
+  }
+  
+.movieDetailPage--poster, .movieDetailPage--details {
+    flex: 1 1 30vw;
+    max-width: 30vw;
+}
+
+.movieDetailPage--poster img {
+    border-radius: 1vh;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 1vh 1.8vh -0.7vh rgba(0,0,0,0.75);
+
+    height: 80vh;
+    margin-left: 3vw;
+}
+
+.movieDetailPage--poster img:hover {
+    transform: scale(1.05);
+}
+  
+.movieDetailPage--details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2vh;
+    background-color: #504d4d;
+    border-radius: 1vh;
+    box-shadow: 0 1vh 1.8vh -0.7vh rgba(0,0,0,0.75);
+}
+  
+.movieDetailPage--details h1 {
+    color: #fff;
+    margin-bottom: 1vh;
+    text-transform: uppercase;
+    font-size: 5vh;
+}
+  
+.movieDetailPage--details p {
+    color: #ccc;
+    margin-bottom: 1vh;
+    font-size: 2vh;
+}
+  
+.movieDetailPage--book-btn {
+    align-self: center;
+    color: #fff;
+    background-color: #f44336;
+    border: none;
+    padding: 1.5vh 3vh;
+    font-size: 2vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 1vh;
+    text-decoration: none;
+    margin-top: 2vh;
+}
+  
+.movieDetailPage--book-btn:hover {
+    background-color: #ff5722;
+    transform: translateY(-0.3vh);
+}
+  
+.movieDetailPage--book-btn:active {
+    transform: translateY(0.1vh);
+}

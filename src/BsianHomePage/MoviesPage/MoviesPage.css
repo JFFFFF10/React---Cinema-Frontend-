@@ -67,6 +67,93 @@
   transition: transform 0.35s ease-in-out;
 }
 
+.moviesPage--poster-overlay {
+  position: absolute;
+  text-align: center;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.moviesPage--poster-title {
+  font-size: 0.7rem;
+  color: white;
+  z-index: 999;
+}
+
+.moviesPage--button-info,
+.moviesPage--button-book {
+  color: #fff;
+  background-color: #333;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.moviesPage--posterbox:hover .moviesPage--poster-overlay {
+  bottom: 0;
+}
+
+.moviesPage--poster-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.moviesPage--button-info,
+.moviesPage--button-book {
+  color: #fff;
+  background-color: #333;
+  border: none;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 999;
+  border-radius: 10px;
+  
+  /* Add box shadow */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Add text shadow */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  
+  /* Add a small scale transform to create a subtle "pop" effect on hover */
+  transform: scale(1);
+}
+
+.moviesPage--button-info:hover,
+.moviesPage--button-book:hover {
+  /* Slightly increase size on hover for a "pop" effect */
+  transform: scale(1.05);
+  
+  /* Add a subtle outline on hover */
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+  
+  /* Add a stronger box shadow on hover */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.moviesPage--button-info:hover {
+  background-color: rgb(21, 122, 21);
+}
+
+.moviesPage--button-book:hover {
+  background-color: rgb(184, 44, 44);
+  color: white;
+}
+
 .moviesPage--posterbox:hover {
   transform: scale(1.15);
 }
@@ -79,22 +166,6 @@
 
 .moviesPage--posterbox:hover img {
   transform: scale(1.1);
-}
-
-.moviesPage--poster-title {
-  position: absolute;
-  text-align: center;
-  bottom: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  font-size: 1.15rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: bottom 0.3s ease-in-out;
 }
 
 .moviesPage--posterbox:hover .moviesPage--poster-title {
