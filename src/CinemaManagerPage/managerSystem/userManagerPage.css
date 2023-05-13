@@ -144,7 +144,8 @@ form.userManagerPage--form [type="number"],
 form.userManagerPage--form [type="text"],
 form.userManagerPage--form [type="time"],
 form.userManagerPage--form select,
-form.userManagerPage--form textarea {
+form.userManagerPage--form textarea
+#session_time{
 	display: block;
 	border: 1px solid #dedede;
 	border-radius: 4px;
@@ -158,19 +159,9 @@ form.userManagerPage--form textarea {
 	line-height: 1;
 }
 
-form.userManagerPage--form [type="checkbox"] {
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	background-color: #ccc;
-	color: #fff;
-	font-size: 16px;
-	margin: 10px 0;
-}
-
-input[type="checkbox"]:checked {
-	background-color: #000;
-}
+#session_time {
+	background-color: black;
+  }
 
 .userManager--searchContainer {
 	flex: 1;

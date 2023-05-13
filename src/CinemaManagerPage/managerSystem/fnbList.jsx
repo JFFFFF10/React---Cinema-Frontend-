@@ -43,7 +43,6 @@ class FNBList extends React.Component {
 			window.location.reload();
 			console.log(response.data);
 		} catch (error) {
-			//console.log(id.id);
 			throw new Error("An error occurred while deleting the fnb.");
 		}
 	};
@@ -53,7 +52,7 @@ class FNBList extends React.Component {
 		const { searchText } = this.state;
 
 		const filteredfnbinfo = fnbs.filter((fnb) =>
-		fnb.id.toLowerCase().includes(searchText.toLowerCase())
+			fnb.menu.toLowerCase().includes(searchText.toLowerCase())
 		);
 
 		return (
@@ -71,11 +70,9 @@ class FNBList extends React.Component {
 					<thead>
 						<tr>
 							<th>No.</th>
-							{/* <th>ID</th> */}
 							<th>Menu</th>
 							<th>Menu Description</th>
 							<th>Price</th>
-							<th>Is Avaibale</th>
 							<th>Image</th>
 							<th colSpan={2} className="userManagerPage--text-center">
 								Actions
@@ -87,11 +84,9 @@ class FNBList extends React.Component {
 							filteredfnbinfo.map((fnb, i) => (
 								<tr key={i} className="userManagerPage--table">
 									<td>{i + 1}</td>
-									{/* <td>{fnb.id}</td> */}
 									<td>{fnb.menu}</td>
 									<td>{fnb.menu_description}</td>
 									<td>{fnb.price}</td>
-									<td>{fnb.is_available}</td>
 									<td>
 										<img
 											src={`${fnb.menuIMG}`}

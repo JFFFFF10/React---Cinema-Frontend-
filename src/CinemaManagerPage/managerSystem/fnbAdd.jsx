@@ -9,7 +9,6 @@ class FNBAdd extends Component {
 			menu: "",
 			menu_description: "",
 			price: "",
-			is_available: "",
 			menuIMG: "",
 		};
 		this.textInput = React.createRef();
@@ -74,7 +73,7 @@ class FNBAdd extends Component {
 		const token = localStorage.getItem("token");
 
 		e.preventDefault();
-		const { menu, menu_description, price, is_available, menuIMG } = this.state;
+		const { menu, menu_description, price, menuIMG } = this.state;
 
 		if (!menu || !menu_description || !price || !menuIMG) {
 			return Swal.fire({
@@ -92,7 +91,6 @@ class FNBAdd extends Component {
 					menu: menu,
 					menu_description: menu_description,
 					price: price,
-					is_available: is_available,
 					menuIMG: menuIMG,
 				},
 				{
@@ -106,7 +104,7 @@ class FNBAdd extends Component {
 			Swal.fire({
 				icon: "success",
 				title: "Added!",
-				text: `FnB data has been Added.`,
+				text: `FnB data has been added.`,
 				showConfirmButton: false,
 				timer: 3000,
 			});
@@ -115,7 +113,6 @@ class FNBAdd extends Component {
 				menu: "",
 				menu_description: "",
 				price: "",
-				is_available: "",
 				menuIMG: "",
 			});
 			if (response.status === 200) {
@@ -127,7 +124,7 @@ class FNBAdd extends Component {
 	};
 
 	render() {
-		const { menu, menu_description, price, is_available, menuIMG } = this.state;
+		const { menu, menu_description, price, menuIMG } = this.state;
 
 		return (
 			<div className="userManagerPage--small-container">
@@ -160,15 +157,6 @@ class FNBAdd extends Component {
 						value={price}
 						onChange={this.handleInputChange}
 					/>
-					<label htmlFor="is_available">Is Available</label>
-						<input
-							id="is_available"
-							type="text"
-							ref={this.textInput}
-							name="is_available"
-							value={is_available}
-							onChange={this.handleInputChange}
-						/>
 					<label htmlFor="menuIMG">menuIMG</label>
 					<div>
 						<input

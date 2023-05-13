@@ -59,7 +59,7 @@ class RoomBookingAdd extends Component {
 			Swal.fire({
 				icon: "success",
 				title: "Added!",
-				text: `Cinema romm has been Added.`,
+				text: `Cinema room has been added.`,
 				showConfirmButton: false,
 				timer: 3000,
 			});
@@ -69,11 +69,9 @@ class RoomBookingAdd extends Component {
 				capacity: "",
 			});
 			if (response.status === 200) {
-				// Movie added successfully
 				console.log("Cinema room added successfully.");
 			}
 		} catch (error) {
-			//console.error("wtf?");
 			console.log(error);
 		}
 	};

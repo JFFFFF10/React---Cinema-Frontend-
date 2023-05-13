@@ -9,8 +9,22 @@ class MovieSessionEdit extends Component {
 		const selectedname = this.props.selectedname;
 
 		this.state = {
-			name: selectedname ? selectedname.name : "",
-			capacity: selectedname ? selectedname.capacity : "",
+			id: selectedname ? selectedname.id : "",
+			movie_title: selectedname ? selectedname.movie_title : "",
+			session_date: selectedname ? selectedname.session_date : "",
+			cinema_room: selectedname ? selectedname.cinema_room : "",
+			session_time: selectedname ? selectedname.session_time : "",
+			valid_session_times: [
+				"8:30",
+				"11:30",
+				"14:00",
+				"16:30",
+				"17:50",
+				"18:40",
+				"19:30",
+				"20:40",
+				"21:10",
+			],
 		};
 	}
 
@@ -22,10 +36,13 @@ class MovieSessionEdit extends Component {
 
 		try {
 			const response = await axios.post(
-				"https://csit-314-cinema-booking-system.vercel.app/updateCR/",
+				"https://csit-314-cinema-booking-system.vercel.app/updateMovieSession/",
 				{
-					name: this.state.name,
-					capacity: this.state.capacity,
+					id: this.state.id,
+					movie_title: this.state.movie_title,
+					session_date: this.state.session_date,
+					cinema_room: this.state.cinema_room,
+					session_time: this.state.session_time,
 				},
 				{
 					headers: {
@@ -35,47 +52,99 @@ class MovieSessionEdit extends Component {
 				}
 			);
 
-			Swal.fire({
-				icon: "success",
-				title: "Updated!",
-				text: `${this.state.name} data has been updated.`,
-				showConfirmButton: false,
-				timer: 3000,
-			});
-			window.location.reload();
-			console.log(response.data);
+			if (response.status === 200) {
+				Swal.fire({
+					icon: "success",
+					title: "Updated!",
+					text: `Movie session data has been updated.`,
+					showConfirmButton: false,
+					timer: 3000,
+				});
+				window.location.reload();
+				this.moviesession.update_session_time(this.state.session_time);
+			} else if (response.status === 404) {
+				Swal.fire({
+					icon: "error",
+					title: "Error",
+					text: `Movie session with the given ID does not exist.`,
+					showConfirmButton: false,
+					timer: 3000,
+				});
+			}
 		} catch (error) {
 			console.log(token);
 		}
 	};
 
 	render() {
-		const { name, capacity } = this.state;
+		const {
+			id,
+			movie_title,
+			session_date,
+			cinema_room,
+			session_time,
+			valid_session_times,
+		} = this.state;
 
 		const { setIsEditing } = this.props;
 
 		return (
 			<div className="userManagerPage--small-container">
 				<form onSubmit={this.handleUpdate} className="userManagerPage--form">
-					<h1>Update Cinema Room</h1>
-					<label htmlFor="name">Cinema Room</label>
+					<h1>Update Movie Session</h1>
+					<label htmlFor="id">Id</label>
 					<input
-						id="name"
+						id="id"
 						type="text"
-						name="name"
-						value={name}
-						onChange={(event) => this.setState({ name: event.target.value })}
+						name="id"
+						value={id}
+						onChange={(event) => this.setState({ id: event.target.value })}
 					/>
-					<label htmlFor="capacity">Capacity</label>
+					{/* <label htmlFor="movie_title">Movie</label>
 					<input
-						id="capacity"
-						type="number"
-						name="capacity"
-						value={capacity}
+						id="movie_title"
+						type="text"
+						name="movie_title"
+						value={movie_title}
 						onChange={(event) =>
-							this.setState({ capacity: event.target.value })
+							this.setState({ movie_title: event.target.value })
+						}
+					/> */}
+					<label htmlFor="session_date">Session Date</label>
+					<input
+						id="session_date"
+						type="date"
+						name="session_date"
+						value={session_date}
+						onChange={(event) =>
+							this.setState({ session_date: event.target.value })
 						}
 					/>
+					{/* <label htmlFor="cinema_room">Cinema Room</label>
+					<input
+						id="cinema_room"
+						type="text"
+						name="cinema_room"
+						value={cinema_room}
+						onChange={(event) =>
+							this.setState({ cinema_room: event.target.value })
+						}
+					/> */}
+					<label htmlFor="session_time">Session Time</label>
+					<select
+						id="session_time"
+						name="session_time"
+						onChange={(event) =>
+							this.setState({ session_time: event.target.value })
+						}
+					>
+						<option value="">Select Session Time</option>
+						{valid_session_times.map((session_time) => (
+							<option key={session_time} value={session_time}>
+								{session_time}
+							</option>
+						))}
+					</select>
 					<div style={{ marginTop: "30px" }}>
 						<input
 							className="userManagerPage--left"

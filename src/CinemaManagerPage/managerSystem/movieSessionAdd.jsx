@@ -6,8 +6,21 @@ class MovieSessionAdd extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: "",
-			capacity: "",
+			movie_title: "",
+			session_date: "",
+			cinema_room: "",
+			session_time: "",
+			valid_session_times: [
+				"8:30",
+				"11:30",
+				"14:00",
+				"16:30",
+				"17:50",
+				"18:40",
+				"19:30",
+				"20:40",
+				"21:10",
+			],
 		};
 		this.textInput = React.createRef();
 	}
@@ -28,11 +41,10 @@ class MovieSessionAdd extends Component {
 
 	handleAdd = async (e) => {
 		const token = localStorage.getItem("token");
-
 		e.preventDefault();
-		const { name, capacity } = this.state;
+		const { movie_title, session_date, cinema_room, session_time } = this.state;
 
-		if (!name || !capacity) {
+		if (!movie_title || !session_date || !cinema_room || !session_time) {
 			return Swal.fire({
 				icon: "error",
 				title: "Error!",
@@ -43,10 +55,12 @@ class MovieSessionAdd extends Component {
 
 		try {
 			const response = await axios.post(
-				"https://csit-314-cinema-booking-system.vercel.app/addCR/",
+				"https://csit-314-cinema-booking-system.vercel.app/addMS/",
 				{
-					name: name,
-					capacity: capacity,
+					movie_title: this.state.movie_title,
+					session_date: this.state.session_date,
+					cinema_room: this.state.cinema_room,
+					session_time: this.state.session_time,
 				},
 				{
 					headers: {
@@ -59,49 +73,77 @@ class MovieSessionAdd extends Component {
 			Swal.fire({
 				icon: "success",
 				title: "Added!",
-				text: `Cinema romm has been Added.`,
+				text: `Movie session has been added.`,
 				showConfirmButton: false,
 				timer: 3000,
 			});
 
 			this.setState({
-				name: "",
-				capacity: "",
+				movie_title: "",
+				session_date: "",
+				cinema_room: "",
+				session_time: "",
 			});
+
 			if (response.status === 200) {
-				// Movie added successfully
 				console.log("Cinema room added successfully.");
 			}
 		} catch (error) {
-			//console.error("wtf?");
 			console.log(error);
 		}
 	};
 
 	render() {
-		const { name, capacity } = this.state;
+		const {
+			movie_title,
+			session_date,
+			cinema_room,
+			session_time,
+			valid_session_times,
+		} = this.state;
 
 		return (
 			<div className="userManagerPage--small-container">
 				<form onSubmit={this.handleAdd} className="userManagerPage--form">
-					<h1>Add Cinema Room</h1>
-					<label htmlFor="name">Cinema Room</label>
+					<h1>Add Movie Session</h1>
+					<label htmlFor="movie_title">Movie</label>
 					<input
-						id="name"
+						id="movie_title"
 						type="text"
 						ref={this.textInput}
-						name="name"
-						value={name}
+						name="movie_title"
+						value={movie_title}
 						onChange={this.handleInputChange}
 					/>
-					<label htmlFor="capacity">capacity</label>
+					<label htmlFor="session_date">Session Date</label>
 					<input
-						id="capacity"
-						type="text"
-						name="capacity"
-						value={capacity}
-						onChange={(e) => this.setState({ capacity: e.target.value })}
+						id="session_date"
+						type="date"
+						name="session_date"
+						value={session_date}
+						onChange={this.handleInputChange}
 					/>
+					<label htmlFor="cinema_room">Cinema Room</label>
+					<input
+						id="cinema_room"
+						type="text"
+						name="cinema_room"
+						value={cinema_room}
+						onChange={this.handleInputChange}
+					/>
+					<label htmlFor="session_time">Session Time</label>
+					<select
+						id="session_time"
+						name="session_time"
+						onChange={this.handleInputChange}
+					>
+						<option value="">Select Session Time</option>
+						{valid_session_times.map((session_time) => (
+							<option key={session_time} value={session_time}>
+								{session_time}
+							</option>
+						))}
+					</select>
 					<div style={{ marginTop: "30px" }}>
 						<input
 							className="userManagerPage--left"
@@ -121,4 +163,5 @@ class MovieSessionAdd extends Component {
 		);
 	}
 }
+
 export default MovieSessionAdd;

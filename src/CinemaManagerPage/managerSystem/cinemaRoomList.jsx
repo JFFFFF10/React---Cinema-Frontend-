@@ -62,7 +62,7 @@ class RoomBookingList extends React.Component {
 				<div className="userManager--searchContainer">
 					<input
 						type="text"
-						placeholder="Search room"
+						placeholder="Search cinema room"
 						className="userManager--searchBar"
 						value={searchText}
 						onChange={this.handleSearchChange}

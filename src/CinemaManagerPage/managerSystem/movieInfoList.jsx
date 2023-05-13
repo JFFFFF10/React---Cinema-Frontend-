@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
+
 class MovieList extends React.Component {
 	constructor(props) {
 		super(props);

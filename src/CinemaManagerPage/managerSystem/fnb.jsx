@@ -35,9 +35,9 @@ class FNBInfo extends Component {
 			});
 	}
 
-	handleEdit(fnb) {
+	handleEdit(fnbs) {
 		this.setState({
-			selectedfnb: fnb,
+			selectedfnb: fnbs,
 			isEditing: true,
 		});
 	}

@@ -11,15 +11,15 @@ class MovieSession extends Component {
 		super(props);
 
 		this.state = {
-			names: [],
-			selectedname: null,
+			sessions: [],
+			selectedsession: null,
 			isAdding: false,
 			isEditing: false,
 		};
 		this.handleEdit = this.handleEdit.bind(this);
 		this.setIsAdding = this.setIsAdding.bind(this);
 		this.setIsEditing = this.setIsEditing.bind(this);
-		this.setnames = this.setnames.bind(this);
+		this.setsessions = this.setsessions.bind(this);
 	}
 
 	async componentDidMount() {
@@ -33,24 +33,15 @@ class MovieSession extends Component {
 					},
 				}
 			);
-			const transformedData = response.data.map((item) => {
-				return {
-					id: item.id,
-					movie: `Movie ${item.movie}`,
-					session_date: item.session_date,
-					cinema_room: `Cinema Room ${item.cinema_room}`,
-					session_time: item.session_time,
-				};
-			});
-			this.setState({ names: transformedData });
+			this.setState({ sessions: response.data });
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
-	handleEdit(name) {
+	handleEdit(session) {
 		this.setState({
-			selectedname: name,
+			selectedsession: session,
 			isEditing: true,
 		});
 	}
@@ -63,21 +54,21 @@ class MovieSession extends Component {
 		this.setState({ isEditing });
 	}
 
-	setnames(names) {
-		this.setState({ names });
+	setsessions(sessions) {
+		this.setState({ sessions });
 	}
 
 	render() {
-		const { names, selectedname, isAdding, isEditing } = this.state;
+		const { sessions, selectedsession, isAdding, isEditing } = this.state;
 
 		return (
-			<div className="userManagerPage--container">
+			<div classsession="userManagerPage--container">
 				{/* List */}
 				{!isAdding && !isEditing && (
 					<>
 						<Header setIsAdding={this.setIsAdding} />
 						<MovieSessionList
-							names={names}
+							sessions={sessions}
 							handleEdit={this.handleEdit}
 							handleDelete={this.handleDelete}
 						/>
@@ -86,17 +77,17 @@ class MovieSession extends Component {
 				{/* Add */}
 				{isAdding && (
 					<MovieSessionAdd
-						names={names}
-						setnames={this.setnames}
+						sessions={sessions}
+						setsessions={this.setsessions}
 						setIsAdding={this.setIsAdding}
 					/>
 				)}
 				{/* Edit */}
-				{isEditing && selectedname && (
+				{isEditing && selectedsession && (
 					<MovieSessionEdit
-						names={names}
-						selectedname={selectedname}
-						setnames={this.setnames}
+						sessions={sessions}
+						selectedsession={selectedsession}
+						setsessions={this.setsessions}
 						setIsEditing={this.setIsEditing}
 					/>
 				)}
@@ -104,5 +95,4 @@ class MovieSession extends Component {
 		);
 	}
 }
-
 export default MovieSession;

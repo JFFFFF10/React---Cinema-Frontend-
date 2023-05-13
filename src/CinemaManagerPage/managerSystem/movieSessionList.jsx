@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
+import MovieSessionSearch from "./movieSessionSearch";
+
 class MovieSessionList extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,13 +16,13 @@ class MovieSessionList extends React.Component {
 		this.setState({ searchText: event.target.value });
 	};
 
-	handleDelete = async (name) => {
+	handleDelete = async (id) => {
 		const token = localStorage.getItem("token");
 
 		try {
 			const response = await axios.post(
 				`https://csit-314-cinema-booking-system.vercel.app/delMS/`,
-				{ name: name.name },
+				{ id: id.id },
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -32,39 +34,42 @@ class MovieSessionList extends React.Component {
 			Swal.fire({
 				icon: "success",
 				title: "Deleted!",
-				text: `${name.name} has been Deleted.`,
+				text: `Movie session has been Deleted.`,
 				showConfirmButton: false,
 				timer: 3000,
 			});
 
 			if (response.status === 200) {
-				console.log("Cinema room delete successfully.");
+				console.log("Movie session delete successfully.");
 			}
 			window.location.reload();
 			console.log(response.data);
 		} catch (error) {
-			console.log(name.name);
-			throw new Error("An error occurred while deleting the cinema room.");
+			throw new Error("An error occurred while deleting the movie session.");
 		}
 	};
 
 	render() {
-		const { names, handleEdit } = this.props;
+		const { sessions, handleEdit } = this.props;
 		const { searchText } = this.state;
 
-		
+		const filteredCR = sessions.filter((session) =>
+			session.movie.toLowerCase().includes(searchText.toLowerCase())
+		);
 
 		return (
 			<div className="userManagerPage--contain-table">
 				<div className="userManager--searchContainer">
 					<input
 						type="text"
-						placeholder="Search room"
+						placeholder="Search movie session"
 						className="userManager--searchBar"
 						value={searchText}
 						onChange={this.handleSearchChange}
 					/>
+					
 				</div>
+				<MovieSessionSearch />
 				<table className="striped-table">
 					<thead>
 						<tr>
@@ -80,32 +85,38 @@ class MovieSessionList extends React.Component {
 						</tr>
 					</thead>
 					<tbody>
-								<tr className="userManagerPage--table">
-									
-									<td>{names.id}</td>
-									<td>{`Movie ${names.movie}`}</td>
-									<td>{names.session_date}</td>
-									<td>{`Cinema Room ${names.cinema_room}`}</td>
-									<td>{names.session_time}</td>
-									<td className="text-right">
+						{filteredCR.length > 0 ? (
+							filteredCR.map((session, i) => (
+								<tr key={i} className="userManagerPage--table">
+									<td>{i + 1}</td>
+									<td>{session.id}</td>
+									<td>{session.movie}</td>
+									<td>{session.session_date}</td>
+									<td>{session.cinema_room}</td>
+									<td>{session.session_time}</td>
+									<td classsession="text-right">
 										<button
-											onClick={() => handleEdit(names)}
+											onClick={() => handleEdit(session)}
 											className="userManagerPage--right"
 										>
 											Update
 										</button>
 									</td>
-									<td className="text-left">
+									<td classsession="text-left">
 										<button
-											onClick={() => this.handleDelete(names)}
+											onClick={() => this.handleDelete(session)}
 											className="userManagerPage--right"
 										>
 											Delete
 										</button>
 									</td>
 								</tr>
-						 : (
-						)
+							))
+						) : (
+							<tr>
+								<td colSpan={7}>No movie session</td>
+							</tr>
+						)}
 					</tbody>
 				</table>
 			</div>

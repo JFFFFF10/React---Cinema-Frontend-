@@ -108,15 +108,6 @@ class FNBEdit extends Component {
 			<div className="userManagerPage--small-container">
 				<form onSubmit={this.handleUpdate} className="userManagerPage--form">
 					<h1>Update FNB</h1>
-					{/* <label htmlFor="id">Id</label>
-					<input
-						id="id"
-						type="text"
-						name="id"
-						value={id}
-						onChange={(event) => this.setState({ id: event.target.value })}
-						disabled
-					/> */}
 					<label htmlFor="menu">Menu</label>
 					<input
 						id="menu"
@@ -142,16 +133,6 @@ class FNBEdit extends Component {
 						name="price"
 						value={price}
 						onChange={(event) => this.setState({ price: event.target.value })}
-					/>
-					<label htmlFor="is_available">Is Avaible</label>
-					<input
-						id="is_available"
-						type="text"
-						name="is_available"
-						value={is_available}
-						onChange={(event) =>
-							this.setState({ is_available: event.target.value })
-						}
 					/>
 					<label htmlFor="menuIMG">menuIMG</label>
 					<div>
