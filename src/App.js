@@ -20,7 +20,8 @@ import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession
 //Movies
 import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";
-import MovieSessionPage from "./BsianHomePage/MovieSessionPage/MovieSessionPage";
+import MovieSessionPageWrapper from "./BsianHomePage/MovieSessionPage/MovieSessionPage";
+import MovieDetailPageWrapper from "./BsianHomePage/MovieDetailPage/MovieDetailPage";
 
 function App() {
 	return (
@@ -43,14 +44,9 @@ function App() {
 				<Route path="/FNBPage" element={<FNBPage />} />
 				<Route path="/MovieSessionInfoPage" element={<MovieSessionInfoPage />} />
 
-
-
 				<Route path="/movie/:id" element={<SinglePage />} />
-
-				<Route
-					path="/movie-sessions/:movie_title"
-					element={<MovieSessionPage />}
-				/>
+				<Route path="/movie-detail/:movie_title" element={<MovieDetailPageWrapper />} />
+				<Route path="/movie-sessions/:movie_title" element={<MovieSessionPageWrapper />} />
 			</Routes>
 		</Router>
 	);
