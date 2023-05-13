@@ -2,19 +2,14 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import MovieSessionSearch from "./movieSessionSearch";
-
 class MovieSessionList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchText: "",
+			movieSessions: [],
 		};
 	}
-
-	handleSearchChange = (event) => {
-		this.setState({ searchText: event.target.value });
-	};
 
 	handleDelete = async (id) => {
 		const token = localStorage.getItem("token");
@@ -49,6 +44,32 @@ class MovieSessionList extends React.Component {
 		}
 	};
 
+	handleChange = (event) => {
+		this.setState({ searchText: event.target.value });
+	};
+
+	handleSearchChange = () => {
+		axios
+			.post(
+				"https://csit-314-cinema-booking-system.vercel.app/searchMovieSession/",
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Token ${localStorage.getItem("token")}`,
+					},
+					data: {
+						searchText: this.state.searchText,
+					},
+				}
+			)
+			.then((response) => {
+				this.setState({ movieSessions: response.data });
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
 	render() {
 		const { sessions, handleEdit } = this.props;
 		const { searchText } = this.state;
@@ -65,11 +86,9 @@ class MovieSessionList extends React.Component {
 						placeholder="Search movie session"
 						className="userManager--searchBar"
 						value={searchText}
-						onChange={this.handleSearchChange}
+						onChange={this.handleChange}
 					/>
-					
 				</div>
-				<MovieSessionSearch />
 				<table className="striped-table">
 					<thead>
 						<tr>

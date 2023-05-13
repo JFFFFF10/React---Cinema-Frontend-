@@ -5,6 +5,7 @@ import Header from "./Header";
 import MovieSessionList from "./movieSessionList";
 import MovieSessionAdd from "./movieSessionAdd";
 import MovieSessionEdit from "./movieSessionEdit";
+import "./userManagerPage.css";
 
 class MovieSession extends Component {
 	constructor(props) {
@@ -62,7 +63,7 @@ class MovieSession extends Component {
 		const { sessions, selectedsession, isAdding, isEditing } = this.state;
 
 		return (
-			<div classsession="userManagerPage--container">
+			<div className="userManagerPage--container">
 				{/* List */}
 				{!isAdding && !isEditing && (
 					<>

@@ -7,6 +7,7 @@ class FNBList extends React.Component {
 		super(props);
 		this.state = {
 			searchText: "",
+			movieSessions: [],
 		};
 	}
 
@@ -47,6 +48,32 @@ class FNBList extends React.Component {
 		}
 	};
 
+	handleChange = (event) => {
+		this.setState({ searchText: event.target.value });
+	};
+
+	handleSearchChange = () => {
+		axios
+			.post(
+				"https://csit-314-cinema-booking-system.vercel.app/searchFnB/",
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Token ${localStorage.getItem("token")}`,
+					},
+					data: {
+						searchText: this.state.searchText,
+					},
+				}
+			)
+			.then((response) => {
+				this.setState({ movieSessions: response.data });
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
 	render() {
 		const { fnbs, handleEdit } = this.props;
 		const { searchText } = this.state;
@@ -63,7 +90,7 @@ class FNBList extends React.Component {
 						placeholder="Search fnb"
 						className="userManager--searchBar"
 						value={searchText}
-						onChange={this.handleSearchChange}
+						onChange={this.handleChange}
 					/>
 				</div>
 				<table className="striped-table">

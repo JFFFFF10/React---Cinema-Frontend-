@@ -7,6 +7,7 @@ class RoomBookingList extends React.Component {
 		super(props);
 		this.state = {
 			searchText: "",
+			movieSessions: [],
 		};
 	}
 
@@ -48,6 +49,28 @@ class RoomBookingList extends React.Component {
 		}
 	};
 
+	handleChange = (event) => {
+		this.setState({ searchText: event.target.value });
+	};
+
+	handleSearchChange = () => {
+		axios
+			.post("https://csit-314-cinema-booking-system.vercel.app/searchFnB/", {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Token ${localStorage.getItem("token")}`,
+				},
+				data: {
+					searchText: this.state.searchText,
+				},
+			})
+			.then((response) => {
+				this.setState({ movieSessions: response.data });
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
 	render() {
 		const { names, handleEdit } = this.props;
@@ -65,7 +88,7 @@ class RoomBookingList extends React.Component {
 						placeholder="Search cinema room"
 						className="userManager--searchBar"
 						value={searchText}
-						onChange={this.handleSearchChange}
+						onChange={this.handleChange}
 					/>
 				</div>
 				<table className="striped-table">

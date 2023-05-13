@@ -8,12 +8,9 @@ class MovieList extends React.Component {
 		super(props);
 		this.state = {
 			searchText: "",
+			movieSessions: [],
 		};
 	}
-
-	handleSearchChange = (event) => {
-		this.setState({ searchText: event.target.value });
-	};
 
 	handleDelete = async (movie_title) => {
 		const token = localStorage.getItem("token");
@@ -49,6 +46,32 @@ class MovieList extends React.Component {
 		}
 	};
 
+	handleChange = (event) => {
+		this.setState({ searchText: event.target.value });
+	};
+
+	handleSearchChange = () => {
+		axios
+			.post(
+				"https://csit-314-cinema-booking-system.vercel.app/searchMovie/",
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Token ${localStorage.getItem("token")}`,
+					},
+					data: {
+						searchText: this.state.searchText,
+					},
+				}
+			)
+			.then((response) => {
+				this.setState({ movieSessions: response.data });
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
 	render() {
 		const { movies, handleEdit } = this.props;
 		const { searchText } = this.state;
@@ -65,7 +88,7 @@ class MovieList extends React.Component {
 						placeholder="Search movies"
 						className="userManager--searchBar"
 						value={searchText}
-						onChange={this.handleSearchChange}
+						onChange={this.handleChange}
 					/>
 				</div>
 				<table className="striped-table">
