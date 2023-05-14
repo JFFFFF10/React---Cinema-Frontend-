@@ -17,11 +17,16 @@ import CinemaRoomPage from "./CinemaManagerPage/managerSystem/cinemaRoom";
 import FNBPage from "./CinemaManagerPage/managerSystem/fnb"
 import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession"
 
+//Customer
+import UserFNB from "./BsianHomePage/UserMenu/UserFNB";
+
 //Movies
 import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";
 import MovieSessionPageWrapper from "./BsianHomePage/MovieSessionPage/MovieSessionPage";
 import MovieDetailPageWrapper from "./BsianHomePage/MovieDetailPage/MovieDetailPage";
+
+
 
 function App() {
 	return (
@@ -43,6 +48,8 @@ function App() {
 				<Route path="/CinemaRoomPage" element={<CinemaRoomPage />} />
 				<Route path="/FNBPage" element={<FNBPage />} />
 				<Route path="/MovieSessionInfoPage" element={<MovieSessionInfoPage />} />
+
+				<Route path="/UserFNB" element={<UserFNB />} />
 
 				<Route path="/movie/:id" element={<SinglePage />} />
 				<Route path="/movie-detail/:movie_title" element={<MovieDetailPageWrapper />} />

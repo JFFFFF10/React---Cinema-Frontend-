@@ -92,7 +92,7 @@ class MovieSessionEdit extends Component {
 			<div className="userManagerPage--small-container">
 				<form onSubmit={this.handleUpdate} className="userManagerPage--form">
 					<h1>Update Movie Session</h1>
-					<label htmlFor="id">Id</label>
+					<label htmlFor="id">ID</label>
 					<input
 						id="id"
 						type="text"
@@ -100,16 +100,6 @@ class MovieSessionEdit extends Component {
 						value={id}
 						onChange={(event) => this.setState({ id: event.target.value })}
 					/>
-					{/* <label htmlFor="movie_title">Movie</label>
-					<input
-						id="movie_title"
-						type="text"
-						name="movie_title"
-						value={movie_title}
-						onChange={(event) =>
-							this.setState({ movie_title: event.target.value })
-						}
-					/> */}
 					<label htmlFor="session_date">Session Date</label>
 					<input
 						id="session_date"
@@ -120,16 +110,6 @@ class MovieSessionEdit extends Component {
 							this.setState({ session_date: event.target.value })
 						}
 					/>
-					{/* <label htmlFor="cinema_room">Cinema Room</label>
-					<input
-						id="cinema_room"
-						type="text"
-						name="cinema_room"
-						value={cinema_room}
-						onChange={(event) =>
-							this.setState({ cinema_room: event.target.value })
-						}
-					/> */}
 					<label htmlFor="session_time">Session Time</label>
 					<select
 						id="session_time"

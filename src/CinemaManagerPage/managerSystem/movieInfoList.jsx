@@ -72,6 +72,13 @@ class MovieList extends React.Component {
 			});
 	};
 
+	formatDuration(durationInSeconds) {
+		let hours = Math.floor(durationInSeconds / 3600);
+		let minutes = Math.floor((durationInSeconds % 3600) / 60);
+		let seconds = durationInSeconds % 60;
+		return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+	  }
+
 	render() {
 		const { movies, handleEdit } = this.props;
 		const { searchText } = this.state;
@@ -116,7 +123,7 @@ class MovieList extends React.Component {
 									<td>{i + 1}</td>
 									<td>{movie.movie_title}</td>
 									<td>{movie.genre}</td>
-									<td>{movie.duration}</td>
+									<td>{this.formatDuration(movie.duration)}</td>
 									<td>{movie.release_date}</td>
 									<td>{movie.cast} </td>
 									<td>{movie.director} </td>

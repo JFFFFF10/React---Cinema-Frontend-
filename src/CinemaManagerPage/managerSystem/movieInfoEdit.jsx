@@ -29,7 +29,7 @@ class MovieEdit extends Component {
 
 		try {
 			const response = await axios.post(
-				"https://csit-314-cinema-booking-system.vercel.app/updateMov/",
+				"https://csit-314-cinema-booking-system.vercel.app/updateMovie/",
 				{
 					movie_title: this.state.movie_title,
 					genre: this.state.genre,
@@ -125,6 +125,15 @@ class MovieEdit extends Component {
 			file: e.target.files[0],
 		});
 	};
+
+	formatDuration(durationInSeconds) {
+		let hours = Math.floor(durationInSeconds / 3600);
+		let minutes = Math.floor((durationInSeconds % 3600) / 60);
+		let seconds = durationInSeconds % 60;
+		return `${hours.toString().padStart(2, "0")}:${minutes
+			.toString()
+			.padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+	}
 
 	render() {
 		const {

@@ -84,9 +84,30 @@ header ul li a:hover::after {
   color: red;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
-.account-icons {
+
+.dropdown-toggle {
+  display: block;
   background-color: transparent;
-  width: 1rem;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 0.25rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  padding: 1rem;
+  background-color: rgba(180, 180, 180, 0.264);
+  list-style: none;
+  border-radius: 0.25rem;
+  flex-direction: column;
+  top: 100%;
+}
+
+.dropdown-menu.show {
+  display: flex;
 }
 
 @media only screen and (max-width: 768px) {
