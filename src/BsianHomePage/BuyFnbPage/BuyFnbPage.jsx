@@ -94,7 +94,7 @@ class BuyFnbPage extends React.Component {
   render() {
     const { menuOption, isLoading } = this.state;
     if (isLoading) {
-      return <p className="BuyFnbPage--loading">Loading...</p>;
+      return <p className="BuyFnbPage--loading"></p>;
     }
     return (
       <>
