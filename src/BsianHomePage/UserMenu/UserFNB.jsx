@@ -3,64 +3,110 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-import { Link } from "react-router-dom";
 
 class UserFNB extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			profiles: [],
+			searchText: "",
+			search: [],
+			fnbs: [],
 		};
 	}
 
-	componentDidMount() {
-		const token = localStorage.getItem("token");
-		axios
-			.get(
+	async componentDidMount() {
+		try {
+			const response = await axios.get(
 				"https://csit-314-cinema-booking-system.vercel.app/viewFnBBooking/",
 				{
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Token ${token}`,
+						Authorization: `Token ${localStorage.getItem("token")}`,
 					},
 				}
-			)
-			.then((response) => {
-				const profiles = response.data;
-				console.log(profiles);
-			})
-			.catch((error) => {
-				console.error("There was an error!", error);
-			});
+			);
+			this.setState({ fnbs: response.data });
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
+	handleChange = (event) => {
+		this.setState({ searchText: event.target.value });
+	};
+
+	handleSearchChange = async () => {
+		const { searchQuery } = this.state;
+
+		const requestBody = {
+			keyword: searchQuery,
+		};
+		try {
+			const response = await axios.post(
+				"https://csit-314-cinema-booking-system.vercel.app/searchFnBBooking/",
+				requestBody,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Token ${localStorage.getItem("token")}`,
+					},
+				}
+			);
+			this.setState({ search: response.data });
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	render() {
-		const { profiles } = this.state;
+		const { fnbs, search } = this.state;
+		const { searchText } = this.state;
+
+		const filteredSR = fnbs.filter((fnb) =>
+			fnb.menu.toLowerCase().includes(searchText.toLowerCase())
+		);
+
+		const bookings = search.length > 0 ? search : fnbs;
 
 		return (
 			<>
 				<Header />
 				<div>
-					<h2 className="useradminViewPrf--title">Food and Beaverages</h2>
+					<h2 className="useradminViewPrf--title">My Food and Beaverages</h2>
 					<div className="useradminViewPrf--tableContainer">
 						<table className="useradminViewPrf--table">
 							<thead>
 								<tr>
-									<th className="useradminViewPrf--usernameHead">Username</th>
-									<th className="useradminViewPrf--nameHead">Name</th>
-									<th className="useradminViewPrf--dobHead">Date of Birth</th>
+									<th className="useradminViewPrf--usernameHead">Menu</th>
+									<th className="useradminViewPrf--usernameHead">Menu Description</th>
+									<th className="useradminViewPrf--usernameHead">Price</th>
+									<th className="useradminViewPrf--usernameHead">Image</th>
 								</tr>
 							</thead>
 							<tbody>
-								{profiles.map((profile) => (
-									<tr key={profile.id}>
-										<td>{profile.username}</td>
-										<td>{profile.name}</td>
-										<td>{profile.date_of_birth}</td>
+								{filteredSR.length > 0 ? (
+									filteredSR.map((fnb, i) => (
+										<tr key={fnb.id}>
+											<td>{fnb.menu}</td>
+											<td>{fnb.menu_description}</td>
+											<td>{fnb.price}</td>
+											<td>
+												<img
+													src={`${fnb.menuIMG}`}
+													alt="Poster image"
+													width={100}
+												/>
+											</td>
+										</tr>
+									))
+								) : (
+									<tr>
+										<td colSpan={7}>No records found.</td>
 									</tr>
-								))}
+								)}
 							</tbody>
 						</table>
+						{bookings.length === 0 && <p>No records found.</p>}
 					</div>
 				</div>
 				<Footer />

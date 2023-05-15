@@ -11,10 +11,6 @@ class RoomBookingList extends React.Component {
 		};
 	}
 
-	handleSearchChange = (event) => {
-		this.setState({ searchText: event.target.value });
-	};
-
 	handleDelete = async (name) => {
 		const token = localStorage.getItem("token");
 
@@ -76,8 +72,13 @@ class RoomBookingList extends React.Component {
 		const { names, handleEdit } = this.props;
 		const { searchText } = this.state;
 
-		const filteredCR = names.filter((name) =>
-			name.name.toLowerCase().includes(searchText.toLowerCase())
+		const filteredCR = names.filter(
+			(name) =>
+				name.name.toLowerCase().includes(searchText.toLowerCase()) ||
+				name.capacity
+					.toString()
+					.toLowerCase()
+					.includes(searchText.toLowerCase())
 		);
 
 		return (

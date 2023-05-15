@@ -11,10 +11,6 @@ class FNBList extends React.Component {
 		};
 	}
 
-	handleSearchChange = (event) => {
-		this.setState({ searchText: event.target.value });
-	};
-
 	handleDelete = async (id) => {
 		const token = localStorage.getItem("token");
 

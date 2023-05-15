@@ -33,8 +33,8 @@ class Header extends Component {
 	render() {
 		const { isOpen, isMobile } = this.state;
 		const menuItems = [
-			{ label: "View FnB Booking", url: "/UserFNB" },
-			{ label: "View Movie Booking", url: "/" },
+			{ label: "● View FnB Booking", url: "/UserFNB" },
+			{ label: "● View Movie Booking", url: "/UserMovieBooking" },
 		];
 		const token = localStorage.getItem("token");
 		return (
@@ -73,12 +73,17 @@ class Header extends Component {
 							</button>
 						</nav>
 						{/* User menu drop down  */}
-						<div className="account flexSB">
+						<div className="userMenu flexSB">
 							<div className="dropdown">
 								<button onClick={this.toggleMenu} className="dropdown-toggle">
 									<FontAwesomeIcon icon={faUser} />
 								</button>
 								<div className={`dropdown-menu ${isOpen ? "show" : ""}`}>
+									{/* {menuItems.map((item, index) => (
+										<li key={index} className="userMenuLi">
+											<a href={item.url}>{item.label}</a>
+										</li>
+									))} */}
 									{menuItems.map((item, index) => (
 										<a key={index} href={item.url} className="dropdown-item">
 											{item.label}
