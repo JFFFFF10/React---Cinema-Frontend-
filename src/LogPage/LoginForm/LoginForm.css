@@ -1,3 +1,12 @@
+.invisibleHomeLink {
+	position: fixed;
+	top: 4vh;
+	left: 16vw;
+	width: 23vw;
+	height: 15vh;
+	z-index: 9999;
+  }
+
 /* Login Form Title */
 .loginForm {
 	color: black;
