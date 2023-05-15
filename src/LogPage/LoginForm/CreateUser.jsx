@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import "./CreateUser.css";
 import Card from "../Card/Card";
@@ -28,67 +29,87 @@ class CreateUserForm extends React.Component {
 			invalidPassword: "At least one letter, one number and 8 characters long",
 			noUsername: "Username is required",
 			noPassword: "Password is required",
+			noDob: "Date of Birth is required",
 			noConfirmPassword: "Confirm password is required",
 			noEmail: "Email is required",
 			passwordMismatch: "Passwords do not match",
 			usernameExists: "Username already exists",
 			invalidFullname:
-				"Fullname cannot be empty and must not contain numbers or special characters",
+				"Full name cannot be empty and must not contain numbers or special characters",
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	validateForm() {
-		const { username, password, confirmPassword, fullname, email } = this.state;
-		const errors = {};
-
+		const { username, password, confirmPassword, fullname, email, dob } = this.state;
+	
 		if (
 			!fullname ||
 			fullname.match(/[0-9~`!@#$%^&*()_+={}[\]|\\:;"'<,>.?/-]/)
 		) {
-			errors.fullname = this.errorMessages.invalidFullname;
+			Swal.fire('Oops!', this.errorMessages.invalidFullname, 'error');
+			return false;
 		}
-
-		if (!email) {
-			errors.email = this.errorMessages.noEmail;
-		}
-
+	
 		if (!username) {
-			errors.username = this.errorMessages.noUsername;
+			Swal.fire('Oops!', this.errorMessages.noUsername, 'error');
+			return false;
 		}
-
+	
+		if (!dob) {
+			Swal.fire('Oops!', this.errorMessages.noDob, 'error');
+			return false;
+		} else {
+			const inputDate = new Date(dob);
+			const currentDate = new Date();
+			const age = currentDate.getFullYear() - inputDate.getFullYear();
+	
+			if (age < 8 || age > 100) {
+				Swal.fire('Oops!', 'You are either too young or too old to book tickets!', 'error');
+				return false;
+			}
+		}
+	
+		if (!email) {
+			Swal.fire('Oops!', this.errorMessages.noEmail, 'error');
+			return false;
+		}
+	
 		if (!password) {
-			errors.password = this.errorMessages.noPassword;
+			Swal.fire('Oops!', this.errorMessages.noPassword, 'error');
+			return false;
 		} else if (
 			!password ||
 			!password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
 		) {
-			errors.password = this.errorMessages.invalidPassword;
+			Swal.fire('Oops!', this.errorMessages.invalidPassword, 'error');
+			return false;
 		}
-
+	
 		if (!confirmPassword) {
-			errors.confirmPassword = this.errorMessages.noConfirmPassword;
+			Swal.fire('Oops!', this.errorMessages.noConfirmPassword, 'error');
+			return false;
 		}
-
+	
 		if (password !== confirmPassword) {
-			errors.confirmPassword = this.errorMessages.passwordMismatch;
+			Swal.fire('Oops!', this.errorMessages.passwordMismatch, 'error');
+			return false;
 		}
-
-		this.setState({ errorMessages: errors });
-		return Object.keys(errors).length === 0;
-	}
+	
+		return true;
+	}	
 
 	async handleSubmit(e) {
 		e.preventDefault();
-
+	
 		try {
 			const { username, password, email, fullname, dob } = this.state;
-
+	
 			if (!this.validateForm()) {
 				return;
 			}
-
+	
 			const response1 = await axios.post(
 				"https://csit-314-cinema-booking-system.vercel.app/add/",
 				{
@@ -97,13 +118,11 @@ class CreateUserForm extends React.Component {
 					email: email,
 				}
 			);
-
+	
 			if (response1.status === 200) {
 				// Account created successfully
 				this.setState({ errorMessages: {} });
-				console.log("Account ngon");
-				localStorage.setItem("token", response1.data.token); // Save token to local storage
-
+	
 				const response2 = await axios.post(
 					"https://csit-314-cinema-booking-system.vercel.app/createProfile/",
 					{
@@ -112,46 +131,27 @@ class CreateUserForm extends React.Component {
 						date_of_birth: dob,
 					}
 				);
-
-				if (response2.status === 201) {
+	
+				if (response2.status === 200) {
 					// Profile created successfully
 					this.setState({ errorMessages: {} });
-					localStorage.setItem("token", response2.data.token); // Save token to local storage
-					console.log("Profile ngon");
+					Swal.fire('Success!', 'Account & Profile created successfully', 'success').then(() => {
+						window.location.href = "/login";  // Redirect to login page
+					});
 				} else {
 					// Profile creation failed
-					this.setState({
-						errorMessages: {
-							username: this.errorMessages.usernameExists,
-						},
-					});
+					Swal.fire('Oops!', 'Profile creation failed', 'error');
 				}
 			} else {
 				// Account creation failed
-				this.setState({
-					errorMessages: {
-						username: this.errorMessages.usernameExists,
-					},
-				});
+				Swal.fire('Oops!', 'Account creation failed', 'error');
 			}
 		} catch (error) {
 			// Account or profile creation failed
-			this.setState({
-				errorMessages: {
-					username: this.errorMessages.usernameExists,
-				},
-			});
-			console.error("may ngu");
+			Swal.fire('Oops!', 'Account or profile creation failed', 'error');
 		}
 	}
-
-	renderErrorMsg(name) {
-		const { errorMessages } = this.state;
-
-		if (errorMessages[name]) {
-			return <div className="error_msg">{errorMessages[name]}</div>;
-		}
-	}
+	
 
 	render() {
 		const { username, password, confirmPassword, fullname, dob, email } =
@@ -195,10 +195,6 @@ class CreateUserForm extends React.Component {
 									onChange={(e) => this.setState({ username: e.target.value })}
 								/>
 							</div>
-							{this.renderErrorMsg("username")}
-							{this.renderErrorMsg("noUsername")}
-							{this.renderErrorMsg("fullname")}
-							{this.renderErrorMsg("invalidFullname")}
 						</div>
 
 						<div
@@ -243,8 +239,6 @@ class CreateUserForm extends React.Component {
 								onChange={(e) => this.setState({ password: e.target.value })}
 							/>
 						</div>
-						{this.renderErrorMsg("password")}
-						{this.renderErrorMsg("noPassword")}
 
 						<div className="createUser_icon_container">
 							<LockIcon className="register--icon" />
@@ -257,8 +251,6 @@ class CreateUserForm extends React.Component {
 								}
 							/>
 						</div>
-						{this.renderErrorMsg("confirmPassword")}
-						{this.renderErrorMsg("noConfirmPassword")}
 					</div>
 
 					<button type="submit" className="register--register_button">
