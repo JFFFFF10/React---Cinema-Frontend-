@@ -2,9 +2,9 @@
 .loginForm {
 	color: black;
 	text-align: center;
-	margin-top: 3rem;
-	margin-bottom: 1.9rem;
-	font-size: 2.5rem;
+	margin-top: 5vh;
+	margin-bottom: 4vh;
+	font-size: 6vh;
 	font-family: "Roboto", sans-serif;
 	position: relative;
 	/*
@@ -29,7 +29,7 @@
 /* Login Form Input Elements */
 .loginForms_container input {
 	width: 95%;
-	margin: 1rem 0.5rem;
+	margin: 1vh 0.5rem;
 	padding: 0.2rem;
 	font-size: 1rem;
 	font-family: inherit;
@@ -61,7 +61,7 @@
 /* Login Form Login Button */
 .loginForm--login_button {
 	display: block;
-	margin: 1rem auto;
+	margin: 3vh auto;
 	width: 100%;
 	height: 10%;
 	padding: 0.55rem 1rem;
@@ -174,11 +174,11 @@
 }
 
 @media only screen and (max-height: 670px) {
-	.subtitle {
-		margin-bottom: 2rem;
+	.loginForm {
+		margin-top: 3vh;
 	}
 
-	.small {
-		margin-bottom: 3rem;
+	.loginForm--subtitle {
+		opacity: 0;
 	}
 }

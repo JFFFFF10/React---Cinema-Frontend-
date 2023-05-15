@@ -1,5 +1,5 @@
 import HomePage from "./BsianHomePage/HomePage/HomePage";
-import AuthPage from "./LogPage/LoginForm/LoginPage";
+import LoginPage from "./LogPage/LoginForm/LoginPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //User Admin
@@ -26,14 +26,14 @@ import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";
 import MovieSessionPageWrapper from "./BsianHomePage/MovieSessionPage/MovieSessionPage";
 import MovieDetailPageWrapper from "./BsianHomePage/MovieDetailPage/MovieDetailPage";
-
+import BookingPage from "./BsianHomePage/MovieSessionPage/BookingPage";
 
 
 function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/login" element={<AuthPage />} />
+				<Route path="/login" element={<LoginPage />} />
 				<Route path="/" element={<HomePage />} />
 
 				<Route path="/UserAdminPage" element={<UserAdminPage />} />
@@ -56,6 +56,7 @@ function App() {
 				<Route path="/movie/:id" element={<SinglePage />} />
 				<Route path="/movie-detail/:movie_title" element={<MovieDetailPageWrapper />} />
 				<Route path="/movie-sessions/:movie_title" element={<MovieSessionPageWrapper />} />
+				<Route path="/booking/:sessionId" element={<BookingPage />} />
 			</Routes>
 		</Router>
 	);

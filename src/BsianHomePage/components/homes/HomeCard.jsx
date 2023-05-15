@@ -31,7 +31,7 @@ const HomeCard = ({ item: { id, cover, name, rating, time, desc, starring, genre
             </div>
             <Link to={`/movie/${id}`}>
               <button className='primary-btn'>
-                <i className='fas fa-play'></i> BOOK NOW
+                <i className='fas fa-play'></i> VIEW TRAILER
               </button>
             </Link>
           </div>
