@@ -29,6 +29,8 @@ import MovieDetailPageWrapper from "./BsianHomePage/MovieDetailPage/MovieDetailP
 import BookingPage from "./BsianHomePage/MovieSessionPage/BookingPage";
 
 
+
+
 function App() {
 	return (
 		<Router>

@@ -1,131 +1,184 @@
 header {
-  height: 10vh;
-  line-height: 10vh;
-  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-  color: #fff;
-  position: relative;
-  z-index: 999;
+	height: 10vh;
+	line-height: 10vh;
+	background-image: linear-gradient(
+		to right bottom,
+		rgba(0, 0, 0, 0.9),
+		rgba(0, 0, 0, 0.9),
+		rgba(0, 0, 0, 0.6),
+		rgba(0, 0, 0, 0.5),
+		rgba(0, 0, 0, 0)
+	);
+	color: #fff;
+	position: relative;
+	z-index: 999;
 }
 .logo img {
-  width: 15vh;
-  margin-top: 10%;
-  margin-right: 30px;
+	width: 15vh;
+	margin-top: 10%;
+	margin-right: 30px;
 }
 
 header a {
-  color: #fff;
-  margin-left: 30px;
+	color: #fff;
+	margin-left: 30px;
 }
 header i {
-  width: 40px;
-  height: 40px;
-  padding: 10px;
-  text-align: center;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  margin: 0 10px;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	text-align: center;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	margin: 0 10px;
 }
 header .logInButton {
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: bold;
+	border-radius: 10px;
+	font-size: 15px;
+	font-weight: bold;
 }
 .toggle {
-  display: none;
+	display: none;
 }
 
 header ul li {
-  position: relative;
+	position: relative;
 }
 header ul li a:hover {
-  font-size: 22px;
-  transform: translateY(-5px);
+	font-size: 22px;
+	transform: translateY(-5px);
 }
 header ul li:first-child a:hover {
-  color: #e50813;
+	color: #e50813;
 }
 header ul li a {
-  display: inline-block;
-  position: relative;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 20px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
+	display: inline-block;
+	position: relative;
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 20px;
+	text-transform: uppercase;
+	transition: all 0.3s ease;
 }
 header ul li a:hover::after {
-  content: "";
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: #fff;
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+	content: "";
+	display: block;
+	height: 3px;
+	width: 100%;
+	background-color: #fff;
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
 }
 .account {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: right;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: right;
 }
 .homepage--logInButton {
-  border-radius: 10px;
-  width: 6vw;
-  height: 6vh;
-  padding: 0;
-  font-size: 2vh;
-  justify-content: center;
-  align-items: left;
-  
+	border-radius: 10px;
+	width: 6vw;
+	height: 6vh;
+	padding: 0;
+	font-size: 2vh;
+	justify-content: center;
+	align-items: left;
 }
 .logInButton:hover {
-  background-color: white;
-  color: red;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
+	color: red;
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
-.account-icons {
-  background-color: transparent;
-  width: 1rem;
+
+.userMenu {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: left;
+}
+
+.dropdown-toggle {
+	display: block;
+	background-color: transparent;
+	width: fit-content;
+	font-size: 1rem;
+	font-weight: 400;
+	border-radius: 0.25rem;
+}
+
+.dropdown-toggle:hover {
+	background-color: #e50813;
+	color: #000000;
+}
+
+.dropdown-menu {
+	position: absolute;
+	z-index: 1000;
+	display: none;
+	font-size: 0.85rem;
+	background-color: rgba(180, 180, 180, 0.264);
+	list-style: none;
+	border-radius: 0.5rem;
+	flex-direction: column;
+	top: 100%;
+	line-height: 1.5;
+	padding: 0.5rem;
+}
+
+.dropdown-item {
+  padding-top: 0.5rem; 
+  padding-bottom: 0.5rem;
+  padding-right: 30px;
+  margin-left: 0px;
+}
+
+.dropdown-menu.show {
+	display: flex;
+}
+
+.dropdown-menu a:hover {
+	background-color: #e50813;
+	color: #000000;
+  border-radius: 0.25rem;
 }
 
 @media only screen and (max-width: 768px) {
-  header nav .flexSB {
-    display: none;
-  }
-  header button:hover {
-    background-color: transparent;
-    color: #fff;
-    transform: none;
-    box-shadow: none;
-  }  
-  .account {
-    display: none;
-  }
-  .navMenu-list {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #e50813;
-    width: 50%;
-    height: 100vh;
-    z-index: 9999;
-  }
-  header ul li {
-    align-items: left;
-    margin-top: 30px;
-    padding: 0 50px;
-  }
-  .toggle {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 20px;
-    margin: auto;
-    cursor: pointer;
-    background: none;
-  }
+	header nav .flexSB {
+		display: none;
+	}
+	header button:hover {
+		background-color: transparent;
+		color: #fff;
+		transform: none;
+		box-shadow: none;
+	}
+	.account {
+		display: none;
+	}
+	.navMenu-list {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: #e50813;
+		width: 50%;
+		height: 100vh;
+		z-index: 9999;
+	}
+	header ul li {
+		align-items: left;
+		margin-top: 30px;
+		padding: 0 50px;
+	}
+	.toggle {
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 20px;
+		margin: auto;
+		cursor: pointer;
+		background: none;
+	}
 }

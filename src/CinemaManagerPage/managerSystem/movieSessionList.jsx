@@ -75,7 +75,10 @@ class MovieSessionList extends React.Component {
 		const { searchText } = this.state;
 
 		const filteredCR = sessions.filter((session) =>
-			session.movie.toLowerCase().includes(searchText.toLowerCase())
+			session.movie.toLowerCase().includes(searchText.toLowerCase()) ||
+			session.session_date.toString().toLowerCase().includes(searchText.toLowerCase()) ||
+			session.session_time.toString().toLowerCase().includes(searchText.toLowerCase()) ||
+			session.cinema_room.toString().toLowerCase().includes(searchText.toLowerCase())
 		);
 
 		return (
