@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import "./CreateUser.css";
 import Card from "../Card/Card";
@@ -158,6 +159,8 @@ class CreateUserForm extends React.Component {
 		const { onSwitchForm } = this.props;
 
 		return (
+			<>
+			<Link to="/" className="invisibleHomeLink"></Link>
 			<Card>
 				<h1 className="createUser">Create User Account</h1>
 
@@ -273,6 +276,7 @@ class CreateUserForm extends React.Component {
 					</button>
 				</form>
 			</Card>
+			</>
 		);
 	}
 }

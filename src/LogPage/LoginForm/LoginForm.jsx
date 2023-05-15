@@ -103,6 +103,7 @@ class LoginForm extends React.Component {
 		return (
 			<>
 			<div className="LoginForm-wholeLoginPage">
+			<Link to="/" className="invisibleHomeLink"></Link>
 				<Link to="/" className="loginForm--home_button">Go Back Home</Link>
 				<Card>
 					<h1 className="loginForm">User Login</h1>
