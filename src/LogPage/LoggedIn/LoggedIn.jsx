@@ -72,7 +72,7 @@ class LoggedIn extends React.Component {
 			<>
 				<Card>
 					<h1 className="LoggedIn--subtitle">
-						You are now logged in as {user.role}
+						Loading...
 					</h1>
 					<Link to="/">
 						<button

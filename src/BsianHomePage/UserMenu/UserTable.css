@@ -1,0 +1,48 @@
+.userFNB--title {
+	text-align: center;
+	color: white;
+	font-size: 5vh;
+	margin: 5vh auto;
+}
+
+.userFNB--tableContainer {
+	max-width: 1200px;
+	padding: 0 1rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.userFNB--table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	max-width: 100%;
+}
+
+table.userFNB--table th,
+table.userFNB--table td {
+	padding: 1vh;
+	text-align: left;
+}
+
+table.userFNB--table th {
+	background-color: #ad0b0b;
+	color: white;
+	border: 4px solid black;
+}
+
+.userFNB--table td {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: white;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    border-bottom: 1px solid #ffffff;
+}
+
+@media (max-width: 768px) {
+	.userFNB--tableContainer {
+		width: 90vw;
+	}
+}

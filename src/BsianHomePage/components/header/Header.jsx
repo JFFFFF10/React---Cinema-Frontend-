@@ -82,11 +82,6 @@ class Header extends Component {
 									<FontAwesomeIcon icon={faUser} />
 								</button>
 								<div className={`dropdown-menu ${isOpen ? "show" : ""}`}>
-									{/* {menuItems.map((item, index) => (
-										<li key={index} className="userMenuLi">
-											<a href={item.url}>{item.label}</a>
-										</li>
-									))} */}
 									{menuItems.map((item, index) => (
 										<a key={index} href={item.url} className="dropdown-item">
 											{item.label}
