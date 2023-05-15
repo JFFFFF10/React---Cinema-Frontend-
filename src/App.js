@@ -28,6 +28,10 @@ import MovieSessionPageWrapper from "./BsianHomePage/MovieSessionPage/MovieSessi
 import MovieDetailPageWrapper from "./BsianHomePage/MovieDetailPage/MovieDetailPage";
 import BookingPage from "./BsianHomePage/MovieSessionPage/BookingPage";
 
+//Buy FnB
+import HomeFnbPage from "./BsianHomePage/HomeFnbPage/HomeFnbPage";
+import BuyFnbPageWrapper from "./BsianHomePage/BuyFnbPage/BuyFnbPage";
+
 
 function App() {
 	return (
@@ -57,6 +61,10 @@ function App() {
 				<Route path="/movie-detail/:movie_title" element={<MovieDetailPageWrapper />} />
 				<Route path="/movie-sessions/:movie_title" element={<MovieSessionPageWrapper />} />
 				<Route path="/booking/:sessionId" element={<BookingPage />} />
+
+				<Route path="/foodnbeverages" element={<HomeFnbPage />} />
+				<Route path="/buyFnb/:menu_id" element={<BuyFnbPageWrapper />} />
+
 			</Routes>
 		</Router>
 	);

@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import Swal from "sweetalert2";
 import "./MovieSessionPage.css";
 
 const timeHeaders = [
@@ -52,10 +53,26 @@ class MovieSessionPage extends React.Component {
     this.fetchSessions(movie_title);
   }
 
+  handleSessionClick(event, sessionId) {
+    event.preventDefault();
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Navigate to the booking page using navigate function
+      window.location.href = `/booking/${sessionId}`;
+    } else {
+      // Show SweetAlert2 error message
+      Swal.fire(
+        "Error",
+        "You must be logged in before clicking on the session to make a booking.",
+        "error"
+      );
+    }
+  }   
+
   render() {
     const { movie_title } = this.props;
     const groupedSessions = groupSessionsByDate(this.state.sessions);
-
+  
     return (
       <>
         <Header />
@@ -80,7 +97,12 @@ class MovieSessionPage extends React.Component {
                       return (
                         <td key={`${date}-${time}`}>
                           {session ? (
-                            <a href={`/booking/${session.id}`}>{session.session_time}</a>
+                            <Link
+                            to={`/booking/${session.id}`}
+                            onClick={(event) => this.handleSessionClick(event, session.id)}
+                            >
+                              {session.session_time}
+                            </Link>
                           ) : (
                             "-"
                           )}

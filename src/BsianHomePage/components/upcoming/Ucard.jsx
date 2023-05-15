@@ -11,7 +11,7 @@ const Ucard = ({ item: { movie_title, featureIMG, genre } }) => {
         <div className='text'>
           <h3>{movie_title}</h3>
           <span>{genre}</span> <br />
-          <Link to={`/movie-sessions/${encodeURIComponent(movie_title)}`}>
+          <Link to={`/movie-detail/${encodeURIComponent(movie_title)}`}>
             <button className='primary-btn'>
               <i className='fa fa-play'></i> BOOK NOW
             </button>
