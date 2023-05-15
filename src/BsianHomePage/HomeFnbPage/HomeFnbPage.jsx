@@ -63,7 +63,7 @@ class HomeFnbPage extends React.Component {
                 <Header />
                 <div className="HomeFnbPage">
                     {foodAndBeverageOptions.length === 0 ? (
-                        <p>Loading...</p>
+                        <p className="HomeFnbPage--loading"></p>
                     ) : (
                         foodAndBeverageOptions.map(option => (
                             <div

@@ -8,6 +8,12 @@
     margin: 0 20vw;
 }
 
+.HomeFnbPage--loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .HomeFnbPage--item {
     border: 1px solid #ddd;
     background-color: #333;

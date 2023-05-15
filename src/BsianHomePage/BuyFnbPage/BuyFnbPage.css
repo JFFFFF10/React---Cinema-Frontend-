@@ -1,12 +1,18 @@
 /* BuyFnbPage.css */
 
 .BuyFnbPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+  .BuyFnbPage--loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   
   .BuyFnbPage--card {
     background-color: rgb(90, 89, 89);

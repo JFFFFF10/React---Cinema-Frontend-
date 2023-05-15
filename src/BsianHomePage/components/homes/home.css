@@ -30,8 +30,8 @@
 }
 
 .homeContainer h1 {
-  margin-top: 0.2vh;
-  font-size: 9vh;
+  margin-top: 0.1vh;
+  font-size: 8vh;
   text-transform: uppercase;
   font-weight: 800;
   background-image: url("../../../../public/images/texure.jpg");
