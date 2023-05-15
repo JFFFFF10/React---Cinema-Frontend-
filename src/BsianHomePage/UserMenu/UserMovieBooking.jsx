@@ -8,17 +8,11 @@ class MovieBooking extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			searchQuery: "",
 			searchText: "",
 			search: [],
 			movieBookings: [],
 		};
-		this.handleInputChange = this.handleInputChange.bind(this);
 	}
-
-	handleInputChange = (event) => {
-		this.setState({ searchText: event.target.value });
-	};
 
 	async componentDidMount() {
 		try {
@@ -36,6 +30,10 @@ class MovieBooking extends Component {
 			console.log(error);
 		}
 	}
+
+	handleChange = (event) => {
+		this.setState({ searchText: event.target.value });
+	};
 
 	handleSearchChange = async () => {
 		const { searchQuery } = this.state;
@@ -61,31 +59,34 @@ class MovieBooking extends Component {
 	};
 
 	render() {
-		const { movieBookings, search } = this.state;
+		const { movieBookings } = this.state;
 		const { searchText } = this.state;
 
-		const bookings = search.length > 0 ? search : movieBookings;
+		const filteredSR = movieBookings.filter(
+      (booking) =>
+        booking.movie_title.toLowerCase().includes(searchText.toLowerCase()) ||
+        booking.ticket_type.toLowerCase().includes(searchText.toLowerCase())
+    );
 
 		return (
 			<>
 				<Header />
 				<div>
-					<h2 className="useradminViewPrf--title">My Movie Bookings</h2>
-					<div className="useradminViewPrf--tableContainer">
+					<h2 className="userFNB--title">My Movie Bookings</h2>
+					<div className="userFNB--tableContainer">
 						<div className="userManager--searchContainer">
 							<input
 								type="text"
 								placeholder="Search cinema room"
 								className="userManager--searchBar"
 								value={searchText}
-								onChange={this.handleInputChange}
+								onChange={this.handleChange}
 							/>
-							<button onClick={this.handleSearchChange}>Search</button>
 						</div>
-						<table className="useradminViewPrf--table">
+						<table className="userFNB--table">
 							<thead>
 								<tr>
-									{/* <th className="useradminViewPrf--usernameHead">Owner</th> */}
+									{/* <th className="userFNB--usernameHead">Owner</th> */}
 									<th>Movie</th>
 									<th>Session Date</th>
 									<th>Session Time</th>
@@ -94,17 +95,22 @@ class MovieBooking extends Component {
 								</tr>
 							</thead>
 							<tbody>
-								{bookings.map((movieBooking) => (
-									<tr key={movieBooking.booking_owner}>
-										<td>{movieBooking.movie_title}</td>
-										<td>{movieBooking.movie_session_date}</td>
-										<td>{movieBooking.movie_session_time}</td>
-										<td>{movieBooking.ticket_type}</td>
-										<td>{movieBooking.seat_number}</td>
+								{filteredSR.length > 0 ? (
+									filteredSR.map((movieBooking, i) => (
+										<tr key={movieBooking.booking_owner}>
+											<td>{movieBooking.movie_title}</td>
+											<td>{movieBooking.movie_session_date}</td>
+											<td>{movieBooking.movie_session_time}</td>
+											<td>{movieBooking.ticket_type}</td>
+											<td>{movieBooking.seat_number}</td>
+										</tr>
+									))
+								) : (
+									<tr>
+										<td colSpan={7}>No records found.</td>
 									</tr>
-								))}
+								)}
 							</tbody>
-							{bookings.length === 0 && <p>No records found.</p>}
 						</table>
 					</div>
 				</div>

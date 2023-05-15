@@ -11,6 +11,10 @@ class RoomBookingList extends React.Component {
 		};
 	}
 
+	handleSearchChange = (event) => {
+		this.setState({ searchText: event.target.value });
+	};
+
 	handleDelete = async (name) => {
 		const token = localStorage.getItem("token");
 
@@ -45,29 +49,6 @@ class RoomBookingList extends React.Component {
 		}
 	};
 
-	handleChange = (event) => {
-		this.setState({ searchText: event.target.value });
-	};
-
-	handleSearchChange = () => {
-		axios
-			.post("https://csit-314-cinema-booking-system.vercel.app/searchFnB/", {
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Token ${localStorage.getItem("token")}`,
-				},
-				data: {
-					searchText: this.state.searchText,
-				},
-			})
-			.then((response) => {
-				this.setState({ movieSessions: response.data });
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
-
 	render() {
 		const { names, handleEdit } = this.props;
 		const { searchText } = this.state;
@@ -89,7 +70,7 @@ class RoomBookingList extends React.Component {
 						placeholder="Search cinema room"
 						className="userManager--searchBar"
 						value={searchText}
-						onChange={this.handleChange}
+						onChange={this.handleSearchChange}
 					/>
 				</div>
 				<table className="striped-table">
