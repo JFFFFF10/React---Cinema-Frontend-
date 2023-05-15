@@ -1,9 +1,9 @@
 .card {
-  width: 550px;
-  height: 600px;
+  width: 35vw;
+  height: 80vh;
   border-radius: 1rem;
-  padding-left: 3.5rem;
-  padding-right: 3.5rem;
+  padding-left: 4vw;
+  padding-right: 4vw;
   backdrop-filter: blur(14px);
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 15px 25px rgba(129, 124, 124, 0.5);

@@ -113,7 +113,7 @@ class LoginForm extends React.Component {
 								<PersonIcon className="loginForm--icon" />
 								<input
 									type="text"
-									placeholder="Insert your username here"
+									placeholder="Insert your username"
 									value={username}
 									onChange={(e) => this.setState({ username: e.target.value })}
 								/>
@@ -125,7 +125,7 @@ class LoginForm extends React.Component {
 								<LockIcon className="loginForm--icon" />
 								<input
 									type="password"
-									placeholder="Insert your password here"
+									placeholder="Insert your password"
 									value={password}
 									onChange={(e) => this.setState({ password: e.target.value })}
 								/>

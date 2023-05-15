@@ -1,0 +1,61 @@
+.bookingPage--content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .bookingPage {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .bookingPage--image {
+    width: 50vw;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .bookingPage--form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 40vw;
+  }
+  
+  .bookingPage--form label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .bookingPage--form input,
+  .bookingPage--form select {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  
+  .bookingPage--button {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bookingPage--button:hover {
+    background-color: #0056b3;
+  }
+  
+  

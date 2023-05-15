@@ -1,5 +1,5 @@
 import HomePage from "./BsianHomePage/HomePage/HomePage";
-import AuthPage from "./LogPage/LoginForm/LoginPage";
+import LoginPage from "./LogPage/LoginForm/LoginPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //User Admin
@@ -17,11 +17,17 @@ import CinemaRoomPage from "./CinemaManagerPage/managerSystem/cinemaRoom";
 import FNBPage from "./CinemaManagerPage/managerSystem/fnb"
 import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession"
 
+//Customer
+import UserFNB from "./BsianHomePage/UserMenu/UserFNB";
+import UserMovieBooking from "./BsianHomePage/UserMenu/UserMovieBooking";
+
 //Movies
 import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";
 import MovieSessionPageWrapper from "./BsianHomePage/MovieSessionPage/MovieSessionPage";
 import MovieDetailPageWrapper from "./BsianHomePage/MovieDetailPage/MovieDetailPage";
+import BookingPage from "./BsianHomePage/MovieSessionPage/BookingPage";
+
 
 function App() {
 	return (
@@ -44,9 +50,13 @@ function App() {
 				<Route path="/FNBPage" element={<FNBPage />} />
 				<Route path="/MovieSessionInfoPage" element={<MovieSessionInfoPage />} />
 
+				<Route path="/UserFNB" element={<UserFNB />} />
+				<Route path="/UserMovieBooking" element={<UserMovieBooking />} />
+
 				<Route path="/movie/:id" element={<SinglePage />} />
 				<Route path="/movie-detail/:movie_title" element={<MovieDetailPageWrapper />} />
 				<Route path="/movie-sessions/:movie_title" element={<MovieSessionPageWrapper />} />
+				<Route path="/booking/:sessionId" element={<BookingPage />} />
 			</Routes>
 		</Router>
 	);
