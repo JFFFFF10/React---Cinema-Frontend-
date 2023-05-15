@@ -29,13 +29,11 @@ import MovieDetailPageWrapper from "./BsianHomePage/MovieDetailPage/MovieDetailP
 import BookingPage from "./BsianHomePage/MovieSessionPage/BookingPage";
 
 
-
-
 function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/login" element={<AuthPage />} />
+				<Route path="/login" element={<LoginPage />} />
 				<Route path="/" element={<HomePage />} />
 
 				<Route path="/UserAdminPage" element={<UserAdminPage />} />
