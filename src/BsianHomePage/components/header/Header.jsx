@@ -58,6 +58,9 @@ class Header extends Component {
 									<a href="/MoviesPage">Movies</a>
 								</li>
 								<li>
+									<a href="/foodnbeverages">FnB</a>
+								</li>
+								<li>
 									<a href="/">About</a>
 								</li>
 							</ul>
