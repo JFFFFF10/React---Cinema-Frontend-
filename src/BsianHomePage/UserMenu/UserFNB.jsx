@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "./UserTable.css";
+import FnbCart from "./fnbCart";
 
 class UserFNB extends Component {
 	constructor(props) {
@@ -37,7 +38,7 @@ class UserFNB extends Component {
 	};
 
 	render() {
-		const { fnbs, search } = this.state;
+		const { fnbs } = this.state;
 		const { searchText } = this.state;
 
 		const filteredSR = fnbs.filter((fnb) =>

@@ -20,6 +20,7 @@ import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession
 //Customer
 import UserFNB from "./BsianHomePage/UserMenu/UserFNB";
 import UserMovieBooking from "./BsianHomePage/UserMenu/UserMovieBooking";
+import FnbCart from "./BsianHomePage/UserMenu/fnbCart";
 
 //Movies
 import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
@@ -56,6 +57,7 @@ function App() {
 
 				<Route path="/UserFNB" element={<UserFNB />} />
 				<Route path="/UserMovieBooking" element={<UserMovieBooking />} />
+				<Route path="/FnbCart" element={<FnbCart />} />
 
 				<Route path="/movie/:id" element={<SinglePage />} />
 				<Route path="/movie-detail/:movie_title" element={<MovieDetailPageWrapper />} />

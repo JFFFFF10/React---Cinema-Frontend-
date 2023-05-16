@@ -7,7 +7,6 @@ class FNBList extends React.Component {
 		super(props);
 		this.state = {
 			searchText: "",
-			movieSessions: [],
 		};
 	}
 

@@ -116,7 +116,7 @@ header ul li a:hover::after {
 	z-index: 1000;
 	display: none;
 	font-size: 0.85rem;
-	background-color: rgba(180, 180, 180, 0.264);
+	background-color: black;
 	list-style: none;
 	border-radius: 0.5rem;
 	flex-direction: column;

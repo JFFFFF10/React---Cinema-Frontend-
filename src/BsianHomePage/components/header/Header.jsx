@@ -33,8 +33,9 @@ class Header extends Component {
 	render() {
 		const { isOpen, isMobile } = this.state;
 		const menuItems = [
-			{ label: "● View FnB Booking", url: "/UserFNB" },
+			{ label: "● Purchase", url: "/FnbCart" },
 			{ label: "● View Movie Booking", url: "/UserMovieBooking" },
+			{ label: "● View Fnb Records", url: "/UserFNB" },
 		];
 		const token = localStorage.getItem("token");
 		return (

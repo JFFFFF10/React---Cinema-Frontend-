@@ -36,15 +36,9 @@ class MovieBooking extends Component {
 	};
 
 	handleSearchChange = async () => {
-		const { searchQuery } = this.state;
-
-		const requestBody = {
-			keyword: searchQuery,
-		};
 		try {
 			const response = await axios.post(
 				"https://csit-314-cinema-booking-system.vercel.app/SearchBook/",
-				requestBody,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -86,7 +80,7 @@ class MovieBooking extends Component {
 						<table className="userFNB--table">
 							<thead>
 								<tr>
-									{/* <th className="userFNB--usernameHead">Owner</th> */}
+									<th>No.</th>
 									<th>Movie</th>
 									<th>Session Date</th>
 									<th>Session Time</th>
@@ -97,7 +91,8 @@ class MovieBooking extends Component {
 							<tbody>
 								{filteredSR.length > 0 ? (
 									filteredSR.map((movieBooking, i) => (
-										<tr key={movieBooking.booking_owner}>
+										<tr key={i}>
+											<td>{i + 1}</td>
 											<td>{movieBooking.movie_title}</td>
 											<td>{movieBooking.movie_session_date}</td>
 											<td>{movieBooking.movie_session_time}</td>
