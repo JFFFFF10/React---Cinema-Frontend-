@@ -66,7 +66,7 @@ class BuyFnbPage extends React.Component {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ${token}`,
-                  },
+                },
             }
           )
           .then(() => {
