@@ -6,7 +6,7 @@ import CinemaRoomList from "./cinemaRoomList";
 import CinemaRoomAdd from "./cinemaRoomAdd";
 import CinemaRoomEdit from "./cinemaRoomEdit";
 
-class CinemaRoom extends Component {
+class CinemaRoomPage extends Component {
 	constructor(props) {
 		super(props);
 
@@ -96,4 +96,4 @@ class CinemaRoom extends Component {
 	}
 }
 
-export default CinemaRoom;
+export default CinemaRoomPage;

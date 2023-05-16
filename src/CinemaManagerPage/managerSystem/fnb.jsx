@@ -6,7 +6,7 @@ import FNBList from "./fnbList";
 import FNBAdd from "./fnbAdd";
 import FNBEdit from "./fnbEdit";
 
-class FNBInfo extends Component {
+class FNBPage extends Component {
 	constructor(props) {
 		super(props);
 
@@ -92,4 +92,4 @@ class FNBInfo extends Component {
 	}
 }
 
-export default FNBInfo;
+export default FNBPage;

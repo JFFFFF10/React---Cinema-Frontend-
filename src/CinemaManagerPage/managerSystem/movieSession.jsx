@@ -7,7 +7,7 @@ import MovieSessionAdd from "./movieSessionAdd";
 import MovieSessionEdit from "./movieSessionEdit";
 import "./userManagerPage.css";
 
-class MovieSession extends Component {
+class MovieSessionInfoPage extends Component {
 	constructor(props) {
 		super(props);
 
@@ -96,4 +96,4 @@ class MovieSession extends Component {
 		);
 	}
 }
-export default MovieSession;
+export default MovieSessionInfoPage;
