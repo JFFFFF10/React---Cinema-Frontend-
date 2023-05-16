@@ -45,11 +45,17 @@ class UserAdminAddPrfPage extends Component {
         }
 
         // Make a POST request to the API with the user's details
+        const token = localStorage.getItem('token');
         axios
             .post('https://csit-314-cinema-booking-system.vercel.app/createProfile/', {
                 username: username,
                 name: name,
                 date_of_birth: date_of_birth,
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`,
+                },
             })
             .then((response) => {
                 // Handle the response from the API
