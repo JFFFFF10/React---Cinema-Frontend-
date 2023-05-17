@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2';
 
@@ -7,37 +7,50 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "./BookingPage.css";
 
-function BookingPage() {
+function BookingPageWrapper() {
   const { sessionId } = useParams();
-  const [seat, setSeat] = useState('');
-  const [ticketType, setTicketType] = useState('');
-  const [price, setPrice] = useState(0);
+  return <BookingPage sessionId={sessionId} />;
+}
 
-  const handleSeatChange = (e) => {
-    setSeat(e.target.value);
+class BookingPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      seat: '',
+      ticketType: '',
+      price: 0,
+    };
+
+    this.handleSeatChange = this.handleSeatChange.bind(this);
+    this.handleTicketTypeChange = this.handleTicketTypeChange.bind(this);
+    this.handleConfirmBooking = this.handleConfirmBooking.bind(this);
+  }
+  
+  handleSeatChange(e) {
+    this.setState({ seat: e.target.value });
   }
 
-  const handleTicketTypeChange = (e) => {
-    setTicketType(e.target.value);
+  handleTicketTypeChange(e) {
+    let price;
     switch (e.target.value) {
       case 'adult':
-        setPrice(10);
+        price = 10;
         break;
       case 'senior':
-        setPrice(8);
+        price = 8;
         break;
       case 'children':
-        setPrice(6);
+        price = 6;
         break;
       default:
-        setPrice(0);
+        price = 0;
     }
+    this.setState({ ticketType: e.target.value, price: price });
   }
 
-  const navigate = useNavigate();
-  const handleConfirmBooking = async () => {
+  async handleConfirmBooking() {
     const seatPattern = /^[A-E]{1}[1-9]0?$/;
-    if (!seat || !seatPattern.test(seat)) {
+    if (!this.state.seat || !seatPattern.test(this.state.seat)) {
       Swal.fire(
         'Error',
         'Invalid seat number. It should be A-E followed by a number from 1-10. Example: A10',
@@ -46,7 +59,7 @@ function BookingPage() {
       return;
     }
 
-    if (!ticketType) {
+    if (!this.state.ticketType) {
       Swal.fire(
         'Error',
         'Please select a ticket type',
@@ -60,9 +73,9 @@ function BookingPage() {
       await axios.post(
         "https://csit-314-cinema-booking-system.vercel.app/addBook/",
         {
-          movie_session: sessionId,
-          seat_number: seat,
-          ticket_type: ticketType
+          movie_session: this.props.sessionId,
+          seat_number: this.state.seat,
+          ticket_type: this.state.ticketType
         },{
             headers: {
               'Content-Type': 'application/json',
@@ -75,11 +88,10 @@ function BookingPage() {
         'Your booking has been made.',
         'success'
       ).then(() => {
-        navigate("/UserMovieBooking");
+        window.location.href = "/UserMovieBooking";
       })
       // reset form
-      setSeat('');
-      setTicketType('');
+      this.setState({ seat: '', ticketType: '' });
     } catch (error) {
       console.error("Error confirming booking:", error);
       // Booking failed
@@ -91,38 +103,40 @@ function BookingPage() {
     }
   }
 
-  return (
-    <>
-      <Header />
-      <div className="bookingPage--content">
-        <h2 className="bookingPage--title">Booking for Session ID: {sessionId}</h2>
-        <img 
-          src={`${process.env.PUBLIC_URL}/images/seatmap.jpg`} 
-          alt="Session Image" 
-          className="bookingPage--image"
-        />
-        <div className="bookingPage--form">
-          <label className="bookingPage--label">
-            Seat Number:
-            <input type="text" value={seat} onChange={handleSeatChange} className="bookingPage--input" />
-          </label>
-          <label className="bookingPage--label">
-            Ticket Type:
-            <select value={ticketType} onChange={handleTicketTypeChange} className="bookingPage--select">
-              <option value="">Select ticket type</option>
-              <option value="adult">Adult</option>
-              <option value="senior">Senior</option>
-              <option value="children">Children</option>
-            </select>
-          </label>
-          <p className="bookingPage--total">Your Total: {price}SGD</p>
-          <button onClick={handleConfirmBooking} className="bookingPage--button">Confirm Booking</button>
+
+  render() {
+    return (
+      <>
+        <Header />
+        <div className="bookingPage--content">
+          <h2 className="bookingPage--title">Booking for Session ID: {this.props.sessionId}</h2>
+          <img 
+            src={`${process.env.PUBLIC_URL}/images/seatmap.jpg`} 
+            alt="Session Image" 
+            className="bookingPage--image"
+          />
+          <div className="bookingPage--form">
+            <label className="bookingPage--label">
+              Seat Number:
+              <input type="text" value={this.state.seat} onChange={this.handleSeatChange} className="bookingPage--input" />
+            </label>
+            <label className="bookingPage--label">
+              Ticket Type:
+              <select value={this.state.ticketType} onChange={this.handleTicketTypeChange} className="bookingPage--select">
+                <option value="">Select ticket type</option>
+                <option value="adult">Adult</option>
+                <option value="senior">Senior</option>
+                <option value="children">Children</option>
+              </select>
+            </label>
+            <p className="bookingPage--total">Your Total: {this.state.price}SGD</p>
+            <button onClick={this.handleConfirmBooking} className="bookingPage--button">Confirm Booking</button>
+          </div>
         </div>
-      </div>
-      <Footer />
-    </>
-  );
+        <Footer />
+      </>
+    );
+  }
 }
 
-export default BookingPage;
-
+export default BookingPageWrapper;
