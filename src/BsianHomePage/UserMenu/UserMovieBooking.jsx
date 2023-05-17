@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import MovieBookingList from "./UserMovieBookingList";
 
 class MovieBooking extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchText: "",
-			search: [],
 			movieBookings: [],
 		};
+
+		this.handleEdit = this.handleEdit.bind(this);
+		this.setIsAdding = this.setIsAdding.bind(this);
+		this.setIsEditing = this.setIsEditing.bind(this);
+		this.movieBookings = this.movieBookings.bind(this);
 	}
 
 	async componentDidMount() {
@@ -31,82 +35,44 @@ class MovieBooking extends Component {
 		}
 	}
 
-	handleChange = (event) => {
-		this.setState({ searchText: event.target.value });
-	};
+	handleEdit(movieBookings) {
+		this.setState({
+			selectedmovieBooking: movieBookings,
+			isEditing: true,
+		});
+	}
 
-	handleSearchChange = async () => {
-		try {
-			const response = await axios.post(
-				"https://csit-314-cinema-booking-system.vercel.app/SearchBook/",
-				{
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Token ${localStorage.getItem("token")}`,
-					},
-				}
-			);
-			this.setState({ search: response.data });
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	setIsAdding(isAdding) {
+		this.setState({ isAdding });
+	}
+
+	setIsEditing(isEditing) {
+		this.setState({ isEditing });
+	}
+
+	movieBookings(movieBookings) {
+		this.setState({ movieBookings });
+	}
 
 	render() {
-		const { movieBookings } = this.state;
-		const { searchText } = this.state;
-
-		const filteredSR = movieBookings.filter(
-      (booking) =>
-        booking.movie_title.toLowerCase().includes(searchText.toLowerCase()) ||
-        booking.ticket_type.toLowerCase().includes(searchText.toLowerCase())
-    );
+		const { movieBookings, selectedmovieBooking, isAdding, isEditing } =
+			this.state;
 
 		return (
 			<>
 				<Header />
 				<div>
-					<h2 className="userFNB--title">My Movie Bookings</h2>
+					<h2 className="userFNB--title">Movie Bookings</h2>
 					<div className="userFNB--tableContainer">
-						<div className="userManager--searchContainer">
-							<input
-								type="text"
-								placeholder="Search cinema room"
-								className="userManager--searchBar"
-								value={searchText}
-								onChange={this.handleChange}
-							/>
-						</div>
-						<table className="userFNB--table">
-							<thead>
-								<tr>
-									<th>No.</th>
-									<th>Movie</th>
-									<th>Session Date</th>
-									<th>Session Time</th>
-									<th>Ticket Type</th>
-									<th>Seat Number</th>
-								</tr>
-							</thead>
-							<tbody>
-								{filteredSR.length > 0 ? (
-									filteredSR.map((movieBooking, i) => (
-										<tr key={i}>
-											<td>{i + 1}</td>
-											<td>{movieBooking.movie_title}</td>
-											<td>{movieBooking.movie_session_date}</td>
-											<td>{movieBooking.movie_session_time}</td>
-											<td>{movieBooking.ticket_type}</td>
-											<td>{movieBooking.seat_number}</td>
-										</tr>
-									))
-								) : (
-									<tr>
-										<td colSpan={7}>No records found.</td>
-									</tr>
-								)}
-							</tbody>
-						</table>
+						{!isAdding && !isEditing && (
+							<>
+								<MovieBookingList
+									movieBookings={movieBookings}
+									handleEdit={this.handleEdit}
+									handleDelete={this.handleDelete}
+								/>
+							</>
+						)}
 					</div>
 				</div>
 				<Footer />

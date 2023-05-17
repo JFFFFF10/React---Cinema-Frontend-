@@ -3,7 +3,7 @@ import axios from "axios";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "./UserTable.css";
-import FNBCartList from "./fnbCardList";
+import FNBCartList from "./fnbCartList";
 
 class FNBCart extends Component {
 	constructor(props) {
@@ -63,7 +63,7 @@ class FNBCart extends Component {
 			<>
 				<Header />
 				<div>
-					<h2 className="userFNB--title">Purchase</h2>
+					<h2 className="userFNB--title">Food and Beverages</h2>
 					<div className="userFNB--tableContainer">
 						{!isAdding && !isEditing && (
 							<>

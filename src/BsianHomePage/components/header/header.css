@@ -101,7 +101,7 @@ header ul li a:hover::after {
 	display: block;
 	background-color: transparent;
 	width: fit-content;
-	font-size: 1rem;
+	font-size: 1.2rem;
 	font-weight: 400;
 	border-radius: 0.25rem;
 }

@@ -75,7 +75,7 @@ function BookingPage() {
         'Your booking has been made.',
         'success'
       ).then(() => {
-        navigate("/");
+        navigate("/UserMovieBooking");
       })
       // reset form
       setSeat('');

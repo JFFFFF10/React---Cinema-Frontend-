@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./header.css";
 import LogoutUser from "../../../LogPage/Logout/Logout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
@@ -33,9 +33,9 @@ class Header extends Component {
 	render() {
 		const { isOpen, isMobile } = this.state;
 		const menuItems = [
-			{ label: "● Purchase", url: "/FnbCart" },
-			{ label: "● View Movie Booking", url: "/UserMovieBooking" },
-			{ label: "● View Fnb Records", url: "/UserFNB" },
+			{ label: "● FNB Purchase", url: "/FnbCart" },
+			{ label: "● Movie Ticket Purchase", url: "/UserMovieBooking" },
+			// { label: "● View Fnb Records", url: "/UserFNB" },
 		];
 		const token = localStorage.getItem("token");
 		return (
@@ -79,10 +79,16 @@ class Header extends Component {
 						{/* User menu drop down  */}
 						<div className="userMenu flexSB">
 							<div className="dropdown">
-								<button onClick={this.toggleMenu} className="dropdown-toggle">
-									<FontAwesomeIcon icon={faUser} />
+								<button
+									onMouseEnter={this.toggleMenu}
+									className="dropdown-toggle"
+								>
+									<FontAwesomeIcon icon={faCartShopping} />
 								</button>
-								<div className={`dropdown-menu ${isOpen ? "show" : ""}`}>
+								<div
+									className={`dropdown-menu ${isOpen ? "show" : ""}`}
+									onMouseLeave={this.toggleMenu}
+								>
 									{menuItems.map((item, index) => (
 										<a key={index} href={item.url} className="dropdown-item">
 											{item.label}
@@ -90,6 +96,7 @@ class Header extends Component {
 									))}
 								</div>
 							</div>
+
 							{token ? (
 								<Link to="/">
 									<button
