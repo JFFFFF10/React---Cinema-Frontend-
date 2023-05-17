@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 
-class MovieSessionSearch extends Component {
+class MovieBookingSearch extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -37,7 +36,7 @@ class MovieSessionSearch extends Component {
 		// Send the search query to the API using axios with the Authorization header
 		axios
 			.post(
-				"https://csit-314-cinema-booking-system.vercel.app/searchMovieSession/",
+				"https://csit-314-cinema-booking-system.vercel.app/SearchBook/",
 				requestBody,
 				{
 					headers: {
@@ -127,4 +126,4 @@ class MovieSessionSearch extends Component {
 	}
 }
 
-export default MovieSessionSearch;
+export default MovieBookingSearch;
