@@ -25,21 +25,20 @@ class FNBCartList extends Component {
 				}
 			);
 
-			Swal.fire({
-				icon: "success",
-				title: "Deleted!",
-				text: `fnb data has been deleted.`,
-				showConfirmButton: false,
-				timer: 3000,
-			});
-
 			if (response.status === 200) {
 				console.log("Fnb delete successfully.");
+				Swal.fire({
+					icon: "success",
+					title: "Deleted!",
+					text: `Your order has been deleted.`,
+					showConfirmButton: false,
+					timer: 3000,
+				  }).then(() => {
+					window.location.reload();
+				  });
 			}
-			window.location.reload();
-			console.log(response.data);
 		} catch (error) {
-			console.log(fnb.id);
+			console.log(error);
 		}
 	};
 
