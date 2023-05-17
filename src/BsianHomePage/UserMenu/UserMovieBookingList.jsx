@@ -64,7 +64,7 @@ class MovieBookingList extends Component {
 						<div className="userManager--searchContainer">
 							<input
 								type="text"
-								placeholder="Search cinema room"
+								placeholder="Search movie booking"
 								className="userManager--searchBar"
 								value={searchText}
 								onChange={this.handleChange}
