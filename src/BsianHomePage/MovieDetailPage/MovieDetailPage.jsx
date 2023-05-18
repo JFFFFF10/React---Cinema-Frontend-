@@ -30,8 +30,8 @@ class MovieDetailPage extends React.Component {
     async componentDidMount() {
       const { movie_title } = this.props;
       try {
-        const response = await axios.post('https://csit-314-cinema-booking-system.vercel.app/searchMovie/',{
-          keyword: movie_title,
+        const response = await axios.post('https://csit-314-cinema-booking-system.vercel.app/retrieveMovieDetail/',{
+          movie_title: movie_title,
         });
         const movieDetails = response.data[0];
         this.setState({ movieDetails });
