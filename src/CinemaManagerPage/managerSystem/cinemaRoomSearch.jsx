@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class CinemaRoomSearch extends Component {
+class CinemaRoomSearchPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -125,4 +125,4 @@ class CinemaRoomSearch extends Component {
 	}
 }
 
-export default CinemaRoomSearch;
+export default CinemaRoomSearchPage;

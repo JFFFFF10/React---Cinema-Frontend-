@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class FnbSearch extends Component {
+class FnbSearchPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -130,4 +130,4 @@ class FnbSearch extends Component {
 	}
 }
 
-export default FnbSearch;
+export default FnbSearchPage;

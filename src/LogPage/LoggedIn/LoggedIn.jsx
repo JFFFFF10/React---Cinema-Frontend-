@@ -74,14 +74,14 @@ class LoggedIn extends React.Component {
 					<h1 className="LoggedIn--subtitle">
 						Loading...
 					</h1>
-					<Link to="/">
+					{/* <Link to="/">
 						<button
 							className="LoggedIn--back_button"
 							onClick={this.handleLogoutClick}
 						>
 							Log Out
 						</button>
-					</Link>
+					</Link> */}
 				</Card>
 			</>
 		);

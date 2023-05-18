@@ -6,7 +6,7 @@ import MovieList from "./movieInfoList";
 import MovieAdd from "./movieInfoAdd";
 import MovieEdit from "./movieInfoEdit";
 
-class MovieInfo extends Component {
+class MovieInfoPage extends Component {
 	constructor(props) {
 		super(props);
 
@@ -92,4 +92,4 @@ class MovieInfo extends Component {
 	}
 }
 
-export default MovieInfo;
+export default MovieInfoPage;

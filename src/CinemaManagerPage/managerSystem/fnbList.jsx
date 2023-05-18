@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class FNBList extends React.Component {
+class FNBDeletePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -124,4 +124,4 @@ class FNBList extends React.Component {
 	}
 }
 
-export default FNBList;
+export default FNBDeletePage;

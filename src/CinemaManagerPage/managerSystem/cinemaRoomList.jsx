@@ -2,12 +2,11 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class RoomBookingList extends React.Component {
+class RoomBookingDelete extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchText: "",
-			movieSessions: [],
 		};
 	}
 
@@ -121,4 +120,4 @@ class RoomBookingList extends React.Component {
 	}
 }
 
-export default RoomBookingList;
+export default RoomBookingDelete;

@@ -2,8 +2,7 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
-class MovieList extends React.Component {
+class MovieDeletePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -50,13 +49,14 @@ class MovieList extends React.Component {
 		}
 	};
 
-
 	formatDuration(durationInSeconds) {
 		let hours = Math.floor(durationInSeconds / 3600);
 		let minutes = Math.floor((durationInSeconds % 3600) / 60);
 		let seconds = durationInSeconds % 60;
-		return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-	  }
+		return `${hours.toString().padStart(2, "0")}:${minutes
+			.toString()
+			.padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+	}
 
 	render() {
 		const { movies, handleEdit } = this.props;
@@ -151,4 +151,4 @@ class MovieList extends React.Component {
 	}
 }
 
-export default MovieList;
+export default MovieDeletePage;

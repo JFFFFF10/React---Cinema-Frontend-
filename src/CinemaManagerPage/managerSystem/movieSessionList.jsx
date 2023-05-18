@@ -2,12 +2,11 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class MovieSessionList extends React.Component {
+class MovieSessionDeletePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchText: "",
-			movieSessions: [],
 		};
 	}
 
@@ -134,4 +133,4 @@ class MovieSessionList extends React.Component {
 	}
 }
 
-export default MovieSessionList;
+export default MovieSessionDeletePage;

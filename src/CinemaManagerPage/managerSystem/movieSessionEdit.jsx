@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-class MovieSessionEdit extends Component {
+class MovieSessionEditPage extends Component {
 	constructor(props) {
 		super(props);
 
@@ -79,10 +79,7 @@ class MovieSessionEdit extends Component {
 	render() {
 		const {
 			id,
-			movie_title,
 			session_date,
-			cinema_room,
-			session_time,
 			valid_session_times,
 		} = this.state;
 
@@ -145,4 +142,4 @@ class MovieSessionEdit extends Component {
 	}
 }
 
-export default MovieSessionEdit;
+export default MovieSessionEditPage;

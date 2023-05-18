@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-class FNBEdit extends Component {
+class FNBEditPage extends Component {
 	constructor(props) {
 		super(props);
 
@@ -13,7 +13,6 @@ class FNBEdit extends Component {
 			menu: selectedfnb ? selectedfnb.menu : "",
 			menu_description: selectedfnb ? selectedfnb.menu_description : "",
 			price: selectedfnb ? selectedfnb.price : "",
-			is_available: selectedfnb ? selectedfnb.is_available : "",
 			menuIMG: selectedfnb ? selectedfnb.menuIMG : "",
 		};
 	}
@@ -32,7 +31,6 @@ class FNBEdit extends Component {
 					menu: this.state.menu,
 					menu_description: this.state.menu_description,
 					price: this.state.price,
-					is_available: this.state.is_available,
 					menuIMG: this.state.menuIMG,
 				},
 				{
@@ -99,7 +97,7 @@ class FNBEdit extends Component {
 	};
 
 	render() {
-		const { id, menu, menu_description, price, is_available, menuIMG } =
+		const {menu, menu_description, price, menuIMG } =
 			this.state;
 
 		const { setIsEditing } = this.props;
@@ -173,4 +171,4 @@ class FNBEdit extends Component {
 	}
 }
 
-export default FNBEdit;
+export default FNBEditPage;

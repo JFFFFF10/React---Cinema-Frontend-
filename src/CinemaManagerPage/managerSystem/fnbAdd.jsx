@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-class FNBAdd extends Component {
+class FNBAddPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -193,4 +193,4 @@ class FNBAdd extends Component {
 		);
 	}
 }
-export default FNBAdd;
+export default FNBAddPage;

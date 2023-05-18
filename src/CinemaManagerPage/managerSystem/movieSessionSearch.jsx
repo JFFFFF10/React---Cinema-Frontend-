@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class MovieSessionSearch extends Component {
+class MovieSessionSearchPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -127,4 +127,4 @@ class MovieSessionSearch extends Component {
 	}
 }
 
-export default MovieSessionSearch;
+export default MovieSessionSearchPage;

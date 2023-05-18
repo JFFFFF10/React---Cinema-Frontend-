@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-class CinemaRoomEdit extends Component {
+class CinemaRoomEditPage extends Component {
 	constructor(props) {
 		super(props);
 
@@ -97,4 +97,4 @@ class CinemaRoomEdit extends Component {
 	}
 }
 
-export default CinemaRoomEdit;
+export default CinemaRoomEditPage;
