@@ -30,7 +30,6 @@ import BookingPageWrapper from "./BsianHomePage/MovieSessionPage/BookingPage";
 
 //Buy FnB
 import HomeFnbPage from "./BsianHomePage/HomeFnbPage/HomeFnbPage";
-import BuyFnbPageWrapper from "./BsianHomePage/BuyFnbPage/BuyFnbPage";
 
 
 function App() {
@@ -63,7 +62,6 @@ function App() {
 				<Route path="/booking/:sessionId" element={<BookingPageWrapper />} />
 
 				<Route path="/foodnbeverages" element={<HomeFnbPage />} />
-				<Route path="/buyFnb/:menu_id" element={<BuyFnbPageWrapper />} />
 
 			</Routes>
 		</Router>
