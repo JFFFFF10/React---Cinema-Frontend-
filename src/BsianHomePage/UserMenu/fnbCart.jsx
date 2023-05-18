@@ -57,7 +57,7 @@ class FNBCart extends Component {
 	}
 
 	render() {
-		const { fnbs, selectedfnb, isAdding, isEditing } = this.state;
+		const { fnbs, isAdding, isEditing } = this.state;
 
 		return (
 			<>

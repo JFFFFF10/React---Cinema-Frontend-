@@ -55,7 +55,7 @@ class MovieBooking extends Component {
 	}
 
 	render() {
-		const { movieBookings, selectedmovieBooking, isAdding, isEditing } =
+		const { movieBookings, isAdding, isEditing } =
 			this.state;
 
 		return (

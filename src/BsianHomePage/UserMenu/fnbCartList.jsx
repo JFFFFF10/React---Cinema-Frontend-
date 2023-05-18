@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class FNBCartList extends Component {
+class FNBCartDelete extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -99,4 +99,4 @@ class FNBCartList extends Component {
 	}
 }
 
-export default FNBCartList;
+export default FNBCartDelete;
