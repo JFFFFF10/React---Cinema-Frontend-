@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import BuyFnbPopup from "../BuyFnbPage/BuyFnbPopup";
+import BuyFnbPopup from "../BuyFnbPopup/BuyFnbPopup";
 
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
