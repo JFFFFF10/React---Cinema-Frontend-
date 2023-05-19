@@ -24,7 +24,6 @@ class FNBAddPage extends Component {
 	};
 
 	handleCancel = () => {
-		window.location.reload();
 		this.props.setIsAdding(false);
 	};
 
@@ -119,6 +118,7 @@ class FNBAddPage extends Component {
 		} catch (error) {
 			console.log(error);
 		}
+		window.location.reload();
 	};
 
 	render() {

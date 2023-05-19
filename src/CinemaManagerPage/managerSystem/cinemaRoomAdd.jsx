@@ -22,7 +22,6 @@ class RoomBookingAddPage extends Component {
 	};
 
 	handleCancel = () => {
-		window.location.reload();
 		this.props.setIsAdding(false);
 	};
 
@@ -63,6 +62,7 @@ class RoomBookingAddPage extends Component {
 				showConfirmButton: false,
 				timer: 3000,
 			});
+			
 
 			this.setState({
 				name: "",
@@ -74,6 +74,7 @@ class RoomBookingAddPage extends Component {
 		} catch (error) {
 			console.log(error);
 		}
+		window.location.reload();
 	};
 
 	render() {

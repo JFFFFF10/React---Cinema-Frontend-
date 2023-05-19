@@ -29,7 +29,6 @@ class MovieAddPage extends Component {
 	};
 
 	handleCancel = () => {
-		window.location.reload();
 		this.props.setIsAdding(false);
 	};
 
@@ -160,6 +159,7 @@ class MovieAddPage extends Component {
 				showConfirmButton: false,
 				timer: 3000,
 			});
+			
 
 			this.setState({
 				movie_title: "",
@@ -173,13 +173,12 @@ class MovieAddPage extends Component {
 				featureIMG: "",
 			});
 			if (response.status === 200) {
-				// Movie added successfully
 				console.log("Movie added successfully.");
 			}
 		} catch (error) {
-			//console.error("wtf?");
 			console.log(error);
 		}
+		window.location.reload();
 	};
 
 	render() {

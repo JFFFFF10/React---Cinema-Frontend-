@@ -35,7 +35,6 @@ class MovieSessionAddPage extends Component {
 	};
 
 	handleCancel = () => {
-		window.location.reload();
 		this.props.setIsAdding(false);
 	};
 
@@ -91,15 +90,12 @@ class MovieSessionAddPage extends Component {
 		} catch (error) {
 			console.log(error);
 		}
+		window.location.reload();
 	};
 
 	render() {
-		const {
-			movie_title,
-			session_date,
-			cinema_room,
-			valid_session_times,
-		} = this.state;
+		const { movie_title, session_date, cinema_room, valid_session_times } =
+			this.state;
 
 		return (
 			<div className="userManagerPage--small-container">

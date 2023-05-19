@@ -93,10 +93,10 @@ class MovieBookingDelete extends Component {
 											<td>{movieBooking.ticket_type}</td>
 											<td>{movieBooking.seat_number}</td>
 											<td>
-											<button onClick={() => this.handleDelete(movieBooking)}>
-												Delete
-											</button>
-										</td>
+												<button onClick={() => this.handleDelete(movieBooking)}>
+													Delete
+												</button>
+											</td>
 										</tr>
 									))
 								) : (
