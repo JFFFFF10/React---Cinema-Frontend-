@@ -59,7 +59,7 @@ class MovieEditPage extends Component {
 			window.location.reload();
 			console.log(response.data);
 		} catch (error) {
-			console.log(token);
+			console.log(error);
 		}
 	};
 
@@ -72,7 +72,6 @@ class MovieEditPage extends Component {
 			reader.readAsDataURL(file);
 
 			reader.onload = () => {
-				// Make a fileInfo Object
 				console.log("Called", reader);
 				baseURL = reader.result;
 				resolve(baseURL);
@@ -125,14 +124,11 @@ class MovieEditPage extends Component {
 		});
 	};
 
-	formatDuration(durationInSeconds) {
-		let hours = Math.floor(durationInSeconds / 3600);
-		let minutes = Math.floor((durationInSeconds % 3600) / 60);
-		let seconds = durationInSeconds % 60;
-		return `${hours.toString().padStart(2, "0")}:${minutes
-			.toString()
-			.padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-	}
+	formatDuration = (seconds) => {
+		const hours = Math.floor(seconds / 3600);
+		const minutes = Math.floor((seconds % 3600) / 60);
+		return `${hours} hours ${minutes} minutes`;
+	};
 
 	render() {
 		const {
@@ -182,6 +178,7 @@ class MovieEditPage extends Component {
 							this.setState({ duration: event.target.value })
 						}
 					/>
+
 					<label htmlFor="release_date">Release Date</label>
 					<input
 						id="release_date"
