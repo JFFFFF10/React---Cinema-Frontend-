@@ -1,0 +1,72 @@
+.dailyRevenueReport {
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+    font-family: Arial, sans-serif;
+    background-color: rgb(66, 64, 64);
+    margin: 0 auto; /* Add this to center the block horizontally */
+    border: 1px solid red; /* Add border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box-shadow for 3D effect */
+    border-radius: 10px; /* Add rounded corners */
+    position: absolute; /* Add this for vertical centering */
+    top: 50%; /* Add this for vertical centering */
+    left: 50%; /* Add this for horizontal centering */
+    transform: translate(-50%, -50%); /* Add this for perfect centering */
+  }  
+  
+.dailyRevenueReport h1 {
+    font-size: 5vh;
+    margin-bottom: 2vh;
+    color: red;
+
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+  
+.dailyRevenueReport form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+  
+.dailyRevenueReport form label {
+    margin-bottom: 10px;
+}
+  
+.dailyRevenueReport form input[type="date"] {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+  
+.dailyRevenueReport form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+  
+.dailyRevenueReport form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.dailyRevenueReport--result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dailyRevenueReport--result h3, .dailyRevenueReport--result p {
+    color: white;
+}
+
+.dailyRevenueReport--result h3 {
+    font-size: 4vh;
+}

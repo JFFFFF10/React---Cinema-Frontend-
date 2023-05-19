@@ -1,0 +1,37 @@
+.cinemaOwnerPage--title {
+    text-align: center;
+    font-size: 7vh;
+    margin-top: 1em;
+    margin-bottom: 5vh;
+  }
+  
+  .cinemaOwnerPage--btnContainer {
+    margin: auto 10vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+    justify-content: center; 
+  }
+  
+  .cinemaOwnerPage--btn {
+    width: 15vw;
+    height: 15vh;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2.5vh;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  
+  .cinemaOwnerPage--btn:hover {
+    background-color: white; 
+    color: #4CAF50; 
+    font-weight: bold;
+    border: 2px solid #4CAF50;
+  }

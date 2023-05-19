@@ -21,6 +21,15 @@ import MovieSessionInfoPage from "./CinemaManagerPage/managerSystem/movieSession
 import UserMovieBooking from "./BsianHomePage/UserMenu/UserMovieBooking";
 import FnbCart from "./BsianHomePage/UserMenu/fnbCart";
 
+//Cinema Owner
+import CinemaOwnerPage from "./CinemaOwnerPage/CinemaOwnerPage";
+import DailyRevenueReport from "./CinemaOwnerPage/DailyRevenueReport";
+import WeeklyRevenueReport from "./CinemaOwnerPage/WeeklyRevenueReport";
+import MonthlyRevenueReport from "./CinemaOwnerPage/MonthlyRevenueReport";
+import DailyTicketReport from "./CinemaOwnerPage/DailyTicketReport";
+import WeeklyTicketReport from "./CinemaOwnerPage/WeeklyTicketReport";
+import MonthlyTicketReport from "./CinemaOwnerPage/MonthlyTicketReport";
+
 //Movies
 import MoviesPage from "./BsianHomePage/MoviesPage/MoviesPage";
 import SinglePage from "./BsianHomePage/components/watch/SinglePage";
@@ -46,6 +55,14 @@ function App() {
 				<Route path="/UserAdminPage/ua-search-profile" element={<UserAdminSearchPrfPage />} />
 				<Route path="/UserAdminPage/ua-add-account" element={<UserAdminAddAccPage />} />
 				<Route path="/UserAdminPage/ua-add-profile" element={<UserAdminAddPrfPage />} />
+
+				<Route path="/CinemaOwnerPage" element={<CinemaOwnerPage />} />
+				<Route path="/CinemaOwnerPage/co-daily-revenue" element={<DailyRevenueReport />} />
+				<Route path="/CinemaOwnerPage/co-weekly-revenue" element={<WeeklyRevenueReport />} />
+				<Route path="/CinemaOwnerPage/co-monthly-revenue" element={<MonthlyRevenueReport />} />
+				<Route path="/CinemaOwnerPage/co-daily-tickettype" element={<DailyTicketReport />} />
+				<Route path="/CinemaOwnerPage/co-weekly-tickettype" element={<WeeklyTicketReport />} />
+				<Route path="/CinemaOwnerPage/co-monthly-tickettype" element={<MonthlyTicketReport />} />
 
 				<Route path="/MoviesPage" element={<MoviesPage />} />
 				<Route path="/MovieInfoPage" element={<MovieInfoPage />} />
