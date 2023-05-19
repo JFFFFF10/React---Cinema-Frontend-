@@ -28,12 +28,10 @@ class MovieBookingSearch extends Component {
 
 		const token = localStorage.getItem("token"); // Retrieve the token from localStorage
 
-		// Create the request body
 		const requestBody = {
 			keyword: searchQuery,
 		};
 
-		// Send the search query to the API using axios with the Authorization header
 		axios
 			.post(
 				"https://csit-314-cinema-booking-system.vercel.app/SearchBook/",
@@ -75,7 +73,6 @@ class MovieBookingSearch extends Component {
 		document.removeEventListener("click", this.hideContextMenu);
 	}
 
-	//it shows that 'contextMenuCoordinates' is assigned a value but never used, however, dont delete!!!
 	render() {
 		const { searchQuery, searchResults, contextMenuCoordinates } = this.state;
 

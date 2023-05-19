@@ -77,11 +77,7 @@ class MovieSessionEditPage extends Component {
 	};
 
 	render() {
-		const {
-			id,
-			session_date,
-			valid_session_times,
-		} = this.state;
+		const { id, session_date, valid_session_times } = this.state;
 
 		const { setIsEditing } = this.props;
 

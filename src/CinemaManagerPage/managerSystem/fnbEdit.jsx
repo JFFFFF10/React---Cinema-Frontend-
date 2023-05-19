@@ -67,7 +67,6 @@ class FNBEditPage extends Component {
 				// Make a fileInfo Object
 				console.log("Called", reader);
 				baseURL = reader.result;
-				//console.log(baseURL);
 				resolve(baseURL);
 			};
 			console.log(fileInfo);
