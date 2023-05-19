@@ -1,0 +1,73 @@
+.monthlyRevenueReport {
+    height: 62vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+    font-family: Arial, sans-serif;
+    background-color: rgb(66, 64, 64);
+    margin: 0 auto; /* Center the block horizontally */
+    border: 1px solid red; /* Add border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box-shadow for 3D effect */
+    border-radius: 10px; /* Add rounded corners */
+    position: absolute; /* Add for vertical centering */
+    top: 50%; /* Add for vertical centering */
+    left: 50%; /* Add for horizontal centering */
+    transform: translate(-50%, -50%); /* Add for perfect centering */
+  }
+  
+  .monthlyRevenueReport h1 {
+    font-size: 5vh;
+    margin-bottom: 2vh;
+    color: red;
+
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .monthlyRevenueReport form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .monthlyRevenueReport form label {
+    margin-bottom: 10px;
+  }
+  
+  .monthlyRevenueReport form input[type="number"] {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .monthlyRevenueReport form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .monthlyRevenueReport form input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .monthlyRevenueReport--result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .monthlyRevenueReport--result h3, .monthlyRevenueReport--result p {
+    color: white;
+  }
+  
+  .monthlyRevenueReport--result h3 {
+    font-size: 4vh;
+  }
+  

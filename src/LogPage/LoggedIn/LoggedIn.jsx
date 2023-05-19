@@ -13,6 +13,7 @@ class LoggedIn extends React.Component {
 			redirectToUserAdminPage: false, // Add new state to track if should redirect to UserAdminPage
 			redirectToUserManagerPage: false,
 			redirectToUserCustomerPage: false,
+			redirectToCinemaOwnerPage: false,
 		};
 	}
 
@@ -44,6 +45,9 @@ class LoggedIn extends React.Component {
 				if (response.data.role === "Customer") {
 					this.setState({ redirectToUserCustomerPage: true });
 				}
+				if (response.data.role === "CinemaOwner") {
+					this.setState({ redirectToCinemaOwnerPage: true });
+				}
 			})
 			.catch((error) => {
 				console.log(error);
@@ -56,6 +60,7 @@ class LoggedIn extends React.Component {
 			redirectToUserAdminPage,
 			redirectToUserManagerPage,
 			redirectToUserCustomerPage,
+			redirectToCinemaOwnerPage,
 		} = this.state;
 
 		if (redirectToUserAdminPage) {
@@ -66,6 +71,9 @@ class LoggedIn extends React.Component {
 		}
 		if (redirectToUserCustomerPage) {
 			return <Navigate to="/" />;
+		}
+		if (redirectToCinemaOwnerPage) {
+			return <Navigate to="/CinemaOwnerPage" />;
 		}
 
 		return (
